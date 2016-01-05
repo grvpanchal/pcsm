@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Reflection;
 using Microsoft.Win32.TaskScheduler;
 using System.Net;
+using System.Management;
 
 namespace pcsm
 {
@@ -19,6 +20,18 @@ namespace pcsm
 
 public static class OSVersion
     {
+
+        public static string GetOSFriendlyName()
+        {
+            string result = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem");
+            foreach (ManagementObject os in searcher.Get())
+            {
+                result = os["Caption"].ToString();
+                break;
+            }
+            return result;
+        }
 
         public static bool is64BitProcess = (IntPtr.Size == 8);
         public static bool is64BitOperatingSystem = is64BitProcess || InternalCheckIsWow64();

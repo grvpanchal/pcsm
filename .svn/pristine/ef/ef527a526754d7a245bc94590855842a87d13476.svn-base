@@ -1,0 +1,14 @@
+[main]
+optimize=False
+optimizemft=False
+uncompress=False
+fixeddrives=2
+[0]
+drivename=C:
+checked=True
+[1]
+drivename=D:
+checked=True
+[2]
+drivename=E:
+checked=True

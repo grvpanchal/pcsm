@@ -1,0 +1,13 @@
+[sections]
+Activex=1
+Startup=1
+Fonts=1
+AppInfo=1
+Drivers=1
+HelpFiles=1
+Sounds=1
+AppPaths=1
+AppSettings=1
+SharedDLL=1
+HistoryList=1
+

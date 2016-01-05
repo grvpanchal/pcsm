@@ -339,7 +339,7 @@ namespace pcsm
             else
                 this.label3.Text = "Unknown";
 
-            this.label1.Text = OSVersion.GetOSVersion();
+            this.label1.Text = OSVersion.GetOSFriendlyName();
 
             OperatingSystem OS = Environment.OSVersion;
 
