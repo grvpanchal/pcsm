@@ -107,8 +107,7 @@ namespace pcsm
                 SplashScreen.SetStatus("Checking for Updates...");                
                 mainForm.check_update();
                 SplashScreen.SetStatus("Verifying Installed Programs...");
-                System.Threading.Thread.Sleep(500);
-                mainForm.check_program_installed();
+                System.Threading.Thread.Sleep(500);                
                 SplashScreen.SetStatus("Checking System Informantion...");
                 System.Threading.Thread.Sleep(500);
                 mainForm.get_system_info();              

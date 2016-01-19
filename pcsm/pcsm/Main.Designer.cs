@@ -66,18 +66,6 @@
             this.lum_ll = new System.Windows.Forms.LinkLabel();
             this.ph_ll = new System.Windows.Forms.LinkLabel();
             this.scf_ll = new System.Windows.Forms.LinkLabel();
-            this.lrc_install_ll = new System.Windows.Forms.LinkLabel();
-            this.lro_install_ll = new System.Windows.Forms.LinkLabel();
-            this.sre_install_ll = new System.Windows.Forms.LinkLabel();
-            this.dclean_install_ll = new System.Windows.Forms.LinkLabel();
-            this.eraser_install_ll = new System.Windows.Forms.LinkLabel();
-            this.undelete_install_ll = new System.Windows.Forms.LinkLabel();
-            this.fsinspect_install_ll = new System.Windows.Forms.LinkLabel();
-            this.ultradefrag_install_ll = new System.Windows.Forms.LinkLabel();
-            this.stm_install_ll = new System.Windows.Forms.LinkLabel();
-            this.lum_install_ll = new System.Windows.Forms.LinkLabel();
-            this.ph_install_ll = new System.Windows.Forms.LinkLabel();
-            this.chkdskgui_install_ll = new System.Windows.Forms.LinkLabel();
             this.license_ll = new System.Windows.Forms.LinkLabel();
             this.about_ll = new System.Windows.Forms.LinkLabel();
             this.blog_ll = new System.Windows.Forms.LinkLabel();
@@ -103,10 +91,8 @@
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.scf_install_ll = new System.Windows.Forms.LinkLabel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.diskinfo_install_ll = new System.Windows.Forms.LinkLabel();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -332,7 +318,7 @@
             this.registry_l.ForeColor = System.Drawing.Color.White;
             this.registry_l.Location = new System.Drawing.Point(61, 223);
             this.registry_l.Name = "registry_l";
-            this.registry_l.Size = new System.Drawing.Size(58, 17);
+            this.registry_l.Size = new System.Drawing.Size(59, 17);
             this.registry_l.TabIndex = 11;
             this.registry_l.Text = "Registry";
             // 
@@ -378,7 +364,6 @@
             this.lrc_ll.AutoSize = true;
             this.lrc_ll.BackColor = System.Drawing.SystemColors.Window;
             this.lrc_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.lrc_ll.Enabled = false;
             this.lrc_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lrc_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lrc_ll.LinkColor = System.Drawing.Color.Black;
@@ -389,7 +374,7 @@
             this.lrc_ll.TabStop = true;
             this.lrc_ll.Text = "Little Registry Cleaner";
             this.toolTip1.SetToolTip(this.lrc_ll, "Removes obsolete or unwanted \r\nitems that build up in the registry \r\nover time in" +
-                    " order to improve \r\nthe stability and performance of \r\nyour computer.");
+        " order to improve \r\nthe stability and performance of \r\nyour computer.");
             this.lrc_ll.VisitedLinkColor = System.Drawing.Color.Black;
             this.lrc_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lrc_ll_LinkClicked);
             // 
@@ -399,7 +384,6 @@
             this.lro_ll.AutoSize = true;
             this.lro_ll.BackColor = System.Drawing.SystemColors.Window;
             this.lro_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.lro_ll.Enabled = false;
             this.lro_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lro_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lro_ll.LinkColor = System.Drawing.Color.Black;
@@ -410,7 +394,7 @@
             this.lro_ll.TabStop = true;
             this.lro_ll.Text = "Little Registry Optimizer";
             this.toolTip1.SetToolTip(this.lro_ll, "Analyzes the windows registry and \r\noptimize it so it will be smaller \r\nand run s" +
-                    "moother when the computer \r\nis rebooted.");
+        "moother when the computer \r\nis rebooted.");
             this.lro_ll.VisitedLinkColor = System.Drawing.Color.Black;
             this.lro_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lro_ll_LinkClicked);
             // 
@@ -420,7 +404,6 @@
             this.sre_ll.AutoSize = true;
             this.sre_ll.BackColor = System.Drawing.SystemColors.Window;
             this.sre_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.sre_ll.Enabled = false;
             this.sre_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sre_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.sre_ll.LinkColor = System.Drawing.Color.Black;
@@ -440,7 +423,6 @@
             this.dclean_ll.AutoSize = true;
             this.dclean_ll.BackColor = System.Drawing.SystemColors.Window;
             this.dclean_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.dclean_ll.Enabled = false;
             this.dclean_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dclean_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.dclean_ll.LinkColor = System.Drawing.Color.Black;
@@ -451,8 +433,8 @@
             this.dclean_ll.TabStop = true;
             this.dclean_ll.Text = "Bleachbit (Disk Cleaner)";
             this.toolTip1.SetToolTip(this.dclean_ll, "is a tool to quickly and easily free disk \r\nspace that is used by temporary files" +
-                    " like \r\nthe system temporary folder, the Internet \r\nExplorer Cache and Cookies f" +
-                    "older, and the \r\nRecycle Bin.");
+        " like \r\nthe system temporary folder, the Internet \r\nExplorer Cache and Cookies f" +
+        "older, and the \r\nRecycle Bin.");
             this.dclean_ll.VisitedLinkColor = System.Drawing.Color.Black;
             this.dclean_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dclean_ll_LinkClicked);
             // 
@@ -462,7 +444,6 @@
             this.eraser_ll.AutoSize = true;
             this.eraser_ll.BackColor = System.Drawing.SystemColors.Window;
             this.eraser_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.eraser_ll.Enabled = false;
             this.eraser_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eraser_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.eraser_ll.LinkColor = System.Drawing.Color.Black;
@@ -473,8 +454,8 @@
             this.eraser_ll.TabStop = true;
             this.eraser_ll.Text = "Eraser";
             this.toolTip1.SetToolTip(this.eraser_ll, " is a secure data removal tool for \r\nWindows. It completely removes sensitive \r\nd" +
-                    "ata from your hard drive by overwriting it \r\nseveral times with carefully select" +
-                    "ed patterns.");
+        "ata from your hard drive by overwriting it \r\nseveral times with carefully select" +
+        "ed patterns.");
             this.eraser_ll.VisitedLinkColor = System.Drawing.Color.Black;
             this.eraser_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.eraser_ll_LinkClicked);
             // 
@@ -484,7 +465,6 @@
             this.undelete_ll.AutoSize = true;
             this.undelete_ll.BackColor = System.Drawing.SystemColors.Window;
             this.undelete_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.undelete_ll.Enabled = false;
             this.undelete_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.undelete_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.undelete_ll.LinkColor = System.Drawing.Color.Black;
@@ -504,7 +484,6 @@
             this.fsinspect_ll.AutoSize = true;
             this.fsinspect_ll.BackColor = System.Drawing.SystemColors.Window;
             this.fsinspect_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.fsinspect_ll.Enabled = false;
             this.fsinspect_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fsinspect_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.fsinspect_ll.LinkColor = System.Drawing.Color.Black;
@@ -515,7 +494,7 @@
             this.fsinspect_ll.TabStop = true;
             this.fsinspect_ll.Text = "FS-Inspect";
             this.toolTip1.SetToolTip(this.fsinspect_ll, "is an easy to use tool designed \r\nto give you an overview about your files and \r\n" +
-                    "directories (Disk Usage).");
+        "directories (Disk Usage).");
             this.fsinspect_ll.VisitedLinkColor = System.Drawing.Color.Black;
             this.fsinspect_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.fsinspect_ll_LinkClicked);
             // 
@@ -525,7 +504,6 @@
             this.ultradefrag_ll.AutoSize = true;
             this.ultradefrag_ll.BackColor = System.Drawing.SystemColors.Window;
             this.ultradefrag_ll.DisabledLinkColor = System.Drawing.Color.Black;
-            this.ultradefrag_ll.Enabled = false;
             this.ultradefrag_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultradefrag_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.ultradefrag_ll.LinkColor = System.Drawing.Color.Black;
@@ -545,7 +523,6 @@
             this.chkdskgui_ll.AutoSize = true;
             this.chkdskgui_ll.BackColor = System.Drawing.SystemColors.Window;
             this.chkdskgui_ll.DisabledLinkColor = System.Drawing.Color.Black;
-            this.chkdskgui_ll.Enabled = false;
             this.chkdskgui_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkdskgui_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.chkdskgui_ll.LinkColor = System.Drawing.Color.Black;
@@ -564,7 +541,6 @@
             this.stm_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.stm_ll.BackColor = System.Drawing.SystemColors.Window;
             this.stm_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.stm_ll.Enabled = false;
             this.stm_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stm_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.stm_ll.LinkColor = System.Drawing.Color.Black;
@@ -575,7 +551,7 @@
             this.stm_ll.TabStop = true;
             this.stm_ll.Text = "Startup Manager";
             this.toolTip1.SetToolTip(this.stm_ll, "is a program that provides you the possibility \r\nto manage the Windows startup pr" +
-                    "ocedure. ");
+        "ocedure. ");
             this.stm_ll.VisitedLinkColor = System.Drawing.Color.Black;
             this.stm_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.stm_ll_LinkClicked);
             // 
@@ -585,7 +561,6 @@
             this.lum_ll.AutoSize = true;
             this.lum_ll.BackColor = System.Drawing.SystemColors.Window;
             this.lum_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.lum_ll.Enabled = false;
             this.lum_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lum_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lum_ll.LinkColor = System.Drawing.Color.Black;
@@ -604,7 +579,6 @@
             this.ph_ll.AutoSize = true;
             this.ph_ll.BackColor = System.Drawing.SystemColors.Window;
             this.ph_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
-            this.ph_ll.Enabled = false;
             this.ph_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ph_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.ph_ll.LinkColor = System.Drawing.Color.Black;
@@ -615,7 +589,7 @@
             this.ph_ll.TabStop = true;
             this.ph_ll.Text = "Process Hacker";
             this.toolTip1.SetToolTip(this.ph_ll, "A free, powerful, multi-purpose tool that helps \r\nyou monitor system resources, d" +
-                    "ebug software \r\nand detect malware.");
+        "ebug software \r\nand detect malware.");
             this.ph_ll.VisitedLinkColor = System.Drawing.Color.Black;
             this.ph_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ph_ll_LinkClicked);
             // 
@@ -625,7 +599,6 @@
             this.scf_ll.AutoSize = true;
             this.scf_ll.BackColor = System.Drawing.SystemColors.Window;
             this.scf_ll.DisabledLinkColor = System.Drawing.Color.Black;
-            this.scf_ll.Enabled = false;
             this.scf_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scf_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.scf_ll.LinkColor = System.Drawing.Color.Black;
@@ -637,140 +610,6 @@
             this.scf_ll.Text = "Shortcut Fixer";
             this.scf_ll.VisitedLinkColor = System.Drawing.Color.Black;
             this.scf_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.diskcleanup_ll_LinkClicked);
-            // 
-            // lrc_install_ll
-            // 
-            this.lrc_install_ll.AutoSize = true;
-            this.lrc_install_ll.Location = new System.Drawing.Point(143, 276);
-            this.lrc_install_ll.Name = "lrc_install_ll";
-            this.lrc_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.lrc_install_ll.TabIndex = 30;
-            this.lrc_install_ll.TabStop = true;
-            this.lrc_install_ll.Text = "Install";
-            this.lrc_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lrc_install_ll_LinkClicked);
-            // 
-            // lro_install_ll
-            // 
-            this.lro_install_ll.AutoSize = true;
-            this.lro_install_ll.Location = new System.Drawing.Point(143, 301);
-            this.lro_install_ll.Margin = new System.Windows.Forms.Padding(0);
-            this.lro_install_ll.Name = "lro_install_ll";
-            this.lro_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.lro_install_ll.TabIndex = 31;
-            this.lro_install_ll.TabStop = true;
-            this.lro_install_ll.Text = "Install";
-            this.lro_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lro_install_ll_LinkClicked);
-            // 
-            // sre_install_ll
-            // 
-            this.sre_install_ll.AutoSize = true;
-            this.sre_install_ll.Location = new System.Drawing.Point(143, 326);
-            this.sre_install_ll.Name = "sre_install_ll";
-            this.sre_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.sre_install_ll.TabIndex = 32;
-            this.sre_install_ll.TabStop = true;
-            this.sre_install_ll.Text = "Install";
-            this.sre_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.sre_install_ll_LinkClicked);
-            // 
-            // dclean_install_ll
-            // 
-            this.dclean_install_ll.AutoSize = true;
-            this.dclean_install_ll.Location = new System.Drawing.Point(329, 276);
-            this.dclean_install_ll.Margin = new System.Windows.Forms.Padding(0);
-            this.dclean_install_ll.Name = "dclean_install_ll";
-            this.dclean_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.dclean_install_ll.TabIndex = 33;
-            this.dclean_install_ll.TabStop = true;
-            this.dclean_install_ll.Text = "Install";
-            this.dclean_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dclean_install_ll_LinkClicked);
-            // 
-            // eraser_install_ll
-            // 
-            this.eraser_install_ll.AutoSize = true;
-            this.eraser_install_ll.Location = new System.Drawing.Point(329, 301);
-            this.eraser_install_ll.Name = "eraser_install_ll";
-            this.eraser_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.eraser_install_ll.TabIndex = 34;
-            this.eraser_install_ll.TabStop = true;
-            this.eraser_install_ll.Text = "Install";
-            this.eraser_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.eraser_install_ll_LinkClicked);
-            // 
-            // undelete_install_ll
-            // 
-            this.undelete_install_ll.AutoSize = true;
-            this.undelete_install_ll.Location = new System.Drawing.Point(329, 326);
-            this.undelete_install_ll.Name = "undelete_install_ll";
-            this.undelete_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.undelete_install_ll.TabIndex = 35;
-            this.undelete_install_ll.TabStop = true;
-            this.undelete_install_ll.Text = "Install";
-            this.undelete_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.undelete_install_ll_LinkClicked);
-            // 
-            // fsinspect_install_ll
-            // 
-            this.fsinspect_install_ll.AutoSize = true;
-            this.fsinspect_install_ll.Location = new System.Drawing.Point(329, 351);
-            this.fsinspect_install_ll.Name = "fsinspect_install_ll";
-            this.fsinspect_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.fsinspect_install_ll.TabIndex = 36;
-            this.fsinspect_install_ll.TabStop = true;
-            this.fsinspect_install_ll.Text = "Install";
-            this.fsinspect_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.fsinspect_install_ll_LinkClicked);
-            // 
-            // ultradefrag_install_ll
-            // 
-            this.ultradefrag_install_ll.AutoSize = true;
-            this.ultradefrag_install_ll.Location = new System.Drawing.Point(512, 276);
-            this.ultradefrag_install_ll.Name = "ultradefrag_install_ll";
-            this.ultradefrag_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.ultradefrag_install_ll.TabIndex = 37;
-            this.ultradefrag_install_ll.TabStop = true;
-            this.ultradefrag_install_ll.Text = "Install";
-            this.ultradefrag_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ultradefrag_install_ll_LinkClicked);
-            // 
-            // stm_install_ll
-            // 
-            this.stm_install_ll.AutoSize = true;
-            this.stm_install_ll.Location = new System.Drawing.Point(700, 276);
-            this.stm_install_ll.Name = "stm_install_ll";
-            this.stm_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.stm_install_ll.TabIndex = 38;
-            this.stm_install_ll.TabStop = true;
-            this.stm_install_ll.Text = "Install";
-            this.stm_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.stm_install_ll_LinkClicked);
-            // 
-            // lum_install_ll
-            // 
-            this.lum_install_ll.AutoSize = true;
-            this.lum_install_ll.Location = new System.Drawing.Point(700, 301);
-            this.lum_install_ll.Name = "lum_install_ll";
-            this.lum_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.lum_install_ll.TabIndex = 39;
-            this.lum_install_ll.TabStop = true;
-            this.lum_install_ll.Text = "Install";
-            this.lum_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lum_install_ll_LinkClicked);
-            // 
-            // ph_install_ll
-            // 
-            this.ph_install_ll.AutoSize = true;
-            this.ph_install_ll.Location = new System.Drawing.Point(700, 326);
-            this.ph_install_ll.Name = "ph_install_ll";
-            this.ph_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.ph_install_ll.TabIndex = 40;
-            this.ph_install_ll.TabStop = true;
-            this.ph_install_ll.Text = "Install";
-            this.ph_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ph_install_ll_LinkClicked);
-            // 
-            // chkdskgui_install_ll
-            // 
-            this.chkdskgui_install_ll.AutoSize = true;
-            this.chkdskgui_install_ll.Location = new System.Drawing.Point(512, 301);
-            this.chkdskgui_install_ll.Name = "chkdskgui_install_ll";
-            this.chkdskgui_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.chkdskgui_install_ll.TabIndex = 41;
-            this.chkdskgui_install_ll.TabStop = true;
-            this.chkdskgui_install_ll.Text = "Install";
-            this.chkdskgui_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.chkdskgui_install_ll_LinkClicked);
             // 
             // license_ll
             // 
@@ -929,7 +768,6 @@
             this.diskinfo_ll.AutoSize = true;
             this.diskinfo_ll.BackColor = System.Drawing.SystemColors.Window;
             this.diskinfo_ll.DisabledLinkColor = System.Drawing.Color.Black;
-            this.diskinfo_ll.Enabled = false;
             this.diskinfo_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.diskinfo_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.diskinfo_ll.LinkColor = System.Drawing.Color.Black;
@@ -1073,17 +911,6 @@
             this.pictureBox16.TabIndex = 64;
             this.pictureBox16.TabStop = false;
             // 
-            // scf_install_ll
-            // 
-            this.scf_install_ll.AutoSize = true;
-            this.scf_install_ll.Location = new System.Drawing.Point(329, 376);
-            this.scf_install_ll.Name = "scf_install_ll";
-            this.scf_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.scf_install_ll.TabIndex = 65;
-            this.scf_install_ll.TabStop = true;
-            this.scf_install_ll.Text = "Install";
-            this.scf_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.scf_install_ll_LinkClicked);
-            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
@@ -1098,17 +925,6 @@
             this.pictureBox17.TabIndex = 69;
             this.pictureBox17.TabStop = false;
             // 
-            // diskinfo_install_ll
-            // 
-            this.diskinfo_install_ll.AutoSize = true;
-            this.diskinfo_install_ll.Location = new System.Drawing.Point(513, 329);
-            this.diskinfo_install_ll.Name = "diskinfo_install_ll";
-            this.diskinfo_install_ll.Size = new System.Drawing.Size(34, 13);
-            this.diskinfo_install_ll.TabIndex = 68;
-            this.diskinfo_install_ll.TabStop = true;
-            this.diskinfo_install_ll.Text = "Install";
-            this.diskinfo_install_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.diskinfo_install_ll_LinkClicked);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1118,10 +934,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(750, 456);
             this.Controls.Add(this.pictureBox17);
-            this.Controls.Add(this.diskinfo_install_ll);
             this.Controls.Add(this.diskinfo_ll);
             this.Controls.Add(this.pictureBox12);
-            this.Controls.Add(this.scf_install_ll);
             this.Controls.Add(this.pictureBox16);
             this.Controls.Add(this.pictureBox13);
             this.Controls.Add(this.pictureBox14);
@@ -1144,18 +958,6 @@
             this.Controls.Add(this.blog_ll);
             this.Controls.Add(this.about_ll);
             this.Controls.Add(this.license_ll);
-            this.Controls.Add(this.chkdskgui_install_ll);
-            this.Controls.Add(this.ph_install_ll);
-            this.Controls.Add(this.lum_install_ll);
-            this.Controls.Add(this.stm_install_ll);
-            this.Controls.Add(this.ultradefrag_install_ll);
-            this.Controls.Add(this.fsinspect_install_ll);
-            this.Controls.Add(this.undelete_install_ll);
-            this.Controls.Add(this.eraser_install_ll);
-            this.Controls.Add(this.dclean_install_ll);
-            this.Controls.Add(this.sre_install_ll);
-            this.Controls.Add(this.lro_install_ll);
-            this.Controls.Add(this.lrc_install_ll);
             this.Controls.Add(this.scf_ll);
             this.Controls.Add(this.ph_ll);
             this.Controls.Add(this.lum_ll);
@@ -1257,18 +1059,6 @@
         private System.Windows.Forms.LinkLabel lum_ll;
         private System.Windows.Forms.LinkLabel ph_ll;
         private System.Windows.Forms.LinkLabel scf_ll;
-        private System.Windows.Forms.LinkLabel lrc_install_ll;
-        private System.Windows.Forms.LinkLabel lro_install_ll;
-        private System.Windows.Forms.LinkLabel sre_install_ll;
-        private System.Windows.Forms.LinkLabel dclean_install_ll;
-        private System.Windows.Forms.LinkLabel eraser_install_ll;
-        private System.Windows.Forms.LinkLabel undelete_install_ll;
-        private System.Windows.Forms.LinkLabel fsinspect_install_ll;
-        private System.Windows.Forms.LinkLabel ultradefrag_install_ll;
-        private System.Windows.Forms.LinkLabel stm_install_ll;
-        private System.Windows.Forms.LinkLabel lum_install_ll;
-        private System.Windows.Forms.LinkLabel ph_install_ll;
-        private System.Windows.Forms.LinkLabel chkdskgui_install_ll;
         private System.Windows.Forms.LinkLabel license_ll;
         private System.Windows.Forms.LinkLabel about_ll;
         private System.Windows.Forms.LinkLabel blog_ll;
@@ -1293,13 +1083,10 @@
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox16;
-        private System.Windows.Forms.LinkLabel scf_install_ll;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.PictureBox pictureBox12;
-        private System.Windows.Forms.PictureBox pictureBox17;
-        private System.Windows.Forms.LinkLabel diskinfo_install_ll;
         private System.Windows.Forms.LinkLabel diskinfo_ll;
-
+        private System.Windows.Forms.PictureBox pictureBox17;
     }
 }
 

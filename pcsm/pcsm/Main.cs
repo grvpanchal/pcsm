@@ -48,10 +48,7 @@ namespace pcsm
         PCS pcs = new PCS();
         private Control _currentToolTipControl = null;      
         public Main()
-        {
-            MouseMessageFilter gmh = new MouseMessageFilter();
-            MouseMessageFilter.MouseMove += new MouseEventHandler(Main_MouseMove);
-            Application.AddMessageFilter(gmh);
+        {            
             InitializeComponent();                                         
         }
               
@@ -147,8 +144,14 @@ namespace pcsm
             }
             else
             {
-                MessageBox.Show("Application is misconfigured. Please restart Performance Maintainer and install again.");
-                PCS.IniWriteValue(section, "installed", "0");                
+                //MessageBox.Show("Application is misconfigured. Please restart Performance Maintainer and install again.");
+                //PCS.IniWriteValue(section, "installed", "0"); 
+                Download myForm = new Download(section);
+                DialogResult dlg = myForm.ShowDialog(this);
+                if (dlg == DialogResult.OK)
+                {
+                    Process.Start(folder + "\\" + subfolder + "\\" + exefile, exearg);
+                }
             }
         }
 
@@ -285,28 +288,8 @@ namespace pcsm
             }
         }
         #endregion
-        
-        #region Check Program Installed
-        public void check_program_installed()
-        {
-            Thread.Sleep(1000);
-            CheckProgram("lrc", lrc_ll, lrc_install_ll);
-            CheckProgram("lro", lro_ll, lro_install_ll);
-            CheckProgram("sre", sre_ll, sre_install_ll);
-            CheckProgram("dclean", dclean_ll, dclean_install_ll);
-            CheckProgram("eraser", eraser_ll, eraser_install_ll);
-            CheckProgram("undelete", undelete_ll, undelete_install_ll);
-            CheckProgram("fsinspect", fsinspect_ll, fsinspect_install_ll);
-            CheckProgram("scf", scf_ll, scf_install_ll);
-            CheckProgram("ultradefrag86", ultradefrag_ll, ultradefrag_install_ll);
-            CheckProgram("ultradefrag64", ultradefrag_ll, ultradefrag_install_ll);
-            CheckProgram("chkdskgui", chkdskgui_ll, chkdskgui_install_ll);
-            CheckProgram("stm", stm_ll, stm_install_ll);
-            CheckProgram("lum", lum_ll, lum_install_ll);
-            CheckProgram("ph86", ph_ll, ph_install_ll);
-            CheckProgram("ph64", ph_ll, ph_install_ll);
-        }
-            #endregion            
+                
+           
                 
         #region System Info
         public void get_system_info()
@@ -571,114 +554,7 @@ namespace pcsm
         #endregion
 
         #region Additional Tools Installation Link Labels
-
-        private void lrc_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {            
-                Download myForm = new Download("lrc");
-                DialogResult dlg = myForm.ShowDialog(this);
-                if (dlg == DialogResult.OK)
-                {
-
-                    lrc_ll.Enabled = true;
-                    lrc_install_ll.Visible = false;
-
-                }
-            
-        }
-
-        private void lro_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("lro");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                lro_ll.Enabled = true;
-                lro_install_ll.Visible = false;
-
-            }
-        }
-
-        private void sre_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("sre");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                sre_ll.Enabled = true;
-                sre_install_ll.Visible = false;
-
-            }
-        }
-
-        private void dclean_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("dclean");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                dclean_ll.Enabled = true;
-                dclean_install_ll.Visible = false;
-
-            }
-        }
-
-        private void eraser_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-            Download myForm = new Download("eraser");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                eraser_ll.Enabled = true;
-                eraser_install_ll.Visible = false;
-
-            }
-        }
-
-        private void undelete_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("undelete");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                undelete_ll.Enabled = true;
-                undelete_install_ll.Visible = false;
-
-            }
-        }
-
-        private void fsinspect_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("fsinspect");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                fsinspect_ll.Enabled = true;
-                fsinspect_install_ll.Visible = false;
-
-            }
-        }
-
-
-        private void scf_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("scf");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                scf_ll.Enabled = true;
-                scf_install_ll.Visible = false;
-
-            }
-        }
-
+                
         private void ultradefrag_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
@@ -689,8 +565,7 @@ namespace pcsm
                 DialogResult dlg = myForm.ShowDialog(this);
                 if (dlg == DialogResult.OK)
                 {
-                    ultradefrag_ll.Enabled = true;
-                    ultradefrag_install_ll.Visible = false;
+                    ultradefrag_ll.Enabled = true;                    
                 }
             }
             if (Architecture == "x64")
@@ -699,39 +574,12 @@ namespace pcsm
                 DialogResult dlg = myForm.ShowDialog(this);
                 if (dlg == DialogResult.OK)
                 {
-                    ultradefrag_ll.Enabled = true;
-                    ultradefrag_install_ll.Visible = false;
+                    ultradefrag_ll.Enabled = true;                   
                 }
             }
             
         }
-
-        private void stm_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("stm");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                stm_ll.Enabled = true;
-                stm_install_ll.Visible = false;
-
-            }
-        }
-
-        private void lum_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("lum");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                lum_ll.Enabled = true;
-                lum_install_ll.Visible = false;
-
-            }
-        }
-
+       
         private void ph_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             String Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
@@ -743,7 +591,6 @@ namespace pcsm
                 {
 
                     ph_ll.Enabled = true;
-                    ph_install_ll.Visible = false;
 
                 }
             }
@@ -755,7 +602,6 @@ namespace pcsm
                 {
 
                     ph_ll.Enabled = true;
-                    ph_install_ll.Visible = false;
 
                 }
             }
@@ -770,20 +616,6 @@ namespace pcsm
             {
 
                 chkdskgui_ll.Enabled = true;
-                chkdskgui_install_ll.Visible = false;
-
-            }
-        }
-
-        private void diskinfo_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("diskinfo");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                diskinfo_ll.Enabled = true;
-                diskinfo_install_ll.Visible = false;
 
             }
         }
@@ -820,53 +652,7 @@ namespace pcsm
         }
 
         #endregion           
-        
-        #region MouseMove
-        private void Main_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-            
-            Control control = GetChildAtPoint(e.Location);
-            if (control != null)
-            {
-                
-                if (!control.Enabled && _currentToolTipControl == null)
-                {
-                    string toolTipString = toolTip1.GetToolTip(control);                    
-                    // trigger the tooltip with no delay and some basic positioning just to give you an idea
-                    toolTip1.Show(toolTipString, control, control.Width / 2, control.Height / 2);
-                    _currentToolTipControl = control;
-                }
-            }
-            else
-            {
-                if (_currentToolTipControl != null) toolTip1.Hide(_currentToolTipControl);
-                _currentToolTipControl = null;
-            }
-        }
-
-        class MouseMessageFilter : IMessageFilter
-        {
-            public static event MouseEventHandler MouseMove = delegate { };
-            const int WM_MOUSEMOVE = 0x0200;
-
-            public bool PreFilterMessage(ref Message m)
-            {
-
-                if (m.Msg == WM_MOUSEMOVE)
-                {
-
-                    Point mousePosition = Control.MousePosition;
-
-                    MouseMove(null, new MouseEventArgs(
-                        MouseButtons.None, 0, mousePosition.X, mousePosition.Y, 0));
-                }
-                return false;
-            }
-        }
-
-        #endregion
-
+       
         #region IntroWiz
         private void Main_Shown(object sender, EventArgs e)
         {
