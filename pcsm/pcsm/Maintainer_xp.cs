@@ -381,24 +381,24 @@ namespace pcsm
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DiskCleanList dcl = new DiskCleanList();
-            dcl.Show();
+            dcl.ShowDialog();
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DiskDefragList ddl = new DiskDefragList();
-            ddl.Show();
+            ddl.ShowDialog();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RegCleanList rcl = new RegCleanList();
-            rcl.Show();
+            rcl.ShowDialog();
         }
         
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            rc.Show();
+            rc.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)

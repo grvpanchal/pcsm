@@ -338,6 +338,9 @@ Section "Performance Maintainer"
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "EstimatedSize" ${INSTALLSIZE}
 	# Startup Manager Fix
 	WriteRegDWORD HKLM "Software\Startup Manager" "abc" 0xDEADBEE
+	SetRegView 64
+    WriteRegDWORD HKLM "Software\Startup Manager" "abc" 0xDEADBEE
+    SetRegView 32
 SectionEnd
 
 Section "Check for Updates"

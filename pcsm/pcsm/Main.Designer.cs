@@ -78,21 +78,25 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.diskinfo_ll = new System.Windows.Forms.LinkLabel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.lrc_p = new System.Windows.Forms.PictureBox();
+            this.lro_p = new System.Windows.Forms.PictureBox();
+            this.sre_p = new System.Windows.Forms.PictureBox();
+            this.undelete_p = new System.Windows.Forms.PictureBox();
+            this.eraser_p = new System.Windows.Forms.PictureBox();
+            this.dclean_p = new System.Windows.Forms.PictureBox();
+            this.chkdskgui_p = new System.Windows.Forms.PictureBox();
+            this.ultradefrag_p = new System.Windows.Forms.PictureBox();
+            this.fsinspect_p = new System.Windows.Forms.PictureBox();
+            this.ph_p = new System.Windows.Forms.PictureBox();
+            this.lum_p = new System.Windows.Forms.PictureBox();
+            this.stm_p = new System.Windows.Forms.PictureBox();
+            this.scf_p = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.diskinfo_p = new System.Windows.Forms.PictureBox();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,20 +106,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcstarterslogo_p)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lrc_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lro_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sre_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.undelete_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eraser_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dclean_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkdskgui_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultradefrag_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fsinspect_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ph_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lum_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stm_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scf_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diskinfo_p)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             this.SuspendLayout();
             // 
             // Start_b
@@ -184,6 +192,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Window;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.label1.Location = new System.Drawing.Point(84, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 18);
@@ -195,6 +204,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Window;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.label2.Location = new System.Drawing.Point(84, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 18);
@@ -206,6 +216,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.Window;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.label3.Location = new System.Drawing.Point(84, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 18);
@@ -316,7 +327,7 @@
             this.registry_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(124)))), ((int)(((byte)(209)))));
             this.registry_l.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registry_l.ForeColor = System.Drawing.Color.White;
-            this.registry_l.Location = new System.Drawing.Point(61, 223);
+            this.registry_l.Location = new System.Drawing.Point(76, 223);
             this.registry_l.Name = "registry_l";
             this.registry_l.Size = new System.Drawing.Size(59, 17);
             this.registry_l.TabIndex = 11;
@@ -328,7 +339,7 @@
             this.diskspace_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(124)))), ((int)(((byte)(209)))));
             this.diskspace_l.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.diskspace_l.ForeColor = System.Drawing.Color.White;
-            this.diskspace_l.Location = new System.Drawing.Point(241, 223);
+            this.diskspace_l.Location = new System.Drawing.Point(256, 223);
             this.diskspace_l.Name = "diskspace_l";
             this.diskspace_l.Size = new System.Drawing.Size(74, 17);
             this.diskspace_l.TabIndex = 12;
@@ -340,7 +351,7 @@
             this.diskperformance_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(124)))), ((int)(((byte)(209)))));
             this.diskperformance_l.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.diskperformance_l.ForeColor = System.Drawing.Color.White;
-            this.diskperformance_l.Location = new System.Drawing.Point(410, 223);
+            this.diskperformance_l.Location = new System.Drawing.Point(422, 223);
             this.diskperformance_l.Name = "diskperformance_l";
             this.diskperformance_l.Size = new System.Drawing.Size(117, 17);
             this.diskperformance_l.TabIndex = 13;
@@ -352,7 +363,7 @@
             this.programprocesses_l.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(124)))), ((int)(((byte)(209)))));
             this.programprocesses_l.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.programprocesses_l.ForeColor = System.Drawing.Color.White;
-            this.programprocesses_l.Location = new System.Drawing.Point(590, 223);
+            this.programprocesses_l.Location = new System.Drawing.Point(603, 223);
             this.programprocesses_l.Name = "programprocesses_l";
             this.programprocesses_l.Size = new System.Drawing.Size(126, 17);
             this.programprocesses_l.TabIndex = 14;
@@ -361,180 +372,217 @@
             // lrc_ll
             // 
             this.lrc_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.lrc_ll.AutoSize = true;
             this.lrc_ll.BackColor = System.Drawing.SystemColors.Window;
             this.lrc_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.lrc_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lrc_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lrc_ll.LinkColor = System.Drawing.Color.Black;
-            this.lrc_ll.Location = new System.Drawing.Point(37, 260);
+            this.lrc_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.lrc_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lrc_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.lrc_ll.Location = new System.Drawing.Point(11, 249);
             this.lrc_ll.Name = "lrc_ll";
-            this.lrc_ll.Size = new System.Drawing.Size(121, 15);
+            this.lrc_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.lrc_ll.Size = new System.Drawing.Size(173, 30);
             this.lrc_ll.TabIndex = 15;
             this.lrc_ll.TabStop = true;
             this.lrc_ll.Text = "Little Registry Cleaner";
+            this.lrc_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.lrc_ll, "Removes obsolete or unwanted \r\nitems that build up in the registry \r\nover time in" +
         " order to improve \r\nthe stability and performance of \r\nyour computer.");
             this.lrc_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.lrc_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lrc_ll_LinkClicked);
+            this.lrc_ll.Click += new System.EventHandler(this.lrc_ll_Click);
+            this.lrc_ll.MouseLeave += new System.EventHandler(this.lrc_ll_MouseLeave);
+            this.lrc_ll.MouseHover += new System.EventHandler(this.lrc_ll_MouseHover);
             // 
             // lro_ll
             // 
             this.lro_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.lro_ll.AutoSize = true;
             this.lro_ll.BackColor = System.Drawing.SystemColors.Window;
             this.lro_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.lro_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lro_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lro_ll.LinkColor = System.Drawing.Color.Black;
-            this.lro_ll.Location = new System.Drawing.Point(37, 288);
+            this.lro_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.lro_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lro_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.lro_ll.Location = new System.Drawing.Point(11, 279);
             this.lro_ll.Name = "lro_ll";
-            this.lro_ll.Size = new System.Drawing.Size(133, 15);
+            this.lro_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.lro_ll.Size = new System.Drawing.Size(173, 30);
             this.lro_ll.TabIndex = 16;
             this.lro_ll.TabStop = true;
             this.lro_ll.Text = "Little Registry Optimizer";
+            this.lro_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.lro_ll, "Analyzes the windows registry and \r\noptimize it so it will be smaller \r\nand run s" +
         "moother when the computer \r\nis rebooted.");
             this.lro_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.lro_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lro_ll_LinkClicked);
+            this.lro_ll.Click += new System.EventHandler(this.lro_ll_Click);
+            this.lro_ll.MouseLeave += new System.EventHandler(this.lro_ll_MouseLeave);
+            this.lro_ll.MouseHover += new System.EventHandler(this.lro_ll_MouseHover);
             // 
             // sre_ll
             // 
             this.sre_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.sre_ll.AutoSize = true;
             this.sre_ll.BackColor = System.Drawing.SystemColors.Window;
             this.sre_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.sre_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sre_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.sre_ll.LinkColor = System.Drawing.Color.Black;
-            this.sre_ll.Location = new System.Drawing.Point(37, 316);
+            this.sre_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.sre_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.sre_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.sre_ll.Location = new System.Drawing.Point(11, 309);
             this.sre_ll.Name = "sre_ll";
-            this.sre_ll.Size = new System.Drawing.Size(115, 15);
+            this.sre_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.sre_ll.Size = new System.Drawing.Size(173, 30);
             this.sre_ll.TabIndex = 17;
             this.sre_ll.TabStop = true;
             this.sre_ll.Text = "Small Registry Editor";
+            this.sre_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.sre_ll, "provides you ability to change \r\nyour registry settings.");
             this.sre_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.sre_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.sre_ll_LinkClicked);
+            this.sre_ll.Click += new System.EventHandler(this.sre_ll_Click);
+            this.sre_ll.MouseLeave += new System.EventHandler(this.sre_ll_MouseLeave);
+            this.sre_ll.MouseHover += new System.EventHandler(this.sre_ll_MouseHover);
             // 
             // dclean_ll
             // 
             this.dclean_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.dclean_ll.AutoSize = true;
             this.dclean_ll.BackColor = System.Drawing.SystemColors.Window;
             this.dclean_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.dclean_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dclean_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.dclean_ll.LinkColor = System.Drawing.Color.Black;
-            this.dclean_ll.Location = new System.Drawing.Point(222, 260);
+            this.dclean_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dclean_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.dclean_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dclean_ll.Location = new System.Drawing.Point(196, 249);
             this.dclean_ll.Name = "dclean_ll";
-            this.dclean_ll.Size = new System.Drawing.Size(132, 15);
+            this.dclean_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.dclean_ll.Size = new System.Drawing.Size(173, 30);
             this.dclean_ll.TabIndex = 18;
             this.dclean_ll.TabStop = true;
             this.dclean_ll.Text = "Bleachbit (Disk Cleaner)";
+            this.dclean_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.dclean_ll, "is a tool to quickly and easily free disk \r\nspace that is used by temporary files" +
         " like \r\nthe system temporary folder, the Internet \r\nExplorer Cache and Cookies f" +
         "older, and the \r\nRecycle Bin.");
             this.dclean_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.dclean_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dclean_ll_LinkClicked);
+            this.dclean_ll.Click += new System.EventHandler(this.dclean_ll_Click);
+            this.dclean_ll.MouseLeave += new System.EventHandler(this.dclean_ll_MouseLeave);
+            this.dclean_ll.MouseHover += new System.EventHandler(this.dclean_ll_MouseHover);
             // 
             // eraser_ll
             // 
             this.eraser_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.eraser_ll.AutoSize = true;
             this.eraser_ll.BackColor = System.Drawing.SystemColors.Window;
             this.eraser_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.eraser_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eraser_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.eraser_ll.LinkColor = System.Drawing.Color.Black;
-            this.eraser_ll.Location = new System.Drawing.Point(222, 288);
+            this.eraser_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.eraser_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.eraser_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.eraser_ll.Location = new System.Drawing.Point(196, 279);
             this.eraser_ll.Name = "eraser_ll";
-            this.eraser_ll.Size = new System.Drawing.Size(38, 15);
+            this.eraser_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.eraser_ll.Size = new System.Drawing.Size(173, 30);
             this.eraser_ll.TabIndex = 19;
             this.eraser_ll.TabStop = true;
             this.eraser_ll.Text = "Eraser";
+            this.eraser_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.eraser_ll, " is a secure data removal tool for \r\nWindows. It completely removes sensitive \r\nd" +
         "ata from your hard drive by overwriting it \r\nseveral times with carefully select" +
         "ed patterns.");
             this.eraser_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.eraser_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.eraser_ll_LinkClicked);
+            this.eraser_ll.Click += new System.EventHandler(this.eraser_ll_Click);
+            this.eraser_ll.MouseLeave += new System.EventHandler(this.eraser_ll_MouseLeave);
+            this.eraser_ll.MouseHover += new System.EventHandler(this.eraser_ll_MouseHover);
             // 
             // undelete_ll
             // 
             this.undelete_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.undelete_ll.AutoSize = true;
             this.undelete_ll.BackColor = System.Drawing.SystemColors.Window;
             this.undelete_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.undelete_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.undelete_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.undelete_ll.LinkColor = System.Drawing.Color.Black;
-            this.undelete_ll.Location = new System.Drawing.Point(222, 316);
+            this.undelete_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.undelete_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.undelete_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.undelete_ll.Location = new System.Drawing.Point(196, 309);
             this.undelete_ll.Name = "undelete_ll";
-            this.undelete_ll.Size = new System.Drawing.Size(54, 15);
+            this.undelete_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.undelete_ll.Size = new System.Drawing.Size(173, 30);
             this.undelete_ll.TabIndex = 20;
             this.undelete_ll.TabStop = true;
             this.undelete_ll.Text = "Undelete";
+            this.undelete_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.undelete_ll, "Kickass Undelete is a free, fully featured, \r\nfile recovery tool for Windows.");
             this.undelete_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.undelete_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.undelete_ll_LinkClicked);
+            this.undelete_ll.Click += new System.EventHandler(this.undelete_ll_Click);
+            this.undelete_ll.MouseLeave += new System.EventHandler(this.undelete_ll_MouseLeave);
+            this.undelete_ll.MouseHover += new System.EventHandler(this.undelete_ll_MouseHover);
             // 
             // fsinspect_ll
             // 
             this.fsinspect_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.fsinspect_ll.AutoSize = true;
             this.fsinspect_ll.BackColor = System.Drawing.SystemColors.Window;
             this.fsinspect_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.fsinspect_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fsinspect_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.fsinspect_ll.LinkColor = System.Drawing.Color.Black;
-            this.fsinspect_ll.Location = new System.Drawing.Point(222, 344);
+            this.fsinspect_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.fsinspect_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.fsinspect_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.fsinspect_ll.Location = new System.Drawing.Point(196, 339);
             this.fsinspect_ll.Name = "fsinspect_ll";
-            this.fsinspect_ll.Size = new System.Drawing.Size(62, 15);
+            this.fsinspect_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.fsinspect_ll.Size = new System.Drawing.Size(173, 30);
             this.fsinspect_ll.TabIndex = 21;
             this.fsinspect_ll.TabStop = true;
-            this.fsinspect_ll.Text = "FS-Inspect";
+            this.fsinspect_ll.Text = "WinDirStat";
+            this.fsinspect_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.fsinspect_ll, "is an easy to use tool designed \r\nto give you an overview about your files and \r\n" +
         "directories (Disk Usage).");
             this.fsinspect_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.fsinspect_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.fsinspect_ll_LinkClicked);
+            this.fsinspect_ll.Click += new System.EventHandler(this.fsinspect_ll_Click);
+            this.fsinspect_ll.MouseLeave += new System.EventHandler(this.fsinspect_ll_MouseLeave);
+            this.fsinspect_ll.MouseHover += new System.EventHandler(this.fsinspect_ll_MouseHover);
             // 
             // ultradefrag_ll
             // 
             this.ultradefrag_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.ultradefrag_ll.AutoSize = true;
             this.ultradefrag_ll.BackColor = System.Drawing.SystemColors.Window;
             this.ultradefrag_ll.DisabledLinkColor = System.Drawing.Color.Black;
             this.ultradefrag_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultradefrag_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.ultradefrag_ll.LinkColor = System.Drawing.Color.Black;
-            this.ultradefrag_ll.Location = new System.Drawing.Point(407, 260);
+            this.ultradefrag_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.ultradefrag_ll.LinkArea = new System.Windows.Forms.LinkArea(0, 11);
+            this.ultradefrag_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.ultradefrag_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.ultradefrag_ll.Location = new System.Drawing.Point(381, 249);
             this.ultradefrag_ll.Name = "ultradefrag_ll";
-            this.ultradefrag_ll.Size = new System.Drawing.Size(67, 15);
+            this.ultradefrag_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.ultradefrag_ll.Size = new System.Drawing.Size(173, 30);
             this.ultradefrag_ll.TabIndex = 22;
             this.ultradefrag_ll.TabStop = true;
             this.ultradefrag_ll.Text = "UltraDefrag";
+            this.ultradefrag_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.ultradefrag_ll, resources.GetString("ultradefrag_ll.ToolTip"));
             this.ultradefrag_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.ultradefrag_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ultradefrag_ll_LinkClicked);
+            this.ultradefrag_ll.Click += new System.EventHandler(this.ultradefrag_ll_Click);
+            this.ultradefrag_ll.MouseLeave += new System.EventHandler(this.ultradefrag_ll_MouseLeave);
+            this.ultradefrag_ll.MouseHover += new System.EventHandler(this.ultradefrag_ll_MouseHover);
             // 
             // chkdskgui_ll
             // 
             this.chkdskgui_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.chkdskgui_ll.AutoSize = true;
             this.chkdskgui_ll.BackColor = System.Drawing.SystemColors.Window;
             this.chkdskgui_ll.DisabledLinkColor = System.Drawing.Color.Black;
             this.chkdskgui_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkdskgui_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.chkdskgui_ll.LinkColor = System.Drawing.Color.Black;
-            this.chkdskgui_ll.Location = new System.Drawing.Point(407, 288);
+            this.chkdskgui_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.chkdskgui_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.chkdskgui_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.chkdskgui_ll.Location = new System.Drawing.Point(381, 279);
             this.chkdskgui_ll.Name = "chkdskgui_ll";
-            this.chkdskgui_ll.Size = new System.Drawing.Size(71, 15);
+            this.chkdskgui_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.chkdskgui_ll.Size = new System.Drawing.Size(173, 30);
             this.chkdskgui_ll.TabIndex = 23;
             this.chkdskgui_ll.TabStop = true;
             this.chkdskgui_ll.Text = "ChkDsk-GUI";
+            this.chkdskgui_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.chkdskgui_ll, "A GUI front end to Microsoft\'s command line \r\ncheck disk program. ");
             this.chkdskgui_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.chkdskgui_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.chkdskgui_ll_LinkClicked);
+            this.chkdskgui_ll.Click += new System.EventHandler(this.chkdskgui_ll_Click);
+            this.chkdskgui_ll.MouseLeave += new System.EventHandler(this.chkdskgui_ll_MouseLeave);
+            this.chkdskgui_ll.MouseHover += new System.EventHandler(this.chkdskgui_ll_MouseHover);
             // 
             // stm_ll
             // 
@@ -542,74 +590,93 @@
             this.stm_ll.BackColor = System.Drawing.SystemColors.Window;
             this.stm_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.stm_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stm_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.stm_ll.LinkColor = System.Drawing.Color.Black;
-            this.stm_ll.Location = new System.Drawing.Point(592, 260);
+            this.stm_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.stm_ll.LinkArea = new System.Windows.Forms.LinkArea(0, 15);
+            this.stm_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.stm_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.stm_ll.Location = new System.Drawing.Point(566, 249);
+            this.stm_ll.Margin = new System.Windows.Forms.Padding(0);
             this.stm_ll.Name = "stm_ll";
-            this.stm_ll.Size = new System.Drawing.Size(121, 15);
+            this.stm_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.stm_ll.Size = new System.Drawing.Size(173, 30);
             this.stm_ll.TabIndex = 25;
             this.stm_ll.TabStop = true;
             this.stm_ll.Text = "Startup Manager";
+            this.stm_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.stm_ll, "is a program that provides you the possibility \r\nto manage the Windows startup pr" +
         "ocedure. ");
             this.stm_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.stm_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.stm_ll_LinkClicked);
+            this.stm_ll.Click += new System.EventHandler(this.stm_ll_Click);
+            this.stm_ll.MouseLeave += new System.EventHandler(this.stm_ll_MouseLeave);
+            this.stm_ll.MouseHover += new System.EventHandler(this.stm_ll_MouseHover);
             // 
             // lum_ll
             // 
             this.lum_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.lum_ll.AutoSize = true;
             this.lum_ll.BackColor = System.Drawing.SystemColors.Window;
             this.lum_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.lum_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lum_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lum_ll.LinkColor = System.Drawing.Color.Black;
-            this.lum_ll.Location = new System.Drawing.Point(592, 288);
+            this.lum_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.lum_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lum_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.lum_ll.Location = new System.Drawing.Point(566, 279);
             this.lum_ll.Name = "lum_ll";
-            this.lum_ll.Size = new System.Drawing.Size(99, 15);
+            this.lum_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.lum_ll.Size = new System.Drawing.Size(173, 30);
             this.lum_ll.TabIndex = 26;
             this.lum_ll.TabStop = true;
             this.lum_ll.Text = "Safarp Uninstaller";
+            this.lum_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lum_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.lum_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lum_ll_LinkClicked);
+            this.lum_ll.Click += new System.EventHandler(this.lum_ll_Click);
+            this.lum_ll.MouseLeave += new System.EventHandler(this.lum_ll_MouseLeave);
+            this.lum_ll.MouseHover += new System.EventHandler(this.lum_ll_MouseHover);
             // 
             // ph_ll
             // 
             this.ph_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.ph_ll.AutoSize = true;
             this.ph_ll.BackColor = System.Drawing.SystemColors.Window;
             this.ph_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.ph_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ph_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.ph_ll.LinkColor = System.Drawing.Color.Black;
-            this.ph_ll.Location = new System.Drawing.Point(592, 316);
+            this.ph_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.ph_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.ph_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.ph_ll.Location = new System.Drawing.Point(566, 309);
             this.ph_ll.Name = "ph_ll";
-            this.ph_ll.Size = new System.Drawing.Size(87, 15);
+            this.ph_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.ph_ll.Size = new System.Drawing.Size(173, 30);
             this.ph_ll.TabIndex = 27;
             this.ph_ll.TabStop = true;
             this.ph_ll.Text = "Process Hacker";
+            this.ph_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.ph_ll, "A free, powerful, multi-purpose tool that helps \r\nyou monitor system resources, d" +
         "ebug software \r\nand detect malware.");
             this.ph_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.ph_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ph_ll_LinkClicked);
+            this.ph_ll.Click += new System.EventHandler(this.ph_ll_Click);
+            this.ph_ll.MouseLeave += new System.EventHandler(this.ph_ll_MouseLeave);
+            this.ph_ll.MouseHover += new System.EventHandler(this.ph_ll_MouseHover);
             // 
             // scf_ll
             // 
             this.scf_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.scf_ll.AutoSize = true;
             this.scf_ll.BackColor = System.Drawing.SystemColors.Window;
             this.scf_ll.DisabledLinkColor = System.Drawing.Color.Black;
             this.scf_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scf_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.scf_ll.LinkColor = System.Drawing.Color.Black;
-            this.scf_ll.Location = new System.Drawing.Point(222, 372);
+            this.scf_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.scf_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.scf_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.scf_ll.Location = new System.Drawing.Point(196, 369);
             this.scf_ll.Name = "scf_ll";
-            this.scf_ll.Size = new System.Drawing.Size(79, 15);
+            this.scf_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.scf_ll.Size = new System.Drawing.Size(173, 30);
             this.scf_ll.TabIndex = 29;
             this.scf_ll.TabStop = true;
             this.scf_ll.Text = "Shortcut Fixer";
+            this.scf_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.scf_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.scf_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.diskcleanup_ll_LinkClicked);
+            this.scf_ll.Click += new System.EventHandler(this.scf_ll_Click);
+            this.scf_ll.MouseLeave += new System.EventHandler(this.scf_ll_MouseLeave);
+            this.scf_ll.MouseHover += new System.EventHandler(this.scf_ll_MouseHover);
             // 
             // license_ll
             // 
@@ -765,165 +832,223 @@
             // diskinfo_ll
             // 
             this.diskinfo_ll.ActiveLinkColor = System.Drawing.Color.Red;
-            this.diskinfo_ll.AutoSize = true;
             this.diskinfo_ll.BackColor = System.Drawing.SystemColors.Window;
             this.diskinfo_ll.DisabledLinkColor = System.Drawing.Color.Black;
             this.diskinfo_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diskinfo_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.diskinfo_ll.LinkColor = System.Drawing.Color.Black;
-            this.diskinfo_ll.Location = new System.Drawing.Point(408, 316);
+            this.diskinfo_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.diskinfo_ll.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.diskinfo_ll.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.diskinfo_ll.Location = new System.Drawing.Point(381, 309);
             this.diskinfo_ll.Name = "diskinfo_ll";
-            this.diskinfo_ll.Size = new System.Drawing.Size(89, 15);
+            this.diskinfo_ll.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.diskinfo_ll.Size = new System.Drawing.Size(173, 30);
             this.diskinfo_ll.TabIndex = 67;
             this.diskinfo_ll.TabStop = true;
             this.diskinfo_ll.Text = "Crystal DiskInfo";
+            this.diskinfo_ll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.diskinfo_ll, "A GUI front end to Microsoft\'s command line \r\ncheck disk program. ");
             this.diskinfo_ll.VisitedLinkColor = System.Drawing.Color.Black;
-            this.diskinfo_ll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.diskinfo_ll_LinkClicked);
+            this.diskinfo_ll.Click += new System.EventHandler(this.diskinfo_ll_Click);
+            this.diskinfo_ll.MouseLeave += new System.EventHandler(this.diskinfo_ll_MouseLeave);
+            this.diskinfo_ll.MouseHover += new System.EventHandler(this.diskinfo_ll_MouseHover);
             // 
-            // pictureBox3
+            // lrc_p
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(18, 259);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 51;
-            this.pictureBox3.TabStop = false;
+            this.lrc_p.BackColor = System.Drawing.Color.Transparent;
+            this.lrc_p.Image = ((System.Drawing.Image)(resources.GetObject("lrc_p.Image")));
+            this.lrc_p.Location = new System.Drawing.Point(18, 252);
+            this.lrc_p.Name = "lrc_p";
+            this.lrc_p.Size = new System.Drawing.Size(24, 24);
+            this.lrc_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.lrc_p.TabIndex = 51;
+            this.lrc_p.TabStop = false;
             // 
-            // pictureBox4
+            // lro_p
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(18, 287);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 52;
-            this.pictureBox4.TabStop = false;
+            this.lro_p.BackColor = System.Drawing.Color.Transparent;
+            this.lro_p.Image = ((System.Drawing.Image)(resources.GetObject("lro_p.Image")));
+            this.lro_p.Location = new System.Drawing.Point(18, 282);
+            this.lro_p.Name = "lro_p";
+            this.lro_p.Size = new System.Drawing.Size(24, 24);
+            this.lro_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.lro_p.TabIndex = 52;
+            this.lro_p.TabStop = false;
             // 
-            // pictureBox5
+            // sre_p
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(18, 315);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 53;
-            this.pictureBox5.TabStop = false;
+            this.sre_p.BackColor = System.Drawing.Color.Transparent;
+            this.sre_p.Image = ((System.Drawing.Image)(resources.GetObject("sre_p.Image")));
+            this.sre_p.Location = new System.Drawing.Point(18, 314);
+            this.sre_p.Name = "sre_p";
+            this.sre_p.Size = new System.Drawing.Size(24, 24);
+            this.sre_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.sre_p.TabIndex = 53;
+            this.sre_p.TabStop = false;
             // 
-            // pictureBox6
+            // undelete_p
             // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(203, 315);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 56;
-            this.pictureBox6.TabStop = false;
+            this.undelete_p.BackColor = System.Drawing.Color.Transparent;
+            this.undelete_p.Image = ((System.Drawing.Image)(resources.GetObject("undelete_p.Image")));
+            this.undelete_p.Location = new System.Drawing.Point(203, 312);
+            this.undelete_p.Name = "undelete_p";
+            this.undelete_p.Size = new System.Drawing.Size(24, 24);
+            this.undelete_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.undelete_p.TabIndex = 56;
+            this.undelete_p.TabStop = false;
             // 
-            // pictureBox7
+            // eraser_p
             // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(203, 287);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 55;
-            this.pictureBox7.TabStop = false;
+            this.eraser_p.BackColor = System.Drawing.Color.Transparent;
+            this.eraser_p.Image = ((System.Drawing.Image)(resources.GetObject("eraser_p.Image")));
+            this.eraser_p.Location = new System.Drawing.Point(203, 282);
+            this.eraser_p.Name = "eraser_p";
+            this.eraser_p.Size = new System.Drawing.Size(24, 24);
+            this.eraser_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.eraser_p.TabIndex = 55;
+            this.eraser_p.TabStop = false;
             // 
-            // pictureBox8
+            // dclean_p
             // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(203, 259);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 54;
-            this.pictureBox8.TabStop = false;
+            this.dclean_p.BackColor = System.Drawing.Color.Transparent;
+            this.dclean_p.Image = ((System.Drawing.Image)(resources.GetObject("dclean_p.Image")));
+            this.dclean_p.Location = new System.Drawing.Point(203, 252);
+            this.dclean_p.Name = "dclean_p";
+            this.dclean_p.Size = new System.Drawing.Size(24, 24);
+            this.dclean_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.dclean_p.TabIndex = 54;
+            this.dclean_p.TabStop = false;
             // 
-            // pictureBox10
+            // chkdskgui_p
             // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(388, 287);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 58;
-            this.pictureBox10.TabStop = false;
+            this.chkdskgui_p.BackColor = System.Drawing.Color.Transparent;
+            this.chkdskgui_p.Image = ((System.Drawing.Image)(resources.GetObject("chkdskgui_p.Image")));
+            this.chkdskgui_p.Location = new System.Drawing.Point(388, 282);
+            this.chkdskgui_p.Name = "chkdskgui_p";
+            this.chkdskgui_p.Size = new System.Drawing.Size(24, 24);
+            this.chkdskgui_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.chkdskgui_p.TabIndex = 58;
+            this.chkdskgui_p.TabStop = false;
             // 
-            // pictureBox11
+            // ultradefrag_p
             // 
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(388, 259);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox11.TabIndex = 57;
-            this.pictureBox11.TabStop = false;
+            this.ultradefrag_p.BackColor = System.Drawing.Color.Transparent;
+            this.ultradefrag_p.Image = ((System.Drawing.Image)(resources.GetObject("ultradefrag_p.Image")));
+            this.ultradefrag_p.Location = new System.Drawing.Point(388, 252);
+            this.ultradefrag_p.Name = "ultradefrag_p";
+            this.ultradefrag_p.Size = new System.Drawing.Size(24, 24);
+            this.ultradefrag_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ultradefrag_p.TabIndex = 57;
+            this.ultradefrag_p.TabStop = false;
             // 
-            // pictureBox9
+            // fsinspect_p
             // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(203, 343);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 59;
-            this.pictureBox9.TabStop = false;
+            this.fsinspect_p.BackColor = System.Drawing.Color.Transparent;
+            this.fsinspect_p.Image = ((System.Drawing.Image)(resources.GetObject("fsinspect_p.Image")));
+            this.fsinspect_p.Location = new System.Drawing.Point(203, 342);
+            this.fsinspect_p.Name = "fsinspect_p";
+            this.fsinspect_p.Size = new System.Drawing.Size(24, 24);
+            this.fsinspect_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.fsinspect_p.TabIndex = 59;
+            this.fsinspect_p.TabStop = false;
             // 
-            // pictureBox13
+            // ph_p
             // 
-            this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(573, 315);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox13.TabIndex = 62;
-            this.pictureBox13.TabStop = false;
+            this.ph_p.BackColor = System.Drawing.Color.Transparent;
+            this.ph_p.Image = ((System.Drawing.Image)(resources.GetObject("ph_p.Image")));
+            this.ph_p.Location = new System.Drawing.Point(573, 312);
+            this.ph_p.Name = "ph_p";
+            this.ph_p.Size = new System.Drawing.Size(24, 24);
+            this.ph_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ph_p.TabIndex = 62;
+            this.ph_p.TabStop = false;
             // 
-            // pictureBox14
+            // lum_p
             // 
-            this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(573, 287);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox14.TabIndex = 61;
-            this.pictureBox14.TabStop = false;
+            this.lum_p.BackColor = System.Drawing.Color.Transparent;
+            this.lum_p.Image = ((System.Drawing.Image)(resources.GetObject("lum_p.Image")));
+            this.lum_p.Location = new System.Drawing.Point(573, 282);
+            this.lum_p.Name = "lum_p";
+            this.lum_p.Size = new System.Drawing.Size(24, 24);
+            this.lum_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.lum_p.TabIndex = 61;
+            this.lum_p.TabStop = false;
             // 
-            // pictureBox15
+            // stm_p
             // 
-            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-            this.pictureBox15.Location = new System.Drawing.Point(573, 259);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox15.TabIndex = 60;
-            this.pictureBox15.TabStop = false;
+            this.stm_p.BackColor = System.Drawing.Color.Transparent;
+            this.stm_p.Image = ((System.Drawing.Image)(resources.GetObject("stm_p.Image")));
+            this.stm_p.Location = new System.Drawing.Point(573, 252);
+            this.stm_p.Name = "stm_p";
+            this.stm_p.Size = new System.Drawing.Size(24, 24);
+            this.stm_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.stm_p.TabIndex = 60;
+            this.stm_p.TabStop = false;
             // 
-            // pictureBox16
+            // scf_p
             // 
-            this.pictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox16.Image")));
-            this.pictureBox16.Location = new System.Drawing.Point(203, 372);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox16.TabIndex = 64;
-            this.pictureBox16.TabStop = false;
+            this.scf_p.BackColor = System.Drawing.Color.Transparent;
+            this.scf_p.Image = ((System.Drawing.Image)(resources.GetObject("scf_p.Image")));
+            this.scf_p.Location = new System.Drawing.Point(203, 372);
+            this.scf_p.Name = "scf_p";
+            this.scf_p.Size = new System.Drawing.Size(24, 24);
+            this.scf_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.scf_p.TabIndex = 64;
+            this.scf_p.TabStop = false;
             // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // pictureBox17
+            // diskinfo_p
             // 
-            this.pictureBox17.Image = global::pcsm.Properties.Resources.diskinfo;
-            this.pictureBox17.Location = new System.Drawing.Point(388, 315);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox17.TabIndex = 69;
-            this.pictureBox17.TabStop = false;
+            this.diskinfo_p.BackColor = System.Drawing.Color.Transparent;
+            this.diskinfo_p.Image = global::pcsm.Properties.Resources.diskinfo;
+            this.diskinfo_p.Location = new System.Drawing.Point(388, 312);
+            this.diskinfo_p.Name = "diskinfo_p";
+            this.diskinfo_p.Size = new System.Drawing.Size(24, 24);
+            this.diskinfo_p.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.diskinfo_p.TabIndex = 69;
+            this.diskinfo_p.TabStop = false;
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox18.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox18.Image")));
+            this.pictureBox18.Location = new System.Drawing.Point(54, 225);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox18.TabIndex = 70;
+            this.pictureBox18.TabStop = false;
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox19.Image")));
+            this.pictureBox19.Location = new System.Drawing.Point(234, 224);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox19.TabIndex = 71;
+            this.pictureBox19.TabStop = false;
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox20.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox20.Image")));
+            this.pictureBox20.Location = new System.Drawing.Point(400, 225);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox20.TabIndex = 72;
+            this.pictureBox20.TabStop = false;
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox21.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox21.Image")));
+            this.pictureBox21.Location = new System.Drawing.Point(581, 224);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox21.TabIndex = 73;
+            this.pictureBox21.TabStop = false;
             // 
             // Main
             // 
@@ -933,22 +1058,26 @@
             this.BackgroundImage = global::pcsm.Properties.Resources.pcsmbgd;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(750, 456);
-            this.Controls.Add(this.pictureBox17);
+            this.Controls.Add(this.pictureBox21);
+            this.Controls.Add(this.pictureBox20);
+            this.Controls.Add(this.pictureBox19);
+            this.Controls.Add(this.pictureBox18);
+            this.Controls.Add(this.diskinfo_p);
             this.Controls.Add(this.diskinfo_ll);
             this.Controls.Add(this.pictureBox12);
-            this.Controls.Add(this.pictureBox16);
-            this.Controls.Add(this.pictureBox13);
-            this.Controls.Add(this.pictureBox14);
-            this.Controls.Add(this.pictureBox15);
-            this.Controls.Add(this.pictureBox9);
-            this.Controls.Add(this.pictureBox10);
-            this.Controls.Add(this.pictureBox11);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.scf_p);
+            this.Controls.Add(this.ph_p);
+            this.Controls.Add(this.lum_p);
+            this.Controls.Add(this.stm_p);
+            this.Controls.Add(this.fsinspect_p);
+            this.Controls.Add(this.chkdskgui_p);
+            this.Controls.Add(this.ultradefrag_p);
+            this.Controls.Add(this.undelete_p);
+            this.Controls.Add(this.eraser_p);
+            this.Controls.Add(this.dclean_p);
+            this.Controls.Add(this.sre_p);
+            this.Controls.Add(this.lro_p);
+            this.Controls.Add(this.lrc_p);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pcstarterslogo_p);
             this.Controls.Add(this.seperator3_l);
@@ -1003,20 +1132,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcstarterslogo_p)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lrc_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lro_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sre_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.undelete_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eraser_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dclean_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkdskgui_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultradefrag_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fsinspect_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ph_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lum_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stm_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scf_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diskinfo_p)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1070,23 +1203,27 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.PictureBox pictureBox13;
-        private System.Windows.Forms.PictureBox pictureBox14;
-        private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.PictureBox lrc_p;
+        private System.Windows.Forms.PictureBox lro_p;
+        private System.Windows.Forms.PictureBox sre_p;
+        private System.Windows.Forms.PictureBox undelete_p;
+        private System.Windows.Forms.PictureBox eraser_p;
+        private System.Windows.Forms.PictureBox dclean_p;
+        private System.Windows.Forms.PictureBox chkdskgui_p;
+        private System.Windows.Forms.PictureBox ultradefrag_p;
+        private System.Windows.Forms.PictureBox fsinspect_p;
+        private System.Windows.Forms.PictureBox ph_p;
+        private System.Windows.Forms.PictureBox lum_p;
+        private System.Windows.Forms.PictureBox stm_p;
+        private System.Windows.Forms.PictureBox scf_p;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.LinkLabel diskinfo_ll;
-        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.PictureBox diskinfo_p;
+        private System.Windows.Forms.PictureBox pictureBox18;
+        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.PictureBox pictureBox20;
+        private System.Windows.Forms.PictureBox pictureBox21;
     }
 }
 

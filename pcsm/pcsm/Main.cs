@@ -120,7 +120,7 @@ namespace pcsm
         }
 #endregion
                               
-        #region Program Check and open
+        #region Program  Open or Download
 
         public static string Version
         {
@@ -144,8 +144,6 @@ namespace pcsm
             }
             else
             {
-                //MessageBox.Show("Application is misconfigured. Please restart Performance Maintainer and install again.");
-                //PCS.IniWriteValue(section, "installed", "0"); 
                 Download myForm = new Download(section);
                 DialogResult dlg = myForm.ShowDialog(this);
                 if (dlg == DialogResult.OK)
@@ -223,72 +221,6 @@ namespace pcsm
             log.WriteLog("Application Started");       
 
         }
-
-        #region Check Update
-        public void check_update()
-        {
-            string checkforupdates = PCS.IniReadValue("main", "checkforupdates");
-            string lastupdatecheck = PCS.IniReadValue("main", "lastupdatecheck");
-                
-            DateTime now = DateTime.Now;
-            DateTime dt;
-            if (DateTime.TryParseExact(lastupdatecheck, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
-            {
-
-            }
-            else
-            {
-                dt = DateTime.Now;
-                PCS.IniWriteValue("main", "lastupdatecheck", now.ToString("dd/MM/yyyy"));
-            }
-            //DateTime dt = DateTime.ParseExact(lastupdatecheck, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-
-            if (checkforupdates == "true" && (now - dt).TotalDays > 30)
-            {                
-                if (PCS.CheckForInternetConnection() == true)
-                {                    
-                    using (System.Net.WebClient myWebClient = new System.Net.WebClient())
-                    {
-                        myWebClient.DownloadFile("http://www.pcstarters.net/pcsm/update/downloadsettings.ini", "settings\\downloadsettingsnew.ini");
-
-                    }
-                }
-
-                string latestversion = PCS.IniReadValue("main", "version");
-                
-
-                if (Version != latestversion && PCS.CheckForInternetConnection() == true)
-                {
-                    PCS.IniWriteValue("main", "lastupdatecheck", now.ToString("dd/MM/yyyy"));
-
-                    DialogResult dialogupdate = MessageBox.Show("Update Available! \n\nDo you want to download Performance Maintainer " + latestversion + " ?", "Performance Maintainer Update", MessageBoxButtons.YesNo);
-
-                    if (dialogupdate == DialogResult.Yes)
-                    {
-                        string updatefile = PCS.IniReadValue("Main", "filename");
-                        string updatelink = PCS.IniReadValue("Main", "link");
-
-                        PCS.IniWriteValue("main", "filename", updatefile);
-                        PCS.IniWriteValue("main", "link", updatelink);
-                        
-                        Download newupdate = new Download("main");
-                        DialogResult dlg = newupdate.ShowDialog(this);
-
-                        if (dlg == DialogResult.OK && File.Exists(updatefile))
-                        {
-                            Process pcsmnew = new Process();
-                            pcsmnew.StartInfo.FileName = "pcsmnew.exe";
-                            pcsmnew.StartInfo.Arguments = "";
-                            pcsmnew.Start();
-                            this.Close();
-                        }
-                    }                    
-                }
-            }
-        }
-        #endregion
-                
            
                 
         #region System Info
@@ -472,7 +404,7 @@ namespace pcsm
 
         private void lro_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            OpenProgram("lro"); 
+            OpenProgram("lro");
         }
 
         private void sre_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -517,28 +449,12 @@ namespace pcsm
 
         private void ph_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            String Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
-            if (Architecture == "x86")
-            {
-                OpenProgram("ph86");
-            }
-            if (Architecture == "x64")
-            {
-                OpenProgram("ph86");
-            }
+            
         }
 
         private void ultradefrag_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            String Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
-            if (Architecture == "x86")
-            {
-                OpenProgram("ultradefrag86");
-            }
-            if (Architecture == "x64")
-            {
-                OpenProgram("ultradefrag86");
-            }
+
         }
 
         private void eraser_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -552,76 +468,7 @@ namespace pcsm
         }
 
         #endregion
-
-        #region Additional Tools Installation Link Labels
-                
-        private void ultradefrag_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-            String Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
-            if (Architecture == "x86")
-            {
-                Download myForm = new Download("ultradefrag86");
-                DialogResult dlg = myForm.ShowDialog(this);
-                if (dlg == DialogResult.OK)
-                {
-                    ultradefrag_ll.Enabled = true;                    
-                }
-            }
-            if (Architecture == "x64")
-            {
-                Download myForm = new Download("ultradefrag64");
-                DialogResult dlg = myForm.ShowDialog(this);
-                if (dlg == DialogResult.OK)
-                {
-                    ultradefrag_ll.Enabled = true;                   
-                }
-            }
-            
-        }
-       
-        private void ph_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            String Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
-            if (Architecture == "x86")
-            {
-                Download myForm = new Download("ph86");
-                DialogResult dlg = myForm.ShowDialog(this);
-                if (dlg == DialogResult.OK)
-                {
-
-                    ph_ll.Enabled = true;
-
-                }
-            }
-            if (Architecture == "x64")
-            {
-                Download myForm = new Download("ph64");
-                DialogResult dlg = myForm.ShowDialog(this);
-                if (dlg == DialogResult.OK)
-                {
-
-                    ph_ll.Enabled = true;
-
-                }
-            }
-            
-        }
-
-        private void chkdskgui_install_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Download myForm = new Download("chkdskgui");
-            DialogResult dlg = myForm.ShowDialog(this);
-            if (dlg == DialogResult.OK)
-            {
-
-                chkdskgui_ll.Enabled = true;
-
-            }
-        }
-
-        #endregion
-
+        
         #region Application Information Link Labels
 
         private void license_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -687,9 +534,7 @@ namespace pcsm
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();
-
-        ///<summary>Gets a value indicating whether this instance is foreground window.</summary>
-        ///<value><c>true</c> if this is the foreground window; otherwise, <c>false</c>.</value>
+        
         private bool IsForegroundWindow
         {
             get
@@ -744,10 +589,8 @@ namespace pcsm
                 using (System.Net.WebClient myWebClient = new System.Net.WebClient())
                 {
                     myWebClient.DownloadFile("http://www.pcstarters.net/pcsm/update/downloadsettings.ini", "settings\\downloadsettingsnew.ini");
-
                 }
-            }
-            
+            }            
         }
 
         private void pictureBox12_Click(object sender, EventArgs e)
@@ -764,6 +607,260 @@ namespace pcsm
         private void pictureBox12_MouseLeave(object sender, EventArgs e)
         {
             pictureBox12.Image = global::pcsm.Properties.Resources.scht;
+        }
+
+        private void stm_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("stm");
+        }
+
+        private void lrc_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("lrc");
+        }
+
+        private void lro_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("lro");
+        }
+
+        private void sre_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("sre");
+        }
+
+        private void dclean_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("dclean");
+        }
+
+        private void eraser_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("eraser");
+        }
+
+        private void undelete_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("undelete");
+        }
+
+        private void fsinspect_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("fsinspect");
+        }
+
+        private void scf_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("scf");
+        }
+
+        private void ultradefrag_ll_Click(object sender, EventArgs e)
+        {
+            String Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
+            if (Architecture == "x86")
+            {
+                OpenProgram("ultradefrag86");
+            }
+            if (Architecture == "x64")
+            {
+                OpenProgram("ultradefrag86");
+            }
+        }
+
+        private void chkdskgui_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("chkdskgui");
+        }
+
+        private void diskinfo_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("diskinfo");
+        }
+
+        private void lum_ll_Click(object sender, EventArgs e)
+        {
+            OpenProgram("lum");
+        }
+
+        private void ph_ll_Click(object sender, EventArgs e)
+        {
+            String Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
+            if (Architecture == "x86")
+            {
+                OpenProgram("ph86");
+            }
+            if (Architecture == "x64")
+            {
+                OpenProgram("ph64");
+            }
+        }
+
+        private void stm_ll_MouseHover(object sender, EventArgs e)
+        {
+            stm_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            stm_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void stm_ll_MouseLeave(object sender, EventArgs e)
+        {
+            stm_ll.BackColor = System.Drawing.SystemColors.Window;
+            stm_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void lrc_ll_MouseHover(object sender, EventArgs e)
+        {
+            lrc_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            lrc_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void lrc_ll_MouseLeave(object sender, EventArgs e)
+        {
+            lrc_ll.BackColor = System.Drawing.SystemColors.Window;
+            lrc_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void lro_ll_MouseHover(object sender, EventArgs e)
+        {
+            lro_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            lro_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void lro_ll_MouseLeave(object sender, EventArgs e)
+        {
+            lro_ll.BackColor = System.Drawing.SystemColors.Window;
+            lro_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void sre_ll_MouseHover(object sender, EventArgs e)
+        {
+            sre_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            sre_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void sre_ll_MouseLeave(object sender, EventArgs e)
+        {
+            sre_ll.BackColor = System.Drawing.SystemColors.Window;
+            sre_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void dclean_ll_MouseHover(object sender, EventArgs e)
+        {
+            dclean_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            dclean_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void dclean_ll_MouseLeave(object sender, EventArgs e)
+        {
+            dclean_ll.BackColor = System.Drawing.SystemColors.Window;
+            dclean_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void eraser_ll_MouseHover(object sender, EventArgs e)
+        {
+            eraser_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            eraser_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void eraser_ll_MouseLeave(object sender, EventArgs e)
+        {
+            eraser_ll.BackColor = System.Drawing.SystemColors.Window;
+            eraser_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void undelete_ll_MouseHover(object sender, EventArgs e)
+        {
+            undelete_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            undelete_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void undelete_ll_MouseLeave(object sender, EventArgs e)
+        {
+            undelete_ll.BackColor = System.Drawing.SystemColors.Window;
+            undelete_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void fsinspect_ll_MouseHover(object sender, EventArgs e)
+        {
+            fsinspect_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            fsinspect_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void fsinspect_ll_MouseLeave(object sender, EventArgs e)
+        {
+            fsinspect_ll.BackColor = System.Drawing.SystemColors.Window;
+            fsinspect_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void scf_ll_MouseHover(object sender, EventArgs e)
+        {
+            scf_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            scf_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void scf_ll_MouseLeave(object sender, EventArgs e)
+        {
+            scf_ll.BackColor = System.Drawing.SystemColors.Window;
+            scf_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void ultradefrag_ll_MouseHover(object sender, EventArgs e)
+        {
+            ultradefrag_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            ultradefrag_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void ultradefrag_ll_MouseLeave(object sender, EventArgs e)
+        {
+            ultradefrag_ll.BackColor = System.Drawing.SystemColors.Window;
+            ultradefrag_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void chkdskgui_ll_MouseHover(object sender, EventArgs e)
+        {
+            chkdskgui_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            chkdskgui_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void chkdskgui_ll_MouseLeave(object sender, EventArgs e)
+        {
+            chkdskgui_ll.BackColor = System.Drawing.SystemColors.Window;
+            chkdskgui_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void diskinfo_ll_MouseHover(object sender, EventArgs e)
+        {
+            diskinfo_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            diskinfo_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void diskinfo_ll_MouseLeave(object sender, EventArgs e)
+        {
+            diskinfo_ll.BackColor = System.Drawing.SystemColors.Window;
+            diskinfo_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void lum_ll_MouseHover(object sender, EventArgs e)
+        {
+            lum_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            lum_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void lum_ll_MouseLeave(object sender, EventArgs e)
+        {
+            lum_ll.BackColor = System.Drawing.SystemColors.Window;
+            lum_p.BackColor = System.Drawing.SystemColors.Window;
+        }
+
+        private void ph_ll_MouseHover(object sender, EventArgs e)
+        {
+            ph_ll.BackColor = System.Drawing.SystemColors.MenuBar;
+            ph_p.BackColor = System.Drawing.SystemColors.MenuBar;
+        }
+
+        private void ph_ll_MouseLeave(object sender, EventArgs e)
+        {
+            ph_ll.BackColor = System.Drawing.SystemColors.Window;
+            ph_p.BackColor = System.Drawing.SystemColors.Window;
         }
     }
 }

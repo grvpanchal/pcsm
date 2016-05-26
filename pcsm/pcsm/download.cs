@@ -83,48 +83,6 @@ namespace pcsm
                
             }   
             
-
-            else if (Global.program == "eraser")
-            {
-                string filename = PCS.IniReadValue(Global.program, "filename");
-                Process SomeProgram = new Process();
-                SomeProgram.StartInfo.FileName = "7z.exe";
-                SomeProgram.StartInfo.Arguments = "e -y \"" + filename + "\" ";
-                SomeProgram.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                SomeProgram.StartInfo.CreateNoWindow = true;
-                SomeProgram.StartInfo.UseShellExecute = false;
-
-                SomeProgram.StartInfo.RedirectStandardOutput = false;
-                SomeProgram.Start();                
-                while (!SomeProgram.HasExited)
-                {
-                   
-                    Application.DoEvents();
-                    System.Threading.Thread.Sleep(6);
-                }                              
-                
-                Thread.Sleep(5000);
-                String Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
-                if (Architecture == "x86")
-                {
-                    Process.Start("msiexec.exe", "/i \"Eraser (x86).msi\" /qn");
-                }
-                if (Architecture == "x64")
-                {
-                    Process.Start("msiexec.exe", "/i \"Eraser (x64).msi\" /qn");
-                }
-
-
-                PCS.IniWriteValue(Global.program, "installed", "1");
-                label1.Text = "Please Wait...";
-                Thread.Sleep(10000);
-                File.Delete("Eraser (x64).msi");
-                File.Delete("Eraser (x86).msi");
-                File.Delete("dotnetfx35.exe");
-                File.Delete(filename);
-                
-            }
-
             else
             {
                 Extract();

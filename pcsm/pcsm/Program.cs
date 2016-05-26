@@ -103,11 +103,7 @@ namespace pcsm
             {
                 Main mainForm = new Main();                
                 SplashScreen.ShowSplashScreen();
-                Application.DoEvents();
-                SplashScreen.SetStatus("Checking for Updates...");                
-                mainForm.check_update();
-                SplashScreen.SetStatus("Verifying Installed Programs...");
-                System.Threading.Thread.Sleep(500);                
+                Application.DoEvents();                
                 SplashScreen.SetStatus("Checking System Informantion...");
                 System.Threading.Thread.Sleep(500);
                 mainForm.get_system_info();              
