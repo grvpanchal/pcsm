@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewTask));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
@@ -39,7 +41,6 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -56,13 +57,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.treeView2 = new System.Windows.Forms.TreeView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.triStateTreeView1 = new pcsm.tristate.TriStateTreeView();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.treeView1 = new pcsm.tristate.TriStateTreeView();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBox14 = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -94,6 +96,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.checkBox7);
             this.groupBox1.Controls.Add(this.checkBox6);
             this.groupBox1.Controls.Add(this.checkBox5);
@@ -102,7 +106,6 @@
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comboBox1);
@@ -112,6 +115,54 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Schedule Type";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28"});
+            this.comboBox3.Location = new System.Drawing.Point(319, 20);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(39, 21);
+            this.comboBox3.TabIndex = 10;
+            this.comboBox3.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(277, 23);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Day:";
+            this.label11.Visible = false;
             // 
             // checkBox7
             // 
@@ -193,27 +244,17 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(272, 19);
+            this.dateTimePicker2.Location = new System.Drawing.Point(185, 19);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.ShowUpDown = true;
             this.dateTimePicker2.Size = new System.Drawing.Size(86, 20);
             this.dateTimePicker2.TabIndex = 4;
             this.dateTimePicker2.Visible = false;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(185, 19);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(81, 20);
-            this.dateTimePicker1.TabIndex = 3;
-            this.dateTimePicker1.Value = new System.DateTime(2013, 8, 30, 0, 0, 0, 0);
-            this.dateTimePicker1.Visible = false;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(146, 25);
+            this.label4.Location = new System.Drawing.Point(146, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 2;
@@ -237,12 +278,11 @@
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "Hourly",
             "Daily",
             "Weekly",
             "Monthly",
-            "Hourly",
-            "Log On",
-            "Log Off"});
+            "Log On"});
             this.comboBox1.Location = new System.Drawing.Point(49, 18);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(92, 21);
@@ -253,7 +293,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(56, 26);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(233, 20);
+            this.textBox1.Size = new System.Drawing.Size(324, 20);
             this.textBox1.TabIndex = 1;
             // 
             // label1
@@ -280,7 +320,7 @@
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "All Three",
+            "Registry cleanup, Disk cleanup and Disk Defrag",
             "Clean Registry",
             "Disk Cleanup",
             "Disk Defragmenation",
@@ -304,9 +344,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(224, 490);
+            this.button1.Location = new System.Drawing.Point(214, 490);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(80, 30);
             this.button1.TabIndex = 6;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
@@ -314,9 +354,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(305, 490);
+            this.button2.Location = new System.Drawing.Point(300, 490);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(80, 30);
             this.button2.TabIndex = 7;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
@@ -356,6 +396,7 @@
             this.checkBox9.TabIndex = 14;
             this.checkBox9.Text = "Analyse Only";
             this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.Visible = false;
             // 
             // label6
             // 
@@ -376,8 +417,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.checkBox8);
             this.tabPage1.Controls.Add(this.triStateTreeView1);
+            this.tabPage1.Controls.Add(this.checkBox8);
             this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Controls.Add(this.treeView1);
@@ -390,6 +431,14 @@
             this.tabPage1.Text = "Disk Cleanup";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // triStateTreeView1
+            // 
+            this.triStateTreeView1.Location = new System.Drawing.Point(182, 32);
+            this.triStateTreeView1.Name = "triStateTreeView1";
+            this.triStateTreeView1.Size = new System.Drawing.Size(170, 192);
+            this.triStateTreeView1.TabIndex = 14;
+            this.triStateTreeView1.TriStateStyleProperty = pcsm.tristate.TriStateTreeView.TriStateStyles.Standard;
+            // 
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
@@ -399,14 +448,7 @@
             this.checkBox8.TabIndex = 13;
             this.checkBox8.Text = "Analyse Only";
             this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // triStateTreeView1
-            // 
-            this.triStateTreeView1.Location = new System.Drawing.Point(184, 32);
-            this.triStateTreeView1.Name = "triStateTreeView1";
-            this.triStateTreeView1.Size = new System.Drawing.Size(170, 192);
-            this.triStateTreeView1.TabIndex = 12;
-            this.triStateTreeView1.TriStateStyleProperty = pcsm.tristate.TriStateTreeView.TriStateStyles.Standard;
+            this.checkBox8.Visible = false;
             // 
             // pictureBox1
             // 
@@ -417,6 +459,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(20, 18);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // textBox2
             // 
@@ -424,6 +467,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(169, 20);
             this.textBox2.TabIndex = 10;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // treeView1
             // 
@@ -432,6 +476,8 @@
             this.treeView1.Size = new System.Drawing.Size(170, 192);
             this.treeView1.TabIndex = 6;
             this.treeView1.TriStateStyleProperty = pcsm.tristate.TriStateTreeView.TriStateStyles.Standard;
+            this.treeView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
+            this.treeView1.MouseLeave += new System.EventHandler(this.treeView1_MouseLeave);
             // 
             // label7
             // 
@@ -444,6 +490,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkBox14);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.textBox4);
             this.tabPage2.Controls.Add(this.label10);
@@ -462,8 +509,19 @@
             this.tabPage2.Text = "Defragmentation";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // checkBox14
+            // 
+            this.checkBox14.AutoSize = true;
+            this.checkBox14.Location = new System.Drawing.Point(139, 125);
+            this.checkBox14.Name = "checkBox14";
+            this.checkBox14.Size = new System.Drawing.Size(113, 17);
+            this.checkBox14.TabIndex = 23;
+            this.checkBox14.Text = "Uncompress Drive";
+            this.checkBox14.UseVisualStyleBackColor = true;
+            // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(269, 207);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
@@ -474,6 +532,7 @@
             // 
             // textBox4
             // 
+            this.textBox4.Enabled = false;
             this.textBox4.Location = new System.Drawing.Point(18, 209);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(245, 20);
@@ -482,6 +541,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Enabled = false;
             this.label10.Location = new System.Drawing.Point(15, 193);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(111, 13);
@@ -495,13 +555,14 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(87, 17);
             this.radioButton2.TabIndex = 17;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Select Folder";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(9, 8);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(83, 17);
@@ -509,6 +570,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Select Drive";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // checkBox10
             // 
@@ -519,6 +581,7 @@
             this.checkBox10.TabIndex = 15;
             this.checkBox10.Text = "Analyse Only";
             this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.Visible = false;
             // 
             // label8
             // 
@@ -542,8 +605,6 @@
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Checked = true;
-            this.checkBox13.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox13.Location = new System.Drawing.Point(21, 125);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(90, 17);
@@ -661,7 +722,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 525);
+            this.ClientSize = new System.Drawing.Size(392, 527);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -678,8 +739,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl2.ResumeLayout(false);
@@ -706,7 +765,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.CheckBox checkBox7;
@@ -739,7 +797,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.CheckBox checkBox8;
-        private tristate.TriStateTreeView triStateTreeView1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.CheckBox checkBox10;
@@ -752,5 +809,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private tristate.TriStateTreeView triStateTreeView1;
+        private System.Windows.Forms.CheckBox checkBox14;
     }
 }

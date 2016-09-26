@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace pcsm.Processes
 {
@@ -117,6 +118,84 @@ namespace pcsm.Processes
             }
             treeView1.Refresh();            
         }
+
+        [DllImport("kernel32.dll")]
+        private static extern int GetPrivateProfileSection(string lpAppName, byte[] lpszReturnBuffer, int nSize, string lpFileName);
+
+        public static void read_cleaners_file(TreeView treeView1, string settingsfile, string section)
+        {
+
+            byte[] buffer = new byte[2048];
+
+            GetPrivateProfileSection(section, buffer, 2048, settingsfile);
+            String[] tmp = Encoding.Default.GetString(buffer).Trim('\0').Split('\0');
+
+            List<string> output = new List<string>();
+
+            foreach (string temp in tmp)
+            {
+                if (temp.Contains("="))
+                {
+                    output.Add(temp.Substring(0, temp.IndexOf("=")));
+                }
+            }
+
+            string oldentry;
+            string rpl;
+            int i = 0;
+            while (i < output.Count)
+            {
+
+                string s = output[i];
+                if (s.ToLowerInvariant().Contains("."))
+                {
+                    string[] rootsplit = s.Split('.');
+                    TreeNode ParentNode = new TreeNode();
+                    ParentNode.Name = rootsplit[0];
+                    ParentNode.Checked = secselection(rootsplit[0], settingsfile);
+                    rpl = rootsplit[0].Replace('_', ' ');
+                    if (rpl.Length > 7)
+                    {
+                        if (rpl.Substring(0, 7) == "winapp2")
+                        {
+                            rpl = rpl.Substring(8);
+                        }
+                    }
+                    ParentNode.Text = char.ToUpper(rpl[0]) + rpl.Substring(1);
+                    treeView1.Nodes.Add(ParentNode);
+                    oldentry = rootsplit[0];
+
+                    while (rootsplit[0] == oldentry)
+                    {
+                        TreeNode childnode = new TreeNode();
+                        childnode.Name = rootsplit[1];
+                        childnode.Tag = output[i];
+                        childnode.Checked = selection(output[i], settingsfile);
+                        rpl = rootsplit[1].Replace('_', ' ');
+                        childnode.Text = char.ToUpper(rpl[0]) + rpl.Substring(1);
+                        ParentNode.Nodes.Add(childnode);
+                        i++;
+                        if (i < output.Count)
+                        {
+                            s = output[i];
+                            rootsplit = s.Split('.');
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+            treeView1.Refresh();
+
+        }
+
 
         public static void search_cleaners(TreeView treeView1, string settingsfile, List<string> output)
         {

@@ -37,64 +37,67 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(249, 12);
+            this.button1.Location = new System.Drawing.Point(512, 14);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(155, 30);
             this.button1.TabIndex = 16;
             this.button1.Text = "View Recommendations";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // listView1
             // 
-            this.listView1.CheckBoxes = true;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.listView1.Location = new System.Drawing.Point(12, 50);
+            this.listView1.FullRowSelect = true;
+            this.listView1.Location = new System.Drawing.Point(12, 52);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(305, 275);
+            this.listView1.Size = new System.Drawing.Size(568, 275);
             this.listView1.TabIndex = 17;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Task Name";
-            this.columnHeader1.Width = 100;
+            this.columnHeader1.Width = 150;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Schedule";
-            this.columnHeader2.Width = 100;
+            this.columnHeader2.Width = 300;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Tasks Included";
-            this.columnHeader3.Width = 100;
+            this.columnHeader3.Width = 120;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(237, 340);
+            this.button2.Location = new System.Drawing.Point(500, 342);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(80, 30);
             this.button2.TabIndex = 18;
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(324, 340);
+            this.button3.Location = new System.Drawing.Point(587, 342);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(80, 30);
             this.button3.TabIndex = 19;
@@ -105,7 +108,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(324, 102);
+            this.button4.Location = new System.Drawing.Point(587, 104);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(80, 30);
             this.button4.TabIndex = 20;
@@ -116,52 +119,43 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(324, 246);
+            this.button5.Location = new System.Drawing.Point(587, 176);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(80, 30);
             this.button5.TabIndex = 21;
             this.button5.Text = "Delete";
             this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(324, 174);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(80, 30);
-            this.button6.TabIndex = 22;
-            this.button6.Text = "Enable";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(324, 210);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(80, 30);
-            this.button7.TabIndex = 23;
-            this.button7.Text = "Disable";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(323, 138);
+            this.button8.Location = new System.Drawing.Point(586, 140);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(80, 30);
             this.button8.TabIndex = 24;
             this.button8.Text = "Edit";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(193, 25);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Scheduled Tasks";
             // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(416, 382);
+            this.ClientSize = new System.Drawing.Size(679, 382);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -176,6 +170,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scheduled Maintenance";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -190,9 +185,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label2;
 
 
     }

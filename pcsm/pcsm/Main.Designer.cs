@@ -373,6 +373,7 @@
             // 
             this.lrc_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.lrc_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.lrc_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lrc_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.lrc_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lrc_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -397,6 +398,7 @@
             // 
             this.lro_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.lro_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.lro_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lro_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.lro_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lro_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -421,6 +423,7 @@
             // 
             this.sre_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.sre_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.sre_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sre_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.sre_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sre_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -444,6 +447,7 @@
             // 
             this.dclean_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.dclean_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.dclean_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dclean_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.dclean_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dclean_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -469,6 +473,7 @@
             // 
             this.eraser_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.eraser_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.eraser_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.eraser_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.eraser_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eraser_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -494,6 +499,7 @@
             // 
             this.undelete_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.undelete_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.undelete_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.undelete_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.undelete_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.undelete_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -517,6 +523,7 @@
             // 
             this.fsinspect_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.fsinspect_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.fsinspect_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.fsinspect_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.fsinspect_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fsinspect_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -541,6 +548,7 @@
             // 
             this.ultradefrag_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.ultradefrag_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.ultradefrag_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ultradefrag_ll.DisabledLinkColor = System.Drawing.Color.Black;
             this.ultradefrag_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultradefrag_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -565,6 +573,7 @@
             // 
             this.chkdskgui_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.chkdskgui_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.chkdskgui_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkdskgui_ll.DisabledLinkColor = System.Drawing.Color.Black;
             this.chkdskgui_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkdskgui_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -588,6 +597,7 @@
             // 
             this.stm_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.stm_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.stm_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stm_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.stm_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stm_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -614,6 +624,7 @@
             // 
             this.lum_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.lum_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.lum_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lum_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.lum_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lum_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -636,6 +647,7 @@
             // 
             this.ph_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.ph_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.ph_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ph_ll.DisabledLinkColor = System.Drawing.Color.DimGray;
             this.ph_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ph_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -660,6 +672,7 @@
             // 
             this.scf_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.scf_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.scf_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.scf_ll.DisabledLinkColor = System.Drawing.Color.Black;
             this.scf_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scf_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -833,6 +846,7 @@
             // 
             this.diskinfo_ll.ActiveLinkColor = System.Drawing.Color.Red;
             this.diskinfo_ll.BackColor = System.Drawing.SystemColors.Window;
+            this.diskinfo_ll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.diskinfo_ll.DisabledLinkColor = System.Drawing.Color.Black;
             this.diskinfo_ll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.diskinfo_ll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -1110,6 +1124,7 @@
             this.Controls.Add(this.title_l);
             this.Controls.Add(this.logo_p);
             this.Controls.Add(this.panel1);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

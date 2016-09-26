@@ -17,12 +17,11 @@ namespace pcsm
             
         }
 
-        
-
         RegClean rc = new RegClean();
         DiskClean dc = new DiskClean();
         RegDefrag rd = new RegDefrag();
         DiskDefrag dd = new DiskDefrag();
+
         public void check_skipped_pending(CheckBox c, Label l)
         {
             if (c.Checked)
