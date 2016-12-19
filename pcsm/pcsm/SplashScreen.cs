@@ -8,8 +8,8 @@ using System.Xml;
 
 namespace pcsm
 {
-	// The SplashScreen class definition.  AKO Form
-	public partial class SplashScreen : Form
+    // The SplashScreen class definition.  AKO Form
+    public partial class SplashScreen : Form
 	{
 		#region Member Variables
 		// Threading

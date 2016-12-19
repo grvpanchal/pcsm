@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Win32.TaskScheduler;
+using System;
 using System.Windows.Forms;
-using Microsoft.Win32.TaskScheduler;
 
 namespace WindowsFormsApplication1
 {

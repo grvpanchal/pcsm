@@ -10,8 +10,7 @@ namespace pcsm.Processes
 {
     class DiskDefragger
     {
-
-        private static bool is_virtual(char volLetter)
+        private static bool IsVirtual(char volLetter)
         {
             string deviceName = string.Format("{0}:", volLetter);
             string targetPath;
@@ -26,7 +25,7 @@ namespace pcsm.Processes
             return targetPath.Contains("\\??\\");
         }
 
-        public static void listdrives(DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, string settingsfile)
+        public static void ListDrives(DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, string settingsfile)
         {
             DriveInfo[] driveInfo = DriveInfo.GetDrives().Where(x => x.IsReady).ToArray();
             List<string> drives = new List<string>();
@@ -41,7 +40,7 @@ namespace pcsm.Processes
                      &&
                     driveType != DriveType.RAMDisk
                 ) continue;
-                if (!is_virtual(drive.Name[0]))
+                if (!IsVirtual(drive.Name[0]))
                     drives.Add(drive.Name);
                 double driveSizeGB = Math.Round((double)drive.TotalSize / (1024 * 1024 * 1024), 2);
                 double driveFreeSpaceGB = Math.Round((double)drive.AvailableFreeSpace / (1024 * 1024 * 1024), 2);
@@ -55,10 +54,10 @@ namespace pcsm.Processes
                 }
                 dataGridView1.Rows.Add(true, drive.Name, driveFreeSpaceGB + " GB", drivefreeSpacep);
             }
-            DiskDefragger.read_defragsettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile, true);
+            DiskDefragger.ReadDefragSettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile, true);
         }
         
-        public static void read_defragsettings(DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, string settingsfile, bool silent)
+        public static void ReadDefragSettings(DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, string settingsfile, bool silent)
         {
             string optimize1 = PCS.IniReadValue(settingsfile, "main", "optimize");
             if (optimize1 == "True")
@@ -105,7 +104,7 @@ namespace pcsm.Processes
                             MessageBox.Show("Drive Configurations has been changed. Rewriting Configuration.");
 
                         }
-                        DiskDefragger.save_defragsettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile);
+                        DiskDefragger.SaveDefragSettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile);
                     }
                 }
             }
@@ -116,12 +115,12 @@ namespace pcsm.Processes
                     MessageBox.Show("Drive Configurations has been changed. Rewriting Configuration.");
 
                 }
-                save_defragsettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile);
+                SaveDefragSettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile);
             }
 
         }
 
-        public static void save_defragsettings(DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, string settingsfile)
+        public static void SaveDefragSettings(DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, string settingsfile)
         {
 
             PCS.IniWriteValue(settingsfile, "main", "optimize", optimize.Checked.ToString());
@@ -139,14 +138,10 @@ namespace pcsm.Processes
 
             }
         }
-
         
-
-        public static void analyse(System.Windows.Forms.DataVisualization.Charting.Chart chart1, System.Windows.Forms.DataVisualization.Charting.Series series1, DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, Label label4, string settingsfile)
+        public static void Analyse(System.Windows.Forms.DataVisualization.Charting.Chart chart1, System.Windows.Forms.DataVisualization.Charting.Series series1, DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, Label label4, string settingsfile)
         {
             PCS pcs = new PCS();
-            log.WriteLog("Maintainer DiskDefrag analysis start");
-            DiskDefragger.read_defragsettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile, true);
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 string driveselection = dataGridView1[0, i].Value.ToString();
@@ -154,17 +149,17 @@ namespace pcsm.Processes
                 if (driveselection == "True")
                 {
                     string path = dataGridView1[1, i].Value.ToString().Substring(0, 2);
-                    PCS.process("cmd", "/C set UD_TIME_LIMIT=0h 30m && set UD_LOG_FILE_PATH=ud\\" + i.ToString() + ".log && ud\\udefrag.exe -a " + path, true);
-                    string fragmentedpercent = pcs.findword("ud\\" + i + ".log", "fragmentation is above the threshold:", 61);
+                    PCS.Process("cmd", "/C set UD_TIME_LIMIT=0h 30m && set UD_LOG_FILE_PATH=ud\\" + i.ToString() + ".log && ud\\udefrag.exe -a " + path, true);
+                    string fragmentedpercent = pcs.FindWord("ud\\" + i + ".log", "fragmentation is above the threshold:", 61);
                     System.Threading.Thread.Sleep(1000);
                     Global.fragmentedp[i] = fragmentedpercent.Substring(0, 5);
                 }
             }
-            string fragmentedf = pcs.findword("ud\\0.log", "fragmented files", 41);
-            string fragmentedp = pcs.findword("ud\\0.log", "fragmentation is above the threshold:", 61);
+            string fragmentedf = pcs.FindWord("ud\\0.log", "fragmented files", 41);
+            string fragmentedp = pcs.FindWord("ud\\0.log", "fragmentation is above the threshold:", 61);
 
-            string compf = pcs.findword("ud\\0.log", "compressed files:", 41);
-            string totalf = pcs.findword("ud\\0.log", "files total:", 41);
+            string compf = pcs.FindWord("ud\\0.log", "compressed files:", 41);
+            string totalf = pcs.FindWord("ud\\0.log", "files total:", 41);
             double defragmentedfiles = Convert.ToDouble(totalf) - Convert.ToDouble(compf) + Convert.ToDouble(fragmentedf);
 
             label4.Text = "Fragmentation: " + fragmentedp.Substring(0, 7);
@@ -189,10 +184,9 @@ namespace pcsm.Processes
 
         }
 
-        public static void defrag(DataGridView dataGridView1, string settingsfile)
+        public static void Defrag(DataGridView dataGridView1, string settingsfile)
         {
             PCS pcs = new PCS();
-            log.WriteLog("Maintainer DiskDefrag defrag start");
             string series = " ";
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
@@ -205,17 +199,14 @@ namespace pcsm.Processes
             }
             string argoptions = " ";
             string optimize = PCS.IniReadValue(settingsfile, "main", "optimize");
-            log.WriteLog("Maintainer DiskDefrag defrag optimize: " + optimize);
             if (optimize == "True")
 
                 argoptions = argoptions + "-o ";
 
 
             string uncompress = PCS.IniReadValue(settingsfile, "main", "uncompress");
-            log.WriteLog("Maintainer DiskDefrag defrag uncompress: " + uncompress);
             if (uncompress == "True")
-            {
-                log.WriteLog("Maintainer DiskDefrag defrag uncompress start");
+            {   
                 Global.compactstatus = true;
                 try
                 {
@@ -246,7 +237,6 @@ namespace pcsm.Processes
                         lineVal = process1.StandardOutput.ReadLine();
 
                     }
-                    log.WriteLog("Maintainer DiskDefrag defrag uncompress end");
                 }
                 catch
                 {
@@ -256,11 +246,11 @@ namespace pcsm.Processes
             }
             Global.compactstatus = false;
 
-            PCS.process("cmd", "/C set UD_TIME_LIMIT=1h 30m && set UD_LOG_FILE_PATH=ud\\d.log && ud\\udefrag.exe -a C:", true);
-            Global.defragmented = pcs.findword("ud\\d.log", "fragmented files", 41);
+            PCS.Process("cmd", "/C set UD_TIME_LIMIT=1h 30m && set UD_LOG_FILE_PATH=ud\\d.log && ud\\udefrag.exe -a C:", true);
+            Global.defragmented = pcs.FindWord("ud\\d.log", "fragmented files", 41);
             try
             {
-                ProcessStartInfo startInfo2 = new ProcessStartInfo("ud\\udefrag.exe");
+                ProcessStartInfo startInfo2 = new ProcessStartInfo(Global.defragExec);
                 startInfo2.UseShellExecute = false;
                 startInfo2.RedirectStandardInput = true;
                 startInfo2.RedirectStandardOutput = true;
@@ -289,20 +279,17 @@ namespace pcsm.Processes
                     Application.DoEvents();
                     lineVal2 = process2.StandardOutput.ReadLine();
                 }
-                log.WriteLog("Maintainer DiskDefrag defrag uncompress end");
             }
             catch
             {
             }
 
             string optimizemft = PCS.IniReadValue(settingsfile, "main", "optimizemft");
-            log.WriteLog("Maintainer DiskDefrag defrag optimizemft: " + optimizemft);
             if (optimizemft == "True")
-            {
-                log.WriteLog("Maintainer DiskDefrag defrag optimizemft start");
+            {   
                 try
                 {
-                    ProcessStartInfo startInfo3 = new ProcessStartInfo("ud\\udefrag.exe");
+                    ProcessStartInfo startInfo3 = new ProcessStartInfo(Global.defragExec);
                     startInfo3.UseShellExecute = false;
                     startInfo3.RedirectStandardInput = true;
                     startInfo3.RedirectStandardOutput = true;
@@ -335,20 +322,19 @@ namespace pcsm.Processes
                 catch
                 {
                 }
-                log.WriteLog("Maintainer DiskDefrag defrag optimizemft end");
             }
         }
 
-        public static void drive_selection_changed(System.Windows.Forms.DataVisualization.Charting.Chart chart1, System.Windows.Forms.DataVisualization.Charting.Series series1, DataGridView dataGridView1, Label label4, GroupBox groupBox1)
+        public static void DriveSelectionChanged(System.Windows.Forms.DataVisualization.Charting.Chart chart1, System.Windows.Forms.DataVisualization.Charting.Series series1, DataGridView dataGridView1, Label label4, GroupBox groupBox1)
         {
             string logf = dataGridView1.CurrentCell.RowIndex.ToString();
             if (File.Exists("ud\\" + logf + ".log"))
             {
                 PCS pcs = new PCS();
-                string fragmentedf = pcs.findword("ud\\" + logf + ".log", "fragmented files", 41);
-                string fragmentedp = pcs.findword("ud\\" + logf + ".log", "fragmentation is above the threshold:", 61);
-                string compf = pcs.findword("ud\\" + logf + ".log", "compressed files:", 41);
-                string totalf = pcs.findword("ud\\" + logf + ".log", "files total:", 41);
+                string fragmentedf = pcs.FindWord("ud\\" + logf + ".log", "fragmented files", 41);
+                string fragmentedp = pcs.FindWord("ud\\" + logf + ".log", "fragmentation is above the threshold:", 61);
+                string compf = pcs.FindWord("ud\\" + logf + ".log", "compressed files:", 41);
+                string totalf = pcs.FindWord("ud\\" + logf + ".log", "files total:", 41);
                 double defragmentedfiles = Convert.ToDouble(totalf) - Convert.ToDouble(compf) + Convert.ToDouble(fragmentedf);
 
                 label4.Text = "Fragmentation: " + fragmentedp.Substring(0, 7);
@@ -374,10 +360,6 @@ namespace pcsm.Processes
                 series1.Points.Clear();
             }
         }
-
-
-        
-
     }
 
     internal enum DriveType : uint

@@ -1,15 +1,11 @@
-﻿using System;
+﻿using pcsm.Scheduler;
+using System;
 using System.Diagnostics;
-using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
-using pcsm.Processes;
-using pcsm.Scheduler;
 
 namespace pcsm
 {
@@ -17,8 +13,7 @@ namespace pcsm
     {
         private bool m_bLayoutCalled = false;
         private DateTime m_dt;
-
-
+        
         #region GlobalMemoryStatusEx
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         internal class MEMORYSTATUSEX
@@ -44,14 +39,12 @@ namespace pcsm
         internal static extern bool GlobalMemoryStatusEx([In, Out] MEMORYSTATUSEX lpBuffer);
         #endregion
        
-
         PCS pcs = new PCS();
-        private Control _currentToolTipControl = null;      
+            
         public Main()
         {            
             InitializeComponent();                                         
         }
-              
 
         #region Shadow, Movement and Single Instance
         
@@ -218,11 +211,8 @@ namespace pcsm
                 this.Activate();
                 SplashScreen.CloseForm();
             }
-            log.WriteLog("Application Started");       
-
         }
-           
-                
+
         #region System Info
         public void get_system_info()
         {
@@ -582,8 +572,8 @@ namespace pcsm
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            PCS.process("blb\\bleachbit_console.exe", " --update-winapp2", true);
-            PCS.process(Global.system + "blb\\bleachbit_console.exe", " --update-winapp2", true);
+            PCS.Process(Global.blbExec, " --update-winapp2", true);
+            PCS.Process(Global.system + Global.blbExec, " --update-winapp2", true);
             if (PCS.CheckForInternetConnection() == true)
             {
                 using (System.Net.WebClient myWebClient = new System.Net.WebClient())

@@ -8,7 +8,7 @@ namespace pcsm.Processes
         public DiskDefragList()
         {
             InitializeComponent();
-            DiskDefragger.listdrives(dataGridView1, checkBox1, checkBox2, checkBox3, "settings//defragsettings.ini");
+            DiskDefragger.ListDrives(dataGridView1, checkBox1, checkBox2, checkBox3, Global.defragConf);
         }
                
         private void button2_Click(object sender, EventArgs e)
@@ -18,12 +18,12 @@ namespace pcsm.Processes
 
         private void DiskDefragList_Load(object sender, EventArgs e)
         {
-            DiskDefragger.read_defragsettings(dataGridView1, checkBox1, checkBox2, checkBox3, "settings//defragsettings.ini", true);
+            DiskDefragger.ReadDefragSettings(dataGridView1, checkBox1, checkBox2, checkBox3, Global.defragConf, true);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DiskDefragger.save_defragsettings(dataGridView1, checkBox1, checkBox2, checkBox3, "settings//defragsettings.ini");
+            DiskDefragger.SaveDefragSettings(dataGridView1, checkBox1, checkBox2, checkBox3, Global.defragConf);
             this.Close();
         }
 

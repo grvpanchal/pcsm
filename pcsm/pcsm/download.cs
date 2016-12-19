@@ -1,44 +1,21 @@
-﻿using System;
+﻿using Ionic.Zip;
+using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading;
 using System.Windows.Forms;
-using Ionic.Zip;
 
 namespace pcsm
 {
     public partial class Download : Form
     {
         PCS pcs = new PCS();
-        public class Global
-        {
-            public static string program = "";
-            
-        }
-
-        public static bool CheckForInternetConnection()
-        {
-            try
-            {
-                using (var client = new WebClient())
-                using (var stream = client.OpenRead("http://sourceforge.net"))
-                {
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
         public Download(string section)
         {
             Global.program = section;
             InitializeComponent();
-            
         }
                
         private void Extract()
@@ -98,19 +75,17 @@ namespace pcsm
 
         private void Download_Load(object sender, EventArgs e)
         {
-            if (CheckForInternetConnection() == false)
+            if (PCS.CheckForInternetConnection() == false)
             {
                 MessageBox.Show("Sorry cannot install. Reason: No Internet Connection.");
                 this.DialogResult = DialogResult.Abort;
                 this.Close();
-
             }
             else
             {
                 download(Global.program);
             }
         }
-               
     }
 }
 

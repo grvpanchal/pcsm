@@ -1,12 +1,12 @@
-﻿using System;
+﻿using pcsm.Processes;
+using ServicesOptimizer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using pcsm.Processes;
-using ServicesOptimizer;
 
 namespace pcsm
 {
@@ -16,14 +16,13 @@ namespace pcsm
         {
             InitializeComponent();            
         }
-
-        
-        
+                
         RegClean rc = new RegClean();
         DiskClean dc = new DiskClean();
         RegDefrag rd = new RegDefrag();
         DiskDefrag dd = new DiskDefrag();
         FrmDiagnostics so = new FrmDiagnostics();
+
         public void check_skipped_pending(CheckBox c, Label l)
         {
             if (c.Checked)
@@ -39,11 +38,8 @@ namespace pcsm
             }
         }
 
-
-
         public void start_analysis(DoWorkEventArgs e)
-        {
-            log.WriteLog("Maintainer Analysis Start");
+        {   
             Global.currentprocess = "analysis";
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("button1.enabled", "false");
@@ -131,7 +127,7 @@ namespace pcsm
                     return;
                 }
                 Application.DoEvents();
-                dc.analyse();
+                dc.Analyse();
                 data.Add("linklabel6.text", Global.cleanupsize + " space can\nbe freed");
                 data["picturebox12.visible"] = "false";
                 data["linklabel6.visible"] = "true";
@@ -245,14 +241,11 @@ namespace pcsm
                 data["button2.enabled"] = "false";
             }
             backgroundWorker1.ReportProgress(100, data);
-            log.WriteLog("Maintainer Analysis end");
-            
         }
 
         Dictionary<string, string> data = new Dictionary<string, string>();
         public void start_repair(DoWorkEventArgs e)
         {
-            log.WriteLog("Maintainer Repair start");
             Global.currentprocess = "repair";
             
             data.Add("button1.enabled", "false");
@@ -336,7 +329,7 @@ namespace pcsm
                     return;
                 }
                 Application.DoEvents();               
-                dc.clean();
+                dc.Clean();
                 data.Add("linklabel6.text", Global.cleanupsize + " space is\nRecovered");
                 data["picturebox12.visible"] = "false";
                 data["linklabel6.visible"] = "true";
@@ -356,7 +349,7 @@ namespace pcsm
                 data.Add("progressbar2.visible", "true");
                 data.Add("picturebox5.enabled", "false");
                 data["label9.visible"] = "true";                
-                string uncompress = PCS.IniReadValue("settings//defragsettings.ini", "main", "uncompress");
+                string uncompress = PCS.IniReadValue(Global.defragConf, "main", "uncompress");
                 if (uncompress == "True")
                 {
                     if (data.ContainsKey("progressbar2.visible"))
@@ -448,7 +441,7 @@ namespace pcsm
                     DialogResult dialogResult = MessageBox.Show("Restart Required to complete Registry Defragmentation. Do you want to restart NOW?", "Restart Required!", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        PCS.process("shutdown.exe", "-r -t 0", true);
+                        PCS.Process("shutdown.exe", "-r -t 0", true);
                         Thread.Sleep(1000);
                         Application.Exit();
                     }
@@ -459,7 +452,6 @@ namespace pcsm
             data["button1.visible"] = "false";
             data["button2.text"] = "Close";
             backgroundWorker1.ReportProgress(100, data);
-            log.WriteLog("Maintainer Analysis end");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -767,18 +759,11 @@ namespace pcsm
             decimal toint = Math.Round(Convert.ToDecimal(Global.diskdefragprogress), 0);
             progressBar2.Value = Convert.ToInt32(toint);
         }
-
-        private void Maintainer_Load(object sender, EventArgs e)
-        {
-            log.WriteLog("Maintainer Started");
-            
-        }
-
+        
         private void Maintainer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            PCS.process("cmd", "/c taskkill /im lrc.exe /im bleachbit_console.exe /im udefrag.exe /t /f", true);
+            PCS.Process("cmd", "/c taskkill /im lrc.exe /im bleachbit_console.exe /im udefrag.exe /t /f", true);
             backgroundWorker1.CancelAsync();
-            log.WriteLog("Maintainer Closed");
         }
 
         private void linkLabel9_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

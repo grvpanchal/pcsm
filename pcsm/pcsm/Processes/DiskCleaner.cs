@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Diagnostics;
-using System.IO;
-using System.Text.RegularExpressions;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace pcsm.Processes
 {
     class DiskCleaner
     {
+        [DllImport("kernel32.dll")]
+        private static extern int GetPrivateProfileSection(string lpAppName, byte[] lpszReturnBuffer, int nSize, string lpFileName);
 
-        public static void save_Cleaners(TreeView treeView1, string settingsfile)
+        public static TreeView _fieldsTreeCache = new TreeView();
+
+        public static void SaveCleaners(TreeView treeView1, string settingsfile)
         {
             for (int x = 0; x < treeView1.Nodes.Count; x++)
             {
@@ -39,9 +42,9 @@ namespace pcsm.Processes
             }
         }
         
-        public static void read_cleaners(TreeView treeView1, string settingsfile)
+        public static void ReadCleaners(TreeView treeView1, string settingsfile)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo("blb\\bleachbit_console.exe");
+            ProcessStartInfo startInfo = new ProcessStartInfo(Global.blbExec);
 
             startInfo.UseShellExecute = false;
             startInfo.RedirectStandardInput = true;
@@ -82,7 +85,7 @@ namespace pcsm.Processes
                 string[] rootsplit = s.Split('.');
                 TreeNode ParentNode = new TreeNode();
                 ParentNode.Name = rootsplit[0];
-                ParentNode.Checked = secselection(rootsplit[0], settingsfile);
+                ParentNode.Checked = SecSelection(rootsplit[0], settingsfile);
                 rpl = rootsplit[0].Replace('_', ' ');
                 if (rpl.Length > 7)
                 {
@@ -100,7 +103,7 @@ namespace pcsm.Processes
                     TreeNode childnode = new TreeNode();
                     childnode.Name = rootsplit[1];
                     childnode.Tag = output[i];
-                    childnode.Checked = selection(output[i], settingsfile);
+                    childnode.Checked = Selection(output[i], settingsfile);
                     rpl = rootsplit[1].Replace('_', ' ');
                     childnode.Text = char.ToUpper(rpl[0]) + rpl.Substring(1);
                     ParentNode.Nodes.Add(childnode);
@@ -119,10 +122,7 @@ namespace pcsm.Processes
             treeView1.Refresh();            
         }
 
-        [DllImport("kernel32.dll")]
-        private static extern int GetPrivateProfileSection(string lpAppName, byte[] lpszReturnBuffer, int nSize, string lpFileName);
-
-        public static void read_cleaners_file(TreeView treeView1, string settingsfile, string section)
+        public static void ReadCleanersFile(TreeView treeView1, string settingsfile, string section)
         {
 
             byte[] buffer = new byte[2048];
@@ -152,7 +152,7 @@ namespace pcsm.Processes
                     string[] rootsplit = s.Split('.');
                     TreeNode ParentNode = new TreeNode();
                     ParentNode.Name = rootsplit[0];
-                    ParentNode.Checked = secselection(rootsplit[0], settingsfile);
+                    ParentNode.Checked = SecSelection(rootsplit[0], settingsfile);
                     rpl = rootsplit[0].Replace('_', ' ');
                     if (rpl.Length > 7)
                     {
@@ -170,7 +170,7 @@ namespace pcsm.Processes
                         TreeNode childnode = new TreeNode();
                         childnode.Name = rootsplit[1];
                         childnode.Tag = output[i];
-                        childnode.Checked = selection(output[i], settingsfile);
+                        childnode.Checked = Selection(output[i], settingsfile);
                         rpl = rootsplit[1].Replace('_', ' ');
                         childnode.Text = char.ToUpper(rpl[0]) + rpl.Substring(1);
                         ParentNode.Nodes.Add(childnode);
@@ -193,13 +193,10 @@ namespace pcsm.Processes
             }
 
             treeView1.Refresh();
-
         }
-
-
-        public static void search_cleaners(TreeView treeView1, string settingsfile, List<string> output)
+        
+        public static void SearchCleaners(TreeView treeView1, string settingsfile, List<string> output)
         {
-            
             string oldentry;
             int val = output.Count();
             string rpl;            
@@ -210,7 +207,7 @@ namespace pcsm.Processes
                 string[] rootsplit = s.Split('.');
                 TreeNode ParentNode = new TreeNode();
                 ParentNode.Name = rootsplit[0];
-                ParentNode.Checked = secselection(rootsplit[0], settingsfile);
+                ParentNode.Checked = SecSelection(rootsplit[0], settingsfile);
                 rpl = rootsplit[0].Replace('_', ' ');
                 if (rpl.Length > 7)
                 {
@@ -228,7 +225,7 @@ namespace pcsm.Processes
                     TreeNode childnode = new TreeNode();
                     childnode.Name = rootsplit[1];
                     childnode.Tag = output[i];
-                    childnode.Checked = selection(output[i], settingsfile);
+                    childnode.Checked = Selection(output[i], settingsfile);
                     rpl = rootsplit[1].Replace('_', ' ');
                     childnode.Text = char.ToUpper(rpl[0]) + rpl.Substring(1);
                     ParentNode.Nodes.Add(childnode);
@@ -247,7 +244,7 @@ namespace pcsm.Processes
             treeView1.Refresh();
         }
 
-        public static bool selection(string cleanername, string settingsfile)
+        public static bool Selection(string cleanername, string settingsfile)
         {
             string readselection = PCS.IniReadValue(settingsfile, "tree", cleanername);
 
@@ -263,7 +260,7 @@ namespace pcsm.Processes
 
         }
 
-        public static bool secselection(string cleanername, string settingsfile)
+        public static bool SecSelection(string cleanername, string settingsfile)
         {
             string readselection = PCS.IniReadValue(settingsfile, "tree", cleanername);
 
@@ -301,14 +298,14 @@ namespace pcsm.Processes
             }
         }
         
-        public static void selectionload(TreeView treeView1, string settingsfile)
+        public static void SelectionLoad(TreeView treeView1, string settingsfile)
         {
             for (int i = 0; i < treeView1.Nodes.Count; i++)
             {
-                treeView1.Nodes[i].Checked = DiskCleaner.secselection(treeView1.Nodes[i].Name, settingsfile);
+                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, settingsfile);
                 for (int j = 0; j < treeView1.Nodes[i].Nodes.Count; j++)
                 {
-                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
+                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
                 }
 
             }
@@ -327,16 +324,13 @@ namespace pcsm.Processes
             }
             treeView1.Nodes[0].EnsureVisible();
         }
-
-        public static TreeView _fieldsTreeCache = new TreeView();
-
-        public static void analyse(TreeView treeView1, Label label1, TextBox textBox1, TextBox textBox2)
-        {
-            log.WriteLog("Maintainer Diskclean analysis start");
+        
+        public static void Analyse(TreeView treeView1, Label label1, TextBox textBox1, TextBox textBox2)
+        {   
             string series = null;
             if (treeView1.Nodes.Count == 0)
             {
-                DiskCleaner.read_cleaners(treeView1, "blb\\Bleachbit.ini");
+                DiskCleaner.ReadCleaners(treeView1, Global.blbConf);
                 
                 List<string> searchstring = new List<string>();
                 if (_fieldsTreeCache.Nodes.Count == 0)
@@ -391,7 +385,7 @@ namespace pcsm.Processes
                         }
                     }
 
-                    DiskCleaner.search_cleaners(treeView1, "blb\\Bleachbit.ini", searchstring);
+                    DiskCleaner.SearchCleaners(treeView1, Global.blbConf, searchstring);
                     searchstring.Clear();
                     treeView1.ExpandAll();
                 }
@@ -420,7 +414,7 @@ namespace pcsm.Processes
 
             try
             {
-                ProcessStartInfo startInfo1 = new ProcessStartInfo("blb\\bleachbit_console.exe");
+                ProcessStartInfo startInfo1 = new ProcessStartInfo(Global.blbExec);
                 startInfo1.UseShellExecute = false;
                 startInfo1.RedirectStandardInput = true;
                 startInfo1.RedirectStandardOutput = true;
@@ -464,16 +458,14 @@ namespace pcsm.Processes
             catch
             {
             }
-            log.WriteLog("Maintainer Diskclean analysis end");
         }
 
-        public static void clean(TreeView treeView1, Label label1, TextBox textBox1)
+        public static void Clean(TreeView treeView1, Label label1, TextBox textBox1)
         {
-            log.WriteLog("Maintainer Diskclean clean start");
             string series = null;
             if (treeView1.Nodes.Count == 0)
             {
-                DiskCleaner.read_cleaners(treeView1, "blb\\Bleachbit.ini");
+                DiskCleaner.ReadCleaners(treeView1, Global.blbConf);
             }
             for (int x = 0; x < treeView1.Nodes.Count; x++)
             {
@@ -487,7 +479,7 @@ namespace pcsm.Processes
             }
 
 
-            ProcessStartInfo startInfo1 = new ProcessStartInfo("blb\\bleachbit_console.exe");
+            ProcessStartInfo startInfo1 = new ProcessStartInfo(Global.blbExec);
 
             startInfo1.UseShellExecute = false;
             startInfo1.RedirectStandardInput = true;
@@ -526,10 +518,6 @@ namespace pcsm.Processes
                 }
             }
             Global.cleanupsize = saved;
-            log.WriteLog("Maintainer Diskclean clean end");
         }
-
-
-
     }
 }

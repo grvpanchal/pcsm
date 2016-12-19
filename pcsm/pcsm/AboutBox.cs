@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -98,21 +94,6 @@ namespace pcsm
             }
         }
         #endregion
-
-        private void AboutBox1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxDescription_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelProductName_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void okButton_Click(object sender, EventArgs e)
         {

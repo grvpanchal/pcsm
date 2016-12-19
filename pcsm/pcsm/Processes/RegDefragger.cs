@@ -6,9 +6,8 @@ namespace pcsm.Processes
     {        
         public static void analyse(System.Windows.Forms.DataVisualization.Charting.Chart chart1)
         {            
-            log.WriteLog("Maintainer Registry Optimize analyse start");
             chart1.Series.Clear();
-            PCS.process("lro\\lro.exe", " /analyse", false);
+            PCS.Process("lro\\lro.exe", " /analyse", false);
             string oldregistrysize = PCS.IniReadValue("settings\\regdefragresult.ini", "main", "oldregistrysize");
             string newregistrysize = PCS.IniReadValue("settings\\regdefragresult.ini", "main", "newregistrysize");
             string diffregistrysize = PCS.IniReadValue("settings\\regdefragresult.ini", "main", "diffregistrysize");
@@ -25,14 +24,11 @@ namespace pcsm.Processes
             series1.Points.AddXY("Size Saving: " + diffregistrysize + " MB", Convert.ToDouble(diffregistrysize));
             chart1.Series.Add(series1);
             chart1.Series[0]["PieLabelStyle"] = "Disabled";
-            log.WriteLog("Maintainer Registry Optimize analyse end");
         }
 
         public static void defrag()
-        {
-            log.WriteLog("Maintainer Registry Optimize Defrag start");
-            PCS.process("lro\\lro.exe", " /optimize", false);
-            log.WriteLog("Maintainer Registry Optimize Defrag end");
+        {   
+            PCS.Process("lro\\lro.exe", " /optimize", false);
         }
     }
 }

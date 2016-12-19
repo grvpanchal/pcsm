@@ -70,8 +70,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Downloads\Json50r6\Bin\Net35\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceController">
-      <HintPath>D:\svcopz\ServiceController.DLL</HintPath>
+    <Reference Include="ServiceControllerExtended, Version=1.0.4991.34405, Culture=neutral, PublicKeyToken=eae6f92b31de1584, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\ServiceControllerExtended.dll</HintPath>
     </Reference>
     <Reference Include="ServicesOptimizer">
       <HintPath>D:\svcopz\ServicesOptimizer.exe</HintPath>
@@ -109,7 +110,8 @@
     <Compile Include="Maintainer_xp.Designer.cs">
       <DependentUpon>Maintainer_xp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Misc\log.cs" />
+    <Compile Include="Misc\Global.cs" />
+    <Compile Include="Misc\OSVersion.cs" />
     <Compile Include="Misc\tristate.cs" />
     <Compile Include="Download.cs">
       <SubType>Form</SubType>
@@ -135,7 +137,6 @@
     <Compile Include="IntroWiz.Designer.cs">
       <DependentUpon>IntroWiz.cs</DependentUpon>
     </Compile>
-    <Compile Include="Misc\GlobalMouseHandler.cs" />
     <Compile Include="Misc\pcs.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -163,7 +164,6 @@
     <Compile Include="Processes\DiskCleanList.Designer.cs">
       <DependentUpon>DiskCleanList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Processes\NonSystemServiceDisabler.cs" />
     <Compile Include="Processes\RegCleaner.cs" />
     <Compile Include="Processes\RegCleanList.cs">
       <SubType>Form</SubType>

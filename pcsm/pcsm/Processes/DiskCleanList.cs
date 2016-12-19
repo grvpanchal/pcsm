@@ -10,12 +10,14 @@ namespace pcsm.Processes
         public DiskCleanList()
         {
             InitializeComponent();
-            DiskCleaner.read_cleaners(treeView1, "blb\\Bleachbit.ini");
+            DiskCleaner.ReadCleaners(treeView1, Global.blbConf);
         }
+
         private TreeView _fieldsTreeCache1 = new TreeView();
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            DiskCleaner.selectionload(treeView1, "blb\\Bleachbit.ini");
+            DiskCleaner.SelectionLoad(treeView1, Global.blbConf);
             DiskCleaner._fieldsTreeCache.Nodes.Clear();
             foreach (TreeNode node in treeView1.Nodes)
             {
@@ -46,7 +48,7 @@ namespace pcsm.Processes
             {
                 Global.cleanertext = this.textBox1.Text;
             }
-            DiskCleaner.save_Cleaners(treeView1, "blb\\Bleachbit.ini");
+            DiskCleaner.SaveCleaners(treeView1, Global.blbConf);
             this.Close();
         }
 
@@ -96,7 +98,7 @@ namespace pcsm.Processes
                     }
                 }
 
-                DiskCleaner.search_cleaners(treeView1, "blb\\Bleachbit.ini", searchstring);
+                DiskCleaner.SearchCleaners(treeView1, Global.blbConf, searchstring);
                 searchstring.Clear();
                 treeView1.ExpandAll();
             }
@@ -104,12 +106,12 @@ namespace pcsm.Processes
             {
                 pictureBox1.Image = global::pcsm.Properties.Resources.q;
                 DiskCleaner._fieldsTreeCache.Nodes.Clear();
-                DiskCleaner.read_cleaners(DiskCleaner._fieldsTreeCache, "blb\\Bleachbit.ini");
+                DiskCleaner.ReadCleaners(DiskCleaner._fieldsTreeCache, Global.blbConf);
                 foreach (TreeNode _node in DiskCleaner._fieldsTreeCache.Nodes)
                 {
                     treeView1.Nodes.Add((TreeNode)_node.Clone());
                 }
-                DiskCleaner.selectionload(treeView1, "blb\\Bleachbit.ini");
+                DiskCleaner.SelectionLoad(treeView1, Global.blbConf);
             }
             //enables redrawing tree after all objects have been added
             treeView1.EndUpdate();
@@ -120,14 +122,14 @@ namespace pcsm.Processes
         {           
             for (int i = 0; i < treeView1.Nodes.Count; i++)
             {
-                treeView1.Nodes[i].Checked = DiskCleaner.secselection(treeView1.Nodes[i].Name, settingsfile);
+                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, settingsfile);
                 for (int j = 0; j < treeView1.Nodes[i].Nodes.Count; j++)
                 {
                     if (treeView1.Nodes[i].Nodes[j].Tag.ToString() == "chromium.cache")
                     {
-                        MessageBox.Show(DiskCleaner.selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile).ToString());
+                        MessageBox.Show(DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile).ToString());
                     }
-                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
+                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
                 }
 
             }
@@ -141,7 +143,7 @@ namespace pcsm.Processes
 
         private void treeView1_MouseLeave(object sender, EventArgs e)
         {
-            DiskCleaner.save_Cleaners(treeView1, "blb\\Bleachbit.ini");
+            DiskCleaner.SaveCleaners(treeView1, Global.blbConf);
             System.Threading.Thread.Sleep(250);
             DiskCleaner._fieldsTreeCache.Nodes.Clear();
             if (DiskCleaner._fieldsTreeCache.Nodes.Count == 0)
@@ -162,7 +164,7 @@ namespace pcsm.Processes
 
         private void DiskCleanList_Shown(object sender, EventArgs e)
         {
-            DiskCleaner.selectionload(treeView1, "blb\\Bleachbit.ini");
+            DiskCleaner.SelectionLoad(treeView1, Global.blbConf);
             DiskCleaner._fieldsTreeCache.Nodes.Clear();
             foreach (TreeNode node in treeView1.Nodes)
             {

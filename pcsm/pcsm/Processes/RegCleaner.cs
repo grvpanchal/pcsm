@@ -27,10 +27,9 @@ namespace pcsm.Processes
         }
 
         public static void analyse(DataGridView dataGridView1, Label label1)
-        {
-            log.WriteLog("Maintainer Registry Cleaner analysis start");
+        {   
             dataGridView1.Rows.Clear();
-            PCS.process("lrc\\lrc.exe", " /analyse", true);
+            PCS.Process(Global.regCleanExec, " /analyse", true);
 
             if (File.Exists("settings\\regcleanresult.txt"))
             {
@@ -55,18 +54,16 @@ namespace pcsm.Processes
                         }
                     }
                 }
-                log.WriteLog("Maintainer Registry Cleaner End");
             }            
         }
 
         public static void repair()
         {
             PCS pcs = new PCS();
-            log.WriteLog("Maintainer Registry Cleaner repair start");
-            PCS.process("lrc\\lrc.exe", " /repair", true);      
+            PCS.Process(Global.regCleanExec, " /repair", true);      
             if(File.Exists("settings\\reglog.txt"))
-                Global.registry = pcs.findword("settings\\reglog.txt", "Total problems found", 21);
-            log.WriteLog("Maintainer Registry Cleaner repair end");
+                Global.registry = pcs.FindWord("settings\\reglog.txt", "Total problems found", 21);
+            
         }
 
         #region Read all Key in Section
@@ -127,7 +124,7 @@ namespace pcsm.Processes
         public static void read_regsections(TreeView treeView1)
         {
             string[] sectionnames = { "Active X / COM", "Startup", "Fonts", "Application Info", "Drivers", "Help Files", "Sounds", "Application Paths", "Application Settings", "Shared DLL", "Recent Files" };
-            string[] strArray = GetAllKeysInIniFileSection("sections", "settings\\regsections.ini");
+            string[] strArray = GetAllKeysInIniFileSection("sections", Global.regCleanConf);
 
             for (int i = 0; i < strArray.Length; i++)
             {
@@ -158,11 +155,11 @@ namespace pcsm.Processes
 
                 if (treeView1.Nodes[i].Checked)
                 {
-                    PCS.IniWriteValue("settings\\regsections.ini", "sections", value, "1");
+                    PCS.IniWriteValue(Global.regCleanConf, "sections", value, "1");
                 }
                 else
                 {
-                    PCS.IniWriteValue("settings\\regsections.ini", "sections", value, "0");
+                    PCS.IniWriteValue(Global.regCleanConf, "sections", value, "0");
                 }
 
             }

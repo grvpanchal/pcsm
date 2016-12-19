@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.IO;
-using Microsoft.Win32.TaskScheduler;
+using System.Windows.Forms;
 
 namespace pcsm.Scheduler
 {
     public partial class Schedule : Form
     {
-        public static string taskfile = Global.system + "settings\\TaskSettings.ini";
+        public static string taskfile = Global.system + Global.taskConf;
 
         public void ReadTasks()
         {
@@ -45,7 +38,7 @@ namespace pcsm.Scheduler
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string taskfile = Global.system + "settings\\TaskSettings.ini";
+            string taskfile = Global.system + Global.taskConf;
             string taskid = "";
             for (int i = 1; i <= 11; i++)
             {

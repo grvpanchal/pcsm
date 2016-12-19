@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace pcsm
+﻿namespace pcsm
 {
     public class tristate
     {
@@ -77,7 +72,6 @@ namespace pcsm
                             System.Windows.Forms.CheckBoxRenderer.DrawCheckBox(chkGraphics, new System.Drawing.Point(0, 1), System.Windows.Forms.VisualStyles.CheckBoxState.MixedNormal);
                             break;
                     }
-
                     StateImageList.Images.Add(bmp);
                 }
             }

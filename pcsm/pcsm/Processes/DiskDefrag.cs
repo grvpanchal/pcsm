@@ -9,19 +9,19 @@ namespace pcsm.Processes
         public DiskDefrag()
         {
             InitializeComponent();
-            DiskDefragger.listdrives(dataGridView1, checkBox1, checkBox2, checkBox3, "settings//defragsettings.ini");           
+            DiskDefragger.ListDrives(dataGridView1, checkBox1, checkBox2, checkBox3, Global.defragConf);           
         }
 
         System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
 
         public void analyse()
         {
-            DiskDefragger.analyse(chart1, series1, dataGridView1, checkBox1, checkBox2, checkBox3, label4, "settings//defragsettings.ini");
+            DiskDefragger.Analyse(chart1, series1, dataGridView1, checkBox1, checkBox2, checkBox3, label4, Global.defragConf);
         }
 
         public void defrag()
         {
-            DiskDefragger.defrag(dataGridView1, "settings//defragsettings.ini");
+            DiskDefragger.Defrag(dataGridView1, Global.defragConf);
         }
                
         private void button2_Click(object sender, EventArgs e)
@@ -31,17 +31,17 @@ namespace pcsm.Processes
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            DiskDefragger.drive_selection_changed(chart1, series1, dataGridView1, label4, groupBox1);
+            DiskDefragger.DriveSelectionChanged(chart1, series1, dataGridView1, label4, groupBox1);
         }
 
         private void DiskDefrag_Load(object sender, EventArgs e)
         {
-           DiskDefragger.read_defragsettings(dataGridView1, checkBox1, checkBox2, checkBox3, "settings//defragsettings.ini", false);
+           DiskDefragger.ReadDefragSettings(dataGridView1, checkBox1, checkBox2, checkBox3, Global.defragConf, false);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DiskDefragger.save_defragsettings(dataGridView1, checkBox1, checkBox2, checkBox3, "settings//defragsettings.ini");
+            DiskDefragger.SaveDefragSettings(dataGridView1, checkBox1, checkBox2, checkBox3, Global.defragConf);
             this.Hide();
         }
 

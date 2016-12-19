@@ -1,3 +1,4 @@
+using Microsoft.Win32.TaskScheduler;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -5,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Microsoft.Win32.TaskScheduler;
 
 namespace pcsm
 {
@@ -189,7 +189,7 @@ namespace pcsm
 
         public void read_cleaners()
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo(Global.system+"blb\\bleachbit_console.exe");
+            ProcessStartInfo startInfo = new ProcessStartInfo(Global.system+Global.blbExec);
 
             startInfo.UseShellExecute = false;
             startInfo.RedirectStandardInput = true;
@@ -265,7 +265,7 @@ namespace pcsm
 
         public bool secselection(string cleanername)
         {
-            string readselection = PCS.IniReadValue(Global.system + "blb\\Bleachbit.ini", "tree", cleanername);
+            string readselection = PCS.IniReadValue(Global.system + Global.blbConf, "tree", cleanername);
 
             if (readselection == "False")
             {
@@ -285,21 +285,21 @@ namespace pcsm
             {
                 if (treeView1.Nodes[x].Checked)
                 {
-                    PCS.IniWriteValue(Global.system + "blb\\Bleachbit.ini", "tree", treeView1.Nodes[x].Name.ToString(), "True");
+                    PCS.IniWriteValue(Global.system + Global.blbConf, "tree", treeView1.Nodes[x].Name.ToString(), "True");
                 }
                 else
                 {
-                    PCS.IniWriteValue(Global.system + "blb\\Bleachbit.ini", "tree", treeView1.Nodes[x].Name.ToString(), "False");
+                    PCS.IniWriteValue(Global.system + Global.blbConf, "tree", treeView1.Nodes[x].Name.ToString(), "False");
                 }
                 for (int y = 0; y < treeView1.Nodes[x].Nodes.Count; y++)
                 {
                     if (treeView1.Nodes[x].Nodes[y].Checked)
                     {
-                        PCS.IniWriteValue(Global.system + "blb\\Bleachbit.ini", "tree", treeView1.Nodes[x].Nodes[y].Tag.ToString(), "1");
+                        PCS.IniWriteValue(Global.system + Global.blbConf, "tree", treeView1.Nodes[x].Nodes[y].Tag.ToString(), "1");
                     }
                     else
                     {
-                        PCS.IniWriteValue(Global.system + "blb\\Bleachbit.ini", "tree", treeView1.Nodes[x].Nodes[y].Tag.ToString(), "0");
+                        PCS.IniWriteValue(Global.system + Global.blbConf, "tree", treeView1.Nodes[x].Nodes[y].Tag.ToString(), "0");
                     }
                 }
             }
@@ -307,7 +307,7 @@ namespace pcsm
 
         public bool selection(string cleanername)
         {
-            string readselection = PCS.IniReadValue(Global.system + "blb\\Bleachbit.ini", "tree", cleanername);
+            string readselection = PCS.IniReadValue(Global.system + Global.blbConf, "tree", cleanername);
 
             if (readselection == "0")
             {
@@ -481,22 +481,22 @@ namespace pcsm
             
             if (hourly_rb.Checked)
             {
-                pcs.schtime("hourly");
+                pcs.SchTime("hourly");
                 PCS.IniWriteValue("main", "schedule", "hourly");
             }
             else if (daily_rb.Checked && set != "daily")
             {
-                pcs.schtime("daily");
+                pcs.SchTime("daily");
                 PCS.IniWriteValue("main", "schedule", "daily");
             }
             else if (weekly_rb.Checked)
             {
-                pcs.schtime("weekly");
+                pcs.SchTime("weekly");
                 PCS.IniWriteValue("main", "schedule", "weekly");
             }
             else if (monthly_rb.Checked)
             {
-                pcs.schtime("monthly");
+                pcs.SchTime("monthly");
                 PCS.IniWriteValue("settings\\downloadsettings.ini", "main", "schedule", "monthly");
             }
             else if (none_rb.Checked && set != "none")
@@ -504,14 +504,11 @@ namespace pcsm
                 TaskService ts = new TaskService();
                 ts.RootFolder.DeleteTask(@"Performance Maintainer");
                 PCS.IniWriteValue("main", "schedule", "none");
-                
-
             }
         }
 
         public void read_checkbox_check()
         {
-
             string checkforupdates = PCS.IniReadValue("main", "checkforupdates");
             if (checkforupdates == "true")
             {

@@ -1,23 +1,19 @@
-﻿using System;
+﻿using Microsoft.Win32.TaskScheduler;
+using pcsm.Processes;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Microsoft.Win32.TaskScheduler;
 using System.IO;
 using System.Runtime.InteropServices;
-using pcsm.Processes;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace pcsm.Scheduler
 {
     public partial class NewTask : Form
     {
         public static string id;
-        public static string taskfile = Global.system + "settings\\TaskSettings.ini";
+        public static string taskfile = Global.system + Global.taskConf;
         public static bool editmode = false;
         public static int n = 0;
         private TreeView _fieldsTreeCache1 = new TreeView();
@@ -241,7 +237,7 @@ namespace pcsm.Scheduler
                     }
                 }
 
-                DiskCleaner.search_cleaners(treeView1, "blb\\Bleachbit.ini", searchstring);
+                DiskCleaner.SearchCleaners(treeView1, Global.blbConf, searchstring);
                 searchstring.Clear();
                 treeView1.ExpandAll();
             }
@@ -249,12 +245,12 @@ namespace pcsm.Scheduler
             {
                 pictureBox1.Image = global::pcsm.Properties.Resources.q;
                 DiskCleaner._fieldsTreeCache.Nodes.Clear();
-                DiskCleaner.read_cleaners(DiskCleaner._fieldsTreeCache, "blb\\Bleachbit.ini");
+                DiskCleaner.ReadCleaners(DiskCleaner._fieldsTreeCache, Global.blbConf);
                 foreach (TreeNode _node in DiskCleaner._fieldsTreeCache.Nodes)
                 {
                     treeView1.Nodes.Add((TreeNode)_node.Clone());
                 }
-                DiskCleaner.selectionload(treeView1, "blb\\Bleachbit.ini");
+                DiskCleaner.SelectionLoad(treeView1, Global.blbConf);
             }
             //enables redrawing tree after all objects have been added
             treeView1.EndUpdate();
@@ -264,10 +260,10 @@ namespace pcsm.Scheduler
         {
             for (int i = 0; i < treeView1.Nodes.Count; i++)
             {
-                treeView1.Nodes[i].Checked = DiskCleaner.secselection(treeView1.Nodes[i].Name, settingsfile);
+                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, settingsfile);
                 for (int j = 0; j < treeView1.Nodes[i].Nodes.Count; j++)
                 {
-                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
+                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
                 }
 
             }
@@ -281,14 +277,14 @@ namespace pcsm.Scheduler
                 treeView1.Dispose();
                 triStateTreeView1.Location = new System.Drawing.Point(6, 32);
                 triStateTreeView1.Size = new System.Drawing.Size(350, 192);
-                DiskCleaner.read_cleaners_file(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini", "tree");
-                DiskCleaner.selectionload(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
+                DiskCleaner.ReadCleanersFile(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini", "tree");
+                DiskCleaner.SelectionLoad(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
                 pictureBox1.Visible = false;
                 textBox2.Visible = false;
             }
             else
             {
-                DiskCleaner.read_cleaners(treeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
+                DiskCleaner.ReadCleaners(treeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
                 DiskCleaner.CheckUncheckTreeNode(treeView1.Nodes, false);
                 DiskCleaner._fieldsTreeCache.Nodes.Clear();
                 foreach (TreeNode node in treeView1.Nodes)
@@ -351,10 +347,10 @@ namespace pcsm.Scheduler
 
         public void listdrives()
         {
-            DiskDefragger.listdrives(dataGridView1, checkBox13, checkBox12, checkBox14, Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini");
+            DiskDefragger.ListDrives(dataGridView1, checkBox13, checkBox12, checkBox14, Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini");
             if (editmode == true)
             {
-                DiskDefragger.read_defragsettings(dataGridView1, checkBox13, checkBox12, checkBox14, Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini", true);
+                DiskDefragger.ReadDefragSettings(dataGridView1, checkBox13, checkBox12, checkBox14, Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini", true);
                 if (PCS.IniReadValue(Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini", "main", "pathonly") == "True")
                 {
                     radioButton2.Checked = true;
@@ -366,7 +362,6 @@ namespace pcsm.Scheduler
 
         public void save_defragsettings()
         {
-
             if (radioButton1.Checked)
             {
                 PCS.IniWriteValue(Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini", "main", "pathonly", "False");
@@ -377,12 +372,9 @@ namespace pcsm.Scheduler
                 PCS.IniWriteValue(Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini", "main", "pathonly", "True");
                 PCS.IniWriteValue(Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini", "main", "path", textBox4.Text);
             }
-            DiskDefragger.save_defragsettings(dataGridView1, checkBox13, checkBox12, checkBox14, Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini");
-
-
+            DiskDefragger.SaveDefragSettings(dataGridView1, checkBox13, checkBox12, checkBox14, Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini");
         }
-
-
+        
         public void SelectScheduleType(string option)
         {
             comboBox2.Enabled = false;
@@ -628,7 +620,7 @@ namespace pcsm.Scheduler
                     PCS.IniWriteValue(taskfile, id, "typeid", "7");
                     PCS.IniWriteValue(taskfile, id, "typename", comboBox2.Text);
                 }
-                DiskCleaner.save_Cleaners(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
+                DiskCleaner.SaveCleaners(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
                 PCS.IniWriteValue(Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini", "bleachbit", "check_online_updates", "False");
                 save_defragsettings();
                 save_regsections();
@@ -694,7 +686,7 @@ namespace pcsm.Scheduler
 
         private void treeView1_MouseLeave(object sender, EventArgs e)
         {
-            DiskCleaner.save_Cleaners(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
+            DiskCleaner.SaveCleaners(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
             System.Threading.Thread.Sleep(250);
             DiskCleaner._fieldsTreeCache.Nodes.Clear();
             if (DiskCleaner._fieldsTreeCache.Nodes.Count == 0)

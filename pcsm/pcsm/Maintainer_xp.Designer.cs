@@ -631,7 +631,6 @@
             this.Text = "Maintenance";
             this.Activated += new System.EventHandler(this.Maintainer_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Maintainer_FormClosing);
-            this.Load += new System.EventHandler(this.Maintainer_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Maintainer_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
