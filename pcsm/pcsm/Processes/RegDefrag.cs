@@ -10,14 +10,14 @@ namespace pcsm.Processes
             InitializeComponent();
         }
 
-        public void analyse()
+        public void Analyse()
         {
-            RegDefragger.analyse(chart1);
+            RegDefragger.Analyse(chart1);
         }
 
-        public void defrag()
+        public void Defrag()
         {
-            RegDefragger.defrag();
+            RegDefragger.Defrag();
         }
 
         private void button1_Click(object sender, EventArgs e)

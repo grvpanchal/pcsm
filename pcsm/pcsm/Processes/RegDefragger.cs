@@ -4,7 +4,7 @@ namespace pcsm.Processes
 {
     class RegDefragger
     {        
-        public static void analyse(System.Windows.Forms.DataVisualization.Charting.Chart chart1)
+        public static void Analyse(System.Windows.Forms.DataVisualization.Charting.Chart chart1)
         {            
             chart1.Series.Clear();
             PCS.Process("lro\\lro.exe", " /analyse", false);
@@ -26,9 +26,9 @@ namespace pcsm.Processes
             chart1.Series[0]["PieLabelStyle"] = "Disabled";
         }
 
-        public static void defrag()
+        public static void Defrag()
         {   
-            PCS.Process("lro\\lro.exe", " /optimize", false);
+            PCS.Process(Global.regDefragExec, " /optimize", false);
         }
     }
 }

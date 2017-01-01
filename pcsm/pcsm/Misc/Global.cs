@@ -18,6 +18,7 @@ namespace pcsm
         public static string blbExec = "blb\\bleachbit_console.exe";
         public static string defragExec = "ud\\udefrag.exe";
         public static string regCleanExec = "lrc\\lrc.exe";
+        public static string regDefragExec = "lro\\lro.exe";
 
         public static string program = "";
         public static string defragmented = "";

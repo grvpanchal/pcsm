@@ -62,12 +62,10 @@ namespace pcsm.Processes
                             {
                                 searchstring.Add(DiskCleaner._fieldsTreeCache.Nodes[x].Nodes[y].Tag.ToString());
                             }
-
                             else if (m2.Success)
                             {
                                 searchstring.Add(DiskCleaner._fieldsTreeCache.Nodes[x].Nodes[y].Tag.ToString());
                             }
-
                             else
                             {
 
@@ -97,15 +95,16 @@ namespace pcsm.Processes
         {
             for (int i = 0; i < treeView1.Nodes.Count; i++)
             {
-                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, settingsfile);
+                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, Global.settingsfile);
                 for (int j = 0; j < treeView1.Nodes[i].Nodes.Count; j++)
                 {
-                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
+                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), Global.settingsfile);
                 }
 
             }
         }
 
+        #region Events
         private void Form1_Load(object sender, EventArgs e)
         {
             DiskCleaner.SelectionLoad(treeView1, Global.blbConf);
@@ -156,6 +155,7 @@ namespace pcsm.Processes
         private void poweredby_ll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://bleachbit.sourceforge.net");
-        }        
+        }
+        #endregion
     }
 }

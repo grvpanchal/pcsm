@@ -9,43 +9,44 @@ namespace pcsm.Processes
         {
             InitializeComponent();            
         }
-
-        private Maintainer mainForm = null;
-
+        
         public RegClean(Form callingForm)
         {
             mainForm = callingForm as Maintainer; 
             InitializeComponent();
         }
 
-        public void analyse()
+        private Maintainer mainForm = null;
+
+        public void Analyse()
         {
-            RegCleaner.analyse(dataGridView1, label1);
+            RegCleaner.Analyse(dataGridView1, label1);
         }
 
-        public void repair()
+        public void Repair()
         {
-            RegCleaner.repair();
+            RegCleaner.Repair();
         }
-                
+
+        #region Events
+        private void RegClean_Load(object sender, EventArgs e)
+        {            
+            RegCleaner.ReadRegSections(treeView1);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Enabled = false;
             progressBar1.Visible = true;
-            RegCleaner.save_regsections(treeView1);
-            this.analyse();
+            RegCleaner.SaveRegSections(treeView1);
+            this.Analyse();
             button1.Enabled = true;
             progressBar1.Visible = false;
         }
 
-        private void RegClean_Load(object sender, EventArgs e)
-        {            
-            RegCleaner.read_regsections(treeView1);
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {            
-            RegCleaner.save_regsections(treeView1);            
+            RegCleaner.SaveRegSections(treeView1);            
             this.Hide();
         }
 
@@ -53,5 +54,6 @@ namespace pcsm.Processes
         {
             System.Diagnostics.Process.Start("http://sourceforge.net/projects/lilregdefrag/");
         }
+        #endregion
     }
 }

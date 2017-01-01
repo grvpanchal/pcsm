@@ -11,18 +11,13 @@ using System.Windows.Forms;
 namespace pcsm.Scheduler
 {
     public partial class NewTask : Form
-    {
-        public static string id;
-        public static string taskfile = Global.system + Global.taskConf;
-        public static bool editmode = false;
-        public static int n = 0;
-        private TreeView _fieldsTreeCache1 = new TreeView();
+    {   
         public NewTask(string taskid)
         {
             id = taskid;
             InitializeComponent();
 
-            read_regsections();
+            ReadRegSections();
 
             label2.Text = "Task " + id;
             if (PCS.IniReadValue(taskfile, id, "name") != "")
@@ -42,11 +37,18 @@ namespace pcsm.Scheduler
             Directory.CreateDirectory(Global.system + "settings\\tasks\\" + id);
 
         }
+
+        public static string id;
+        public static string taskfile = Global.system + Global.taskConf;
+        public static bool editmode = false;
+        public static int n = 0;
+        private TreeView _fieldsTreeCache1 = new TreeView();
+        List<string> searchstring = new List<string>();
+
         #region Scheduled Task
 
-        public void schtime(String time)
+        public void SchTime(String time)
         {
-
             using (TaskService ts = new TaskService())
             {
                 // Create a new task definition and assign properties
@@ -135,65 +137,8 @@ namespace pcsm.Scheduler
             }
         }
         #endregion
-
-        #region Read all Key in Section
-
-        [DllImport("Kernel32.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-        private static extern UInt32 GetPrivateProfileSection
-            (
-                [In] [MarshalAs(UnmanagedType.LPStr)] string strSectionName,
-                // Note that because the key/value pars are returned as null-terminated
-                // strings with the last string followed by 2 null-characters, we cannot
-                // use StringBuilder.
-                [In] IntPtr pReturnedString,
-                [In] UInt32 nSize,
-                [In] [MarshalAs(UnmanagedType.LPStr)] string strFileName
-            );
-
-        private static string[] GetAllKeysInIniFileSection(string strSectionName, string strIniFileName)
-        {
-            // Allocate in unmanaged memory a buffer of suitable size.
-            // I have specified here the max size of 32767 as documentated 
-            // in MSDN.
-            IntPtr pBuffer = Marshal.AllocHGlobal(32767);
-            // Start with an array of 1 string only. 
-            // Will embellish as we go along.
-            string[] strArray = new string[0];
-            UInt32 uiNumCharCopied = 0;
-
-            uiNumCharCopied = GetPrivateProfileSection(strSectionName, pBuffer, 1778, strIniFileName);
-
-            // iStartAddress will point to the first character of the buffer,
-            int iStartAddress = pBuffer.ToInt32();
-            // iEndAddress will point to the last null char in the buffer.
-            int iEndAddress = iStartAddress + (int)uiNumCharCopied;
-            //int iEndAddress = iStartAddress + 1000;
-            // Navigate through pBuffer.
-            while (iStartAddress < iEndAddress)
-            {
-                // Determine the current size of the array.
-                int iArrayCurrentSize = strArray.Length;
-                // Increment the size of the string array by 1.
-                Array.Resize<string>(ref strArray, iArrayCurrentSize + 1);
-                // Get the current string which starts at "iStartAddress".
-                string strCurrent = Marshal.PtrToStringAnsi(new IntPtr(iStartAddress));
-                // Insert "strCurrent" into the string array.
-                strArray[iArrayCurrentSize] = strCurrent;
-                // Make "iStartAddress" point to the next string.
-                iStartAddress += (strCurrent.Length + 1);
-            }
-
-            Marshal.FreeHGlobal(pBuffer);
-            pBuffer = IntPtr.Zero;
-
-            return strArray;
-        }
-
-        #endregion
-
-        List<string> searchstring = new List<string>();
-
-        public void filter_cleaners(TreeView treeView1, List<string> searchstring, TextBox textBox1, PictureBox pictureBox1)
+        
+        public void FilterCleaners(TreeView treeView1, List<string> searchstring, TextBox textBox1, PictureBox pictureBox1)
         {
             //blocks repainting tree till all objects loaded
 
@@ -256,20 +201,19 @@ namespace pcsm.Scheduler
             treeView1.EndUpdate();
         }
 
-        public void refresh_cleaners(TreeView treeView1, string settingsfile)
+        public void RefreshCleaners(TreeView treeView1, string settingsfile)
         {
             for (int i = 0; i < treeView1.Nodes.Count; i++)
             {
-                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, settingsfile);
+                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, Global.settingsfile);
                 for (int j = 0; j < treeView1.Nodes[i].Nodes.Count; j++)
                 {
-                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
+                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), Global.settingsfile);
                 }
-
             }
         }
 
-        public void read_diskclean()
+        public void ReadDiskClean()
         {
 
             if (editmode == true)
@@ -299,14 +243,14 @@ namespace pcsm.Scheduler
             }
         }
 
-        public void read_regsections()
+        public void ReadRegSections()
         {
 
             string[] sectionnames = { "Active X / COM", "Startup", "ScanFonts", "Application Info", "Drivers", "Help Files", "Sounds", "Application Paths", "Application Settings", "Shared DLL", "Recent Files" };
 
             if (File.Exists(Global.system + "settings\\tasks\\" + id + "\\regsections.ini"))
             {
-                string[] strArray = GetAllKeysInIniFileSection("sections", Global.system + "settings\\tasks\\" + id + "\\regsections.ini");
+                string[] strArray = PCS.GetAllKeysInIniFileSection("sections", Global.system + "settings\\tasks\\" + id + "\\regsections.ini");
 
 
                 for (int i = 0; i < strArray.Length; i++)
@@ -345,7 +289,7 @@ namespace pcsm.Scheduler
             }
         }
 
-        public void listdrives()
+        public void ListDrives()
         {
             DiskDefragger.ListDrives(dataGridView1, checkBox13, checkBox12, checkBox14, Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini");
             if (editmode == true)
@@ -354,13 +298,13 @@ namespace pcsm.Scheduler
                 if (PCS.IniReadValue(Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini", "main", "pathonly") == "True")
                 {
                     radioButton2.Checked = true;
-                    defrag_checkchanged();
+                    DefragCheckChanged();
                 }
                 textBox4.Text = PCS.IniReadValue(Global.system + "settings\\tasks\\" + id + "\\defragsettings.ini", "main", "path");
             }
         }
 
-        public void save_defragsettings()
+        public void SaveDefragSettings()
         {
             if (radioButton1.Checked)
             {
@@ -382,8 +326,8 @@ namespace pcsm.Scheduler
             {
                 TabRemove(tabControl2, "TabPage3");
                 tabControl2.Visible = true;
-                read_diskclean();
-                listdrives();
+                ReadDiskClean();
+                ListDrives();
             }
             if (option == "Clean Registry")
             {
@@ -398,7 +342,7 @@ namespace pcsm.Scheduler
                 TabRemove(tabControl2, "TabPage2");
                 TabRemove(tabControl2, "TabPage3");
                 tabControl2.Visible = true;
-                read_diskclean();
+                ReadDiskClean();
             }
             if (option == "Disk Defragmenation")
             {
@@ -406,59 +350,57 @@ namespace pcsm.Scheduler
                 TabRemove(tabControl2, "TabPage1");
                 TabRemove(tabControl2, "TabPage3");
                 tabControl2.Visible = true;
-                listdrives();
+                ListDrives();
             }
             if (option == "Disk Cleanup & Disk Defragmenation")
             {
                 TabRemove(tabControl2, "TabPage0");
                 TabRemove(tabControl2, "TabPage3");
                 tabControl2.Visible = true;
-                read_diskclean();
-                listdrives();
+                ReadDiskClean();
+                ListDrives();
             }
             if (option == "Clean Registry & Disk Defragmenation")
             {
                 TabRemove(tabControl2, "TabPage1");
                 TabRemove(tabControl2, "TabPage3");
                 tabControl2.Visible = true;
-                listdrives();
+                ListDrives();
             }
             if (option == "Disk Cleanup & Clean Registry")
             {
                 TabRemove(tabControl2, "TabPage2");
                 TabRemove(tabControl2, "TabPage3");
                 tabControl2.Visible = true;
-                read_diskclean();
-
+                ReadDiskClean();
             }
         }
 
-        public void save_schedule()
+        public void SaveSchedule()
         {
-
             if (comboBox1.Text == "Hourly")
             {
-                schtime("hourly");
+                SchTime("hourly");
                 PCS.IniWriteValue("main", "schedule", "hourly");
             }
             else if (comboBox1.Text == "Daily")
             {
-                schtime("daily");
+                SchTime("daily");
                 PCS.IniWriteValue("main", "schedule", "daily");
             }
             else if (comboBox1.Text == "Weekly")
             {
-                schtime("weekly");
+                SchTime("weekly");
                 PCS.IniWriteValue("main", "schedule", "weekly");
             }
             else if (comboBox1.Text == "Monthly")
             {
-                schtime("monthly");
-                PCS.IniWriteValue("settings\\downloadsettings.ini", "main", "schedule", "monthly");
+                SchTime("monthly");
+                PCS.IniWriteValue(Global.settingsfile, "main", "schedule", "monthly");
             }
             else if (comboBox1.Text == "Log On")
             {
-                schtime("logon");
+                SchTime("logon");
             }
             else if (comboBox1.Text == "Log Off")
             {
@@ -468,7 +410,7 @@ namespace pcsm.Scheduler
             }
         }
 
-        public void save_regsections()
+        public void SaveRegSections()
         {
             for (int i = 0; i < treeView2.Nodes.Count; i++)
             {
@@ -482,7 +424,6 @@ namespace pcsm.Scheduler
                 {
                     PCS.IniWriteValue(Global.system + "settings\\tasks\\" + id + "\\regsections.ini", "sections", value, "0");
                 }
-
             }
             this.Close();
         }
@@ -499,6 +440,39 @@ namespace pcsm.Scheduler
             }
         }
 
+        public void DefragCheckChanged()
+        {
+            if (radioButton1.Checked)
+            {
+                label10.Enabled = false;
+                textBox4.Enabled = false;
+                button4.Enabled = false;
+
+                dataGridView1.DefaultCellStyle.BackColor = SystemColors.Window;
+                label8.Enabled = true;
+                dataGridView1.Enabled = true;
+                checkBox12.Enabled = true;
+                checkBox13.Enabled = true;
+                checkBox14.Enabled = true;
+            }
+
+            if (radioButton2.Checked)
+            {
+                label8.Enabled = false;
+                dataGridView1.Enabled = false;
+                checkBox12.Enabled = false;
+                checkBox13.Enabled = false;
+                checkBox14.Enabled = false;
+                dataGridView1.DefaultCellStyle.BackColor = SystemColors.Control;
+
+                label10.Enabled = true;
+                textBox4.Enabled = true;
+                button4.Enabled = true;
+
+            }
+        }
+
+        #region Events
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.Text == "Monthly")
@@ -555,6 +529,11 @@ namespace pcsm.Scheduler
                 checkBox7.Visible = false;
             }
 
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectScheduleType(comboBox2.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -622,9 +601,9 @@ namespace pcsm.Scheduler
                 }
                 DiskCleaner.SaveCleaners(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
                 PCS.IniWriteValue(Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini", "bleachbit", "check_online_updates", "False");
-                save_defragsettings();
-                save_regsections();
-                save_schedule();
+                SaveDefragSettings();
+                SaveRegSections();
+                SaveSchedule();
                 string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
                 string computername = System.Environment.MachineName;
                 TaskService ts = new TaskService();
@@ -672,15 +651,10 @@ namespace pcsm.Scheduler
                 textBox4.Text = folderBrowserDialog1.SelectedPath;
             }
         }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SelectScheduleType(comboBox2.Text);
-        }
-
+        
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            filter_cleaners(treeView1, searchstring, textBox2, pictureBox1);
+            FilterCleaners(treeView1, searchstring, textBox2, pictureBox1);
             DiskCleaner.CheckUncheckTreeNode(treeView1.Nodes, false);
         }
 
@@ -733,48 +707,16 @@ namespace pcsm.Scheduler
         {
             textBox2.Text = "";
         }
-
-        public void defrag_checkchanged()
-        {
-            if (radioButton1.Checked)
-            {
-                label10.Enabled = false;
-                textBox4.Enabled = false;
-                button4.Enabled = false;
-
-                dataGridView1.DefaultCellStyle.BackColor = SystemColors.Window;
-                label8.Enabled = true;
-                dataGridView1.Enabled = true;
-                checkBox12.Enabled = true;
-                checkBox13.Enabled = true;
-                checkBox14.Enabled = true;
-            }
-
-            if (radioButton2.Checked)
-            {
-                label8.Enabled = false;
-                dataGridView1.Enabled = false;
-                checkBox12.Enabled = false;
-                checkBox13.Enabled = false;
-                checkBox14.Enabled = false;
-                dataGridView1.DefaultCellStyle.BackColor = SystemColors.Control;
-
-                label10.Enabled = true;
-                textBox4.Enabled = true;
-                button4.Enabled = true;
-
-            }
-        }
-
+        
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            defrag_checkchanged();
+            DefragCheckChanged();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            defrag_checkchanged();
+            DefragCheckChanged();
         }
-
+        #endregion
     }
 }

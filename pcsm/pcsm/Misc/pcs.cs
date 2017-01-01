@@ -13,7 +13,7 @@ namespace pcsm
 {
     public class PCS
     {
-        
+        #region CheckInternet
         public static bool CheckForInternetConnection()
         {
             try
@@ -29,9 +29,9 @@ namespace pcsm
                 return false;
             }
         }
+        #endregion
 
-        #region process
-
+        #region Process
         public static void Process( string filename , string arguments , bool hidden)
         {
             try
@@ -110,6 +110,61 @@ namespace pcsm
         }
         #endregion
 
+        #region Read all Key in Section
+
+        [DllImport("Kernel32.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Ansi)]
+        public static extern UInt32 GetPrivateProfileSection
+            (
+                [In] [MarshalAs(UnmanagedType.LPStr)] string strSectionName,
+                // Note that because the key/value pars are returned as null-terminated
+                // strings with the last string followed by 2 null-characters, we cannot
+                // use StringBuilder.
+                [In] IntPtr pReturnedString,
+                [In] UInt32 nSize,
+                [In] [MarshalAs(UnmanagedType.LPStr)] string strFileName
+            );
+
+        public static string[] GetAllKeysInIniFileSection(string strSectionName, string strIniFileName)
+        {
+            // Allocate in unmanaged memory a buffer of suitable size.
+            // I have specified here the max size of 32767 as documentated 
+            // in MSDN.
+            IntPtr pBuffer = Marshal.AllocHGlobal(32767);
+            // Start with an array of 1 string only. 
+            // Will embellish as we go along.
+            string[] strArray = new string[0];
+            UInt32 uiNumCharCopied = 0;
+
+            uiNumCharCopied = GetPrivateProfileSection(strSectionName, pBuffer, 1778, strIniFileName);
+
+            // iStartAddress will point to the first character of the buffer,
+            int iStartAddress = pBuffer.ToInt32();
+            // iEndAddress will point to the last null char in the buffer.
+            int iEndAddress = iStartAddress + (int)uiNumCharCopied;
+            //int iEndAddress = iStartAddress + 1000;
+            // Navigate through pBuffer.
+            while (iStartAddress < iEndAddress)
+            {
+                // Determine the current size of the array.
+                int iArrayCurrentSize = strArray.Length;
+                // Increment the size of the string array by 1.
+                Array.Resize<string>(ref strArray, iArrayCurrentSize + 1);
+                // Get the current string which starts at "iStartAddress".
+                string strCurrent = Marshal.PtrToStringAnsi(new IntPtr(iStartAddress));
+                // Insert "strCurrent" into the string array.
+                strArray[iArrayCurrentSize] = strCurrent;
+                // Make "iStartAddress" point to the next string.
+                iStartAddress += (strCurrent.Length + 1);
+            }
+
+            Marshal.FreeHGlobal(pBuffer);
+            pBuffer = IntPtr.Zero;
+
+            return strArray;
+        }
+
+        #endregion
+        
         #region Getlastfileindirectory
         public string GetLastFileInDirectory(string directory, string pattern = "*.*")
         {
@@ -131,7 +186,7 @@ namespace pcsm
         }
         #endregion
 
-        #region findword
+        #region FindWord
         public String FindWord(string fileName, string searchKeyword, int cut)
         {
 
@@ -204,8 +259,9 @@ namespace pcsm
 
             }
         }
-        #endregion        
+        #endregion
 
+        #region Conversion
         public static string ConvertSizeToString(long Length)
         {
             if (Length < 0)
@@ -246,7 +302,6 @@ namespace pcsm
 
             return strSizeFmt + strUnit;
         }
-
-
+        #endregion
     }
 }

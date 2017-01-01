@@ -8,18 +8,19 @@ namespace pcsm.Processes
         public RegCleanList()
         {
             InitializeComponent();         
-        }        
+        }
 
+        #region Events
         private void RegClean_Load(object sender, EventArgs e)
         {
-            RegCleaner.read_regsections(treeView1);
+            RegCleaner.ReadRegSections(treeView1);
         }
         
         private void button1_Click(object sender, EventArgs e)
         {
-            RegCleaner.save_regsections(treeView1);
+            RegCleaner.SaveRegSections(treeView1);
             this.Close();
-            
         }
+        #endregion
     }
 }

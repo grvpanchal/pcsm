@@ -14,7 +14,6 @@ namespace pcsm
         public Maintainer_xp()
         {
             InitializeComponent();
-            
         }
 
         RegClean rc = new RegClean();
@@ -22,13 +21,14 @@ namespace pcsm
         RegDefrag rd = new RegDefrag();
         DiskDefrag dd = new DiskDefrag();
 
-        public void check_skipped_pending(CheckBox c, Label l)
+        Dictionary<string, string> data = new Dictionary<string, string>();
+
+        public void CheckSkippedPending(CheckBox c, Label l)
         {
             if (c.Checked)
             {
                 l.Visible = true;
                 l.Text = "Pending";
- 
             }
             else
             {
@@ -37,9 +37,7 @@ namespace pcsm
             }
         }
 
-        
-
-        public void start_analysis(DoWorkEventArgs e)
+        public void StartAnalysis(DoWorkEventArgs e)
         {   
             Global.currentprocess = "analysis";
             Dictionary<string, string> data = new Dictionary<string, string>();
@@ -95,7 +93,7 @@ namespace pcsm
                     return;
                 }
                 Application.DoEvents();                
-                rc.analyse();
+                rc.Analyse();
                 data.Add("linklabel5.text", Global.registryerrors.ToString() + " Registry Errors\nwere found");
                 if (Global.registryerrors == 0)
                 {
@@ -127,7 +125,6 @@ namespace pcsm
                 data["linklabel6.enabled"] = "true";
                 backgroundWorker1.ReportProgress(40, data);
                 Thread.Sleep(500);
-
             }
 
             if (checkBox3.Checked)
@@ -143,7 +140,7 @@ namespace pcsm
                     return;
                 }
                 Application.DoEvents();
-                dd.analyse();
+                dd.Analyse();
                 data.Add("linklabel8.text", "");
                 for (int k = 0; k < Global.fragmentedp.Count(); k++)
                 {
@@ -183,7 +180,7 @@ namespace pcsm
                         return;
                     }
                     Application.DoEvents();
-                    rd.analyse();
+                    rd.Analyse();
                     data["linklabel7.visible"] = "true";
                     data["linklabel7.enabled"] = "true";
                     if ((100 - ((Global.newRegistrySize / Global.oldRegistrySize) * 100)) >= 5)
@@ -204,12 +201,11 @@ namespace pcsm
             }
             backgroundWorker1.ReportProgress(100, data);
         }
-
-        Dictionary<string, string> data = new Dictionary<string, string>();
-        public void start_repair(DoWorkEventArgs e)
+        
+        public void StartRepair(DoWorkEventArgs e)
         {
             Global.currentprocess = "repair";
-            
+
             data.Add("button1.enabled", "false");
             data.Add("button2.enabled", "false");
             data.Add("checkbox1.visible", "false");
@@ -256,13 +252,15 @@ namespace pcsm
                 data.Add("linklabel5.visible", "false");
                 data.Add("picturebox11.visible", "true");
                 backgroundWorker1.ReportProgress(10, data);
+
                 if (this.backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
                     return;
                 }
+
                 Application.DoEvents();
-                rc.repair();
+                rc.Repair();
                 data.Add("linklabel5.text", Global.registry +" Registry\nProblems Cleared");
                 data["picturebox11.visible"] = "false";
                 data["linklabel5.visible"] = "true";
@@ -304,8 +302,7 @@ namespace pcsm
                 if (uncompress == "True")
                 {
                     if (data.ContainsKey("progressbar2.visible"))
-                    {
-                        
+                    {   
                         data["progressbar2.visible"] = "true";
                     }
                     else
@@ -319,10 +316,11 @@ namespace pcsm
                     e.Cancel = true;
                     return;
                 }
+
                 Application.DoEvents();
                 this.timer1.Interval = 300;
                 timer1.Start();
-                dd.defrag();
+                dd.Defrag();
                 timer1.Stop();
                 this.timer1.Interval = 3000;
                 data.Add("linklabel8.text", "");
@@ -350,7 +348,7 @@ namespace pcsm
                         return;
                     }
                     Application.DoEvents();
-                    rd.defrag();
+                    rd.Defrag();
                     data["linklabel7.visible"] = "true";
                     data.Add("linklabel7.text", "Defragmentation\nComplete");
                     data["linklabel7.enabled"] = "false";
@@ -370,6 +368,40 @@ namespace pcsm
             backgroundWorker1.ReportProgress(100, data);
         }
 
+        public bool value(Dictionary<string, string> a, string b)
+        {
+            if (a.ContainsKey(b))
+            {
+                if (a[b] == "true")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public string valuetext(Dictionary<string, string> a, string b)
+        {
+            if (a.ContainsKey(b))
+            {
+                return a[b];
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        #region Events
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DiskCleanList dcl = new DiskCleanList();
@@ -395,12 +427,11 @@ namespace pcsm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            check_skipped_pending(checkBox1, label4);
-            check_skipped_pending(checkBox2, label6);
-            check_skipped_pending(checkBox3, label7);
-            check_skipped_pending(checkBox5, label8);
+            CheckSkippedPending(checkBox1, label4);
+            CheckSkippedPending(checkBox2, label6);
+            CheckSkippedPending(checkBox3, label7);
+            CheckSkippedPending(checkBox5, label8);
             backgroundWorker1.RunWorkerAsync(0);           
-            
         }
 
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -438,47 +469,14 @@ namespace pcsm
             Process.Start("http://sourceforge.net/projects/lilregdefrag/");
         }
 
-        public bool value(Dictionary<string, string> a, string b)
-        {
-            if (a.ContainsKey(b))
-            {
-                if (a[b] == "true")
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-
-        public string valuetext(Dictionary<string, string> a, string b)
-        {
-            if (a.ContainsKey(b))
-            {
-                return a[b];
-            }
-            else
-            {
-                return null;
-            }
-
-        }
-        
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             
             int type = (int)e.Argument;
             if(type == 0)
-                start_analysis(e);
+                StartAnalysis(e);
             if (type == 1)
-                start_repair(e);
+                StartRepair(e);
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -579,10 +577,10 @@ namespace pcsm
             else
             {
                 button2.Enabled = false;
-                check_skipped_pending(checkBox1, label4);
-                check_skipped_pending(checkBox2, label6);
-                check_skipped_pending(checkBox3, label7);
-                check_skipped_pending(checkBox5, label8);
+                CheckSkippedPending(checkBox1, label4);
+                CheckSkippedPending(checkBox2, label6);
+                CheckSkippedPending(checkBox3, label7);
+                CheckSkippedPending(checkBox5, label8);
                 backgroundWorker1.RunWorkerAsync(1);
             }
         }
@@ -692,5 +690,6 @@ namespace pcsm
                 }
             }
         }
+        #endregion
     }
 }

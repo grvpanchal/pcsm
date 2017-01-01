@@ -49,45 +49,45 @@ namespace pcsm.Processes
                 {
                     uncompress.CheckState = CheckState.Unchecked;
                     uncompress.Enabled = false;
-                    PCS.IniWriteValue(settingsfile, "main", "uncompress", "False");
+                    PCS.IniWriteValue(Global.settingsfile, "main", "uncompress", "False");
 
                 }
                 dataGridView1.Rows.Add(true, drive.Name, driveFreeSpaceGB + " GB", drivefreeSpacep);
             }
-            DiskDefragger.ReadDefragSettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile, true);
+            DiskDefragger.ReadDefragSettings(dataGridView1, optimize, optimizemft, uncompress, Global.settingsfile, true);
         }
         
         public static void ReadDefragSettings(DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, string settingsfile, bool silent)
         {
-            string optimize1 = PCS.IniReadValue(settingsfile, "main", "optimize");
+            string optimize1 = PCS.IniReadValue(Global.settingsfile, "main", "optimize");
             if (optimize1 == "True")
                 optimize.CheckState = CheckState.Checked;
             else
                 optimize.CheckState = CheckState.Unchecked;
 
-            string optimizemft1 = PCS.IniReadValue(settingsfile, "main", "optimizemft");
+            string optimizemft1 = PCS.IniReadValue(Global.settingsfile, "main", "optimizemft");
             if (optimizemft1 == "True")
                 optimizemft.CheckState = CheckState.Checked;
             else
                 optimizemft.CheckState = CheckState.Unchecked;
 
-            string uncompress1 = PCS.IniReadValue(settingsfile, "main", "uncompress");
+            string uncompress1 = PCS.IniReadValue(Global.settingsfile, "main", "uncompress");
             if (uncompress1 == "True")
                 uncompress.CheckState = CheckState.Checked;
             else
                 uncompress.CheckState = CheckState.Unchecked;
 
             string fixeddrives = dataGridView1.Rows.Count.ToString();
-            string settingsfixeddrives = PCS.IniReadValue(settingsfile, "main", "fixeddrives");
+            string settingsfixeddrives = PCS.IniReadValue(Global.settingsfile, "main", "fixeddrives");
             if (fixeddrives == settingsfixeddrives)
             {
                 for (int j = 0; j < dataGridView1.Rows.Count; j++)
                 {
-                    string settingsdrive = PCS.IniReadValue(settingsfile, j.ToString(), "drivename");
+                    string settingsdrive = PCS.IniReadValue(Global.settingsfile, j.ToString(), "drivename");
                     string detecteddrive = dataGridView1.Rows[j].Cells[1].Value.ToString().Substring(0, 2);
                     if (settingsdrive == detecteddrive)
                     {
-                        string drivechecked = PCS.IniReadValue(settingsfile, j.ToString(), "checked");
+                        string drivechecked = PCS.IniReadValue(Global.settingsfile, j.ToString(), "checked");
                         if (drivechecked == "True")
                         {
                             dataGridView1.Rows[j].Cells[0].Value = true;
@@ -104,7 +104,7 @@ namespace pcsm.Processes
                             MessageBox.Show("Drive Configurations has been changed. Rewriting Configuration.");
 
                         }
-                        DiskDefragger.SaveDefragSettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile);
+                        DiskDefragger.SaveDefragSettings(dataGridView1, optimize, optimizemft, uncompress, Global.settingsfile);
                     }
                 }
             }
@@ -115,7 +115,7 @@ namespace pcsm.Processes
                     MessageBox.Show("Drive Configurations has been changed. Rewriting Configuration.");
 
                 }
-                SaveDefragSettings(dataGridView1, optimize, optimizemft, uncompress, settingsfile);
+                SaveDefragSettings(dataGridView1, optimize, optimizemft, uncompress, Global.settingsfile);
             }
 
         }
@@ -123,22 +123,58 @@ namespace pcsm.Processes
         public static void SaveDefragSettings(DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, string settingsfile)
         {
 
-            PCS.IniWriteValue(settingsfile, "main", "optimize", optimize.Checked.ToString());
+            PCS.IniWriteValue(Global.settingsfile, "main", "optimize", optimize.Checked.ToString());
 
-            PCS.IniWriteValue(settingsfile, "main", "optimizemft", optimizemft.Checked.ToString());
+            PCS.IniWriteValue(Global.settingsfile, "main", "optimizemft", optimizemft.Checked.ToString());
 
-            PCS.IniWriteValue(settingsfile, "main", "uncompress", uncompress.Checked.ToString());
+            PCS.IniWriteValue(Global.settingsfile, "main", "uncompress", uncompress.Checked.ToString());
 
-            PCS.IniWriteValue(settingsfile, "main", "fixeddrives", dataGridView1.Rows.Count.ToString());
+            PCS.IniWriteValue(Global.settingsfile, "main", "fixeddrives", dataGridView1.Rows.Count.ToString());
 
             for (int j = 0; j < dataGridView1.Rows.Count; j++)
             {
-                PCS.IniWriteValue(settingsfile, j.ToString(), "drivename", dataGridView1.Rows[j].Cells[1].Value.ToString().Substring(0, 2));
-                PCS.IniWriteValue(settingsfile, j.ToString(), "checked", dataGridView1.Rows[j].Cells[0].Value.ToString());
+                PCS.IniWriteValue(Global.settingsfile, j.ToString(), "drivename", dataGridView1.Rows[j].Cells[1].Value.ToString().Substring(0, 2));
+                PCS.IniWriteValue(Global.settingsfile, j.ToString(), "checked", dataGridView1.Rows[j].Cells[0].Value.ToString());
 
             }
         }
         
+        public static void DriveSelectionChanged(System.Windows.Forms.DataVisualization.Charting.Chart chart1, System.Windows.Forms.DataVisualization.Charting.Series series1, DataGridView dataGridView1, Label label4, GroupBox groupBox1)
+        {
+            string logf = dataGridView1.CurrentCell.RowIndex.ToString();
+            if (File.Exists("ud\\" + logf + ".log"))
+            {
+                PCS pcs = new PCS();
+                string fragmentedf = pcs.FindWord("ud\\" + logf + ".log", "fragmented files", 41);
+                string fragmentedp = pcs.FindWord("ud\\" + logf + ".log", "fragmentation is above the threshold:", 61);
+                string compf = pcs.FindWord("ud\\" + logf + ".log", "compressed files:", 41);
+                string totalf = pcs.FindWord("ud\\" + logf + ".log", "files total:", 41);
+                double defragmentedfiles = Convert.ToDouble(totalf) - Convert.ToDouble(compf) + Convert.ToDouble(fragmentedf);
+
+                label4.Text = "Fragmentation: " + fragmentedp.Substring(0, 7);
+                groupBox1.Text = dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString().Substring(0, 2);
+                series1.Points.Clear();
+                series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalLeft;
+                series1.ChartArea = "ChartArea1";
+                series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+                series1.Legend = "Legend1";
+                series1.Name = "Series1";
+                series1.Points.AddXY("Defragmented Files: " + defragmentedfiles, defragmentedfiles);
+                series1.Points.AddXY("Fragmented Files: " + fragmentedf, Convert.ToDouble(fragmentedf));
+                series1.Points.AddXY("Compressed Files: " + compf, Convert.ToDouble(compf));
+                double fs = Convert.ToDouble(dataGridView1[3, dataGridView1.CurrentCell.RowIndex].Value);
+                double rs = 100 - fs;
+                double fsp = Math.Round((fs * Convert.ToDouble(totalf)) / rs, 0);
+                series1.Points.AddXY("Free Space: " + fs + "%", fsp);
+            }
+            else
+            {
+                label4.Text = "Drive Not Analysed";
+                groupBox1.Text = dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString().Substring(0, 2);
+                series1.Points.Clear();
+            }
+        }
+
         public static void Analyse(System.Windows.Forms.DataVisualization.Charting.Chart chart1, System.Windows.Forms.DataVisualization.Charting.Series series1, DataGridView dataGridView1, CheckBox optimize, CheckBox optimizemft, CheckBox uncompress, Label label4, string settingsfile)
         {
             PCS pcs = new PCS();
@@ -198,15 +234,15 @@ namespace pcsm.Processes
                 }
             }
             string argoptions = " ";
-            string optimize = PCS.IniReadValue(settingsfile, "main", "optimize");
+            string optimize = PCS.IniReadValue(Global.settingsfile, "main", "optimize");
             if (optimize == "True")
 
                 argoptions = argoptions + "-o ";
 
 
-            string uncompress = PCS.IniReadValue(settingsfile, "main", "uncompress");
+            string uncompress = PCS.IniReadValue(Global.settingsfile, "main", "uncompress");
             if (uncompress == "True")
-            {   
+            {
                 Global.compactstatus = true;
                 try
                 {
@@ -284,9 +320,9 @@ namespace pcsm.Processes
             {
             }
 
-            string optimizemft = PCS.IniReadValue(settingsfile, "main", "optimizemft");
+            string optimizemft = PCS.IniReadValue(Global.settingsfile, "main", "optimizemft");
             if (optimizemft == "True")
-            {   
+            {
                 try
                 {
                     ProcessStartInfo startInfo3 = new ProcessStartInfo(Global.defragExec);
@@ -322,42 +358,6 @@ namespace pcsm.Processes
                 catch
                 {
                 }
-            }
-        }
-
-        public static void DriveSelectionChanged(System.Windows.Forms.DataVisualization.Charting.Chart chart1, System.Windows.Forms.DataVisualization.Charting.Series series1, DataGridView dataGridView1, Label label4, GroupBox groupBox1)
-        {
-            string logf = dataGridView1.CurrentCell.RowIndex.ToString();
-            if (File.Exists("ud\\" + logf + ".log"))
-            {
-                PCS pcs = new PCS();
-                string fragmentedf = pcs.FindWord("ud\\" + logf + ".log", "fragmented files", 41);
-                string fragmentedp = pcs.FindWord("ud\\" + logf + ".log", "fragmentation is above the threshold:", 61);
-                string compf = pcs.FindWord("ud\\" + logf + ".log", "compressed files:", 41);
-                string totalf = pcs.FindWord("ud\\" + logf + ".log", "files total:", 41);
-                double defragmentedfiles = Convert.ToDouble(totalf) - Convert.ToDouble(compf) + Convert.ToDouble(fragmentedf);
-
-                label4.Text = "Fragmentation: " + fragmentedp.Substring(0, 7);
-                groupBox1.Text = dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString().Substring(0, 2);
-                series1.Points.Clear();
-                series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalLeft;
-                series1.ChartArea = "ChartArea1";
-                series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-                series1.Legend = "Legend1";
-                series1.Name = "Series1";
-                series1.Points.AddXY("Defragmented Files: " + defragmentedfiles, defragmentedfiles);
-                series1.Points.AddXY("Fragmented Files: " + fragmentedf, Convert.ToDouble(fragmentedf));
-                series1.Points.AddXY("Compressed Files: " + compf, Convert.ToDouble(compf));
-                double fs = Convert.ToDouble(dataGridView1[3, dataGridView1.CurrentCell.RowIndex].Value);
-                double rs = 100 - fs;
-                double fsp = Math.Round((fs * Convert.ToDouble(totalf)) / rs, 0);
-                series1.Points.AddXY("Free Space: " + fs + "%", fsp);
-            }
-            else
-            {
-                label4.Text = "Drive Not Analysed";
-                groupBox1.Text = dataGridView1[1, dataGridView1.CurrentCell.RowIndex].Value.ToString().Substring(0, 2);
-                series1.Points.Clear();
             }
         }
     }

@@ -14,47 +14,9 @@ namespace pcsm.Processes
         }
 
         private TreeView _fieldsTreeCache1 = new TreeView();
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            DiskCleaner.SelectionLoad(treeView1, Global.blbConf);
-            DiskCleaner._fieldsTreeCache.Nodes.Clear();
-            foreach (TreeNode node in treeView1.Nodes)
-            {
-                DiskCleaner._fieldsTreeCache.Nodes.Add((TreeNode)node.Clone());
-            }
-            _fieldsTreeCache1.Nodes.Clear();
-            foreach (TreeNode node in treeView1.Nodes)
-            {
-                _fieldsTreeCache1.Nodes.Add((TreeNode)node.Clone());
-            }
-            
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            DiskCleaner.CheckUncheckTreeNode(treeView1.Nodes, true);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            DiskCleaner.CheckUncheckTreeNode(treeView1.Nodes, false);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (this.textBox1.Text != string.Empty)
-            {
-                Global.cleanertext = this.textBox1.Text;
-            }
-            DiskCleaner.SaveCleaners(treeView1, Global.blbConf);
-            this.Close();
-        }
-
         List<string> searchstring = new List<string>();
-
-        public void filter_cleaners(TreeView treeView1, List<string> searchstring, TextBox textBox1, PictureBox pictureBox1)
+        
+        public void FilterCleaners(TreeView treeView1, List<string> searchstring, TextBox textBox1, PictureBox pictureBox1)
         {
             //blocks repainting tree till all objects loaded
 
@@ -117,28 +79,70 @@ namespace pcsm.Processes
             treeView1.EndUpdate();
         }
 
-
-        public void refresh_cleaners(TreeView treeView1, string settingsfile)
-        {           
+        public void RefreshCleaners(TreeView treeView1, string settingsfile)
+        {
             for (int i = 0; i < treeView1.Nodes.Count; i++)
             {
-                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, settingsfile);
+                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, Global.settingsfile);
                 for (int j = 0; j < treeView1.Nodes[i].Nodes.Count; j++)
                 {
                     if (treeView1.Nodes[i].Nodes[j].Tag.ToString() == "chromium.cache")
                     {
-                        MessageBox.Show(DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile).ToString());
+                        MessageBox.Show(DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), Global.settingsfile).ToString());
                     }
-                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
+                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), Global.settingsfile);
                 }
 
             }
         }
 
+        #region Events
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            DiskCleaner.SelectionLoad(treeView1, Global.blbConf);
+            DiskCleaner._fieldsTreeCache.Nodes.Clear();
+            foreach (TreeNode node in treeView1.Nodes)
+            {
+                DiskCleaner._fieldsTreeCache.Nodes.Add((TreeNode)node.Clone());
+            }
+            _fieldsTreeCache1.Nodes.Clear();
+            foreach (TreeNode node in treeView1.Nodes)
+            {
+                _fieldsTreeCache1.Nodes.Add((TreeNode)node.Clone());
+            }
+            
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DiskCleaner.CheckUncheckTreeNode(treeView1.Nodes, true);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DiskCleaner.CheckUncheckTreeNode(treeView1.Nodes, false);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text != string.Empty)
+            {
+                Global.cleanertext = this.textBox1.Text;
+            }
+            DiskCleaner.SaveCleaners(treeView1, Global.blbConf);
+            this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            FilterCleaners(treeView1, searchstring, textBox1, pictureBox1);
+        }
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            filter_cleaners(treeView1, searchstring, textBox1, pictureBox1);
+            FilterCleaners(treeView1, searchstring, textBox1, pictureBox1);
         }
 
         private void treeView1_MouseLeave(object sender, EventArgs e)
@@ -155,13 +159,7 @@ namespace pcsm.Processes
                 }
             }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = "";
-            filter_cleaners(treeView1, searchstring, textBox1, pictureBox1);
-        }
-
+        
         private void DiskCleanList_Shown(object sender, EventArgs e)
         {
             DiskCleaner.SelectionLoad(treeView1, Global.blbConf);
@@ -175,6 +173,7 @@ namespace pcsm.Processes
             {
                 _fieldsTreeCache1.Nodes.Add((TreeNode)node.Clone());
             }
-        }        
+        }
+        #endregion
     }
 }

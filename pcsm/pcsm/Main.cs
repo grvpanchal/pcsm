@@ -13,7 +13,7 @@ namespace pcsm
     {
         private bool m_bLayoutCalled = false;
         private DateTime m_dt;
-        
+        public static string Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
         #region GlobalMemoryStatusEx
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         internal class MEMORYSTATUSEX
@@ -45,6 +45,7 @@ namespace pcsm
         {            
             InitializeComponent();                                         
         }
+
 
         #region Shadow, Movement and Single Instance
         
@@ -508,8 +509,8 @@ namespace pcsm
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            Loading a = new Loading();
-            a.Show();
+            Options o = new Options();
+            o.Show();
         }
 
         private void pictureBox2_MouseHover(object sender, EventArgs e)
@@ -674,7 +675,7 @@ namespace pcsm
 
         private void ph_ll_Click(object sender, EventArgs e)
         {
-            String Architecture = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
+            
             if (Architecture == "x86")
             {
                 OpenProgram("ph86");

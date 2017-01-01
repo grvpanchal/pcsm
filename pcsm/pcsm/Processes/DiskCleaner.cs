@@ -22,21 +22,21 @@ namespace pcsm.Processes
             {
                 if (treeView1.Nodes[x].Checked)
                 {
-                    PCS.IniWriteValue(settingsfile, "tree", treeView1.Nodes[x].Name.ToString(), "True");
+                    PCS.IniWriteValue(Global.settingsfile, "tree", treeView1.Nodes[x].Name.ToString(), "True");
                 }
                 else
                 {
-                    PCS.IniWriteValue(settingsfile, "tree", treeView1.Nodes[x].Name.ToString(), "False");
+                    PCS.IniWriteValue(Global.settingsfile, "tree", treeView1.Nodes[x].Name.ToString(), "False");
                 }
                 for (int y = 0; y < treeView1.Nodes[x].Nodes.Count; y++)
                 {
                     if (treeView1.Nodes[x].Nodes[y].Checked)
                     {
-                        PCS.IniWriteValue(settingsfile, "tree", treeView1.Nodes[x].Nodes[y].Tag.ToString(), "1");
+                        PCS.IniWriteValue(Global.settingsfile, "tree", treeView1.Nodes[x].Nodes[y].Tag.ToString(), "1");
                     }
                     else
                     {
-                        PCS.IniWriteValue(settingsfile, "tree", treeView1.Nodes[x].Nodes[y].Tag.ToString(), "0");
+                        PCS.IniWriteValue(Global.settingsfile, "tree", treeView1.Nodes[x].Nodes[y].Tag.ToString(), "0");
                     }
                 }
             }
@@ -85,7 +85,7 @@ namespace pcsm.Processes
                 string[] rootsplit = s.Split('.');
                 TreeNode ParentNode = new TreeNode();
                 ParentNode.Name = rootsplit[0];
-                ParentNode.Checked = SecSelection(rootsplit[0], settingsfile);
+                ParentNode.Checked = SecSelection(rootsplit[0], Global.settingsfile);
                 rpl = rootsplit[0].Replace('_', ' ');
                 if (rpl.Length > 7)
                 {
@@ -103,7 +103,7 @@ namespace pcsm.Processes
                     TreeNode childnode = new TreeNode();
                     childnode.Name = rootsplit[1];
                     childnode.Tag = output[i];
-                    childnode.Checked = Selection(output[i], settingsfile);
+                    childnode.Checked = Selection(output[i], Global.settingsfile);
                     rpl = rootsplit[1].Replace('_', ' ');
                     childnode.Text = char.ToUpper(rpl[0]) + rpl.Substring(1);
                     ParentNode.Nodes.Add(childnode);
@@ -127,7 +127,7 @@ namespace pcsm.Processes
 
             byte[] buffer = new byte[2048];
 
-            GetPrivateProfileSection(section, buffer, 2048, settingsfile);
+            GetPrivateProfileSection(section, buffer, 2048, Global.settingsfile);
             String[] tmp = Encoding.Default.GetString(buffer).Trim('\0').Split('\0');
 
             List<string> output = new List<string>();
@@ -152,7 +152,7 @@ namespace pcsm.Processes
                     string[] rootsplit = s.Split('.');
                     TreeNode ParentNode = new TreeNode();
                     ParentNode.Name = rootsplit[0];
-                    ParentNode.Checked = SecSelection(rootsplit[0], settingsfile);
+                    ParentNode.Checked = SecSelection(rootsplit[0], Global.settingsfile);
                     rpl = rootsplit[0].Replace('_', ' ');
                     if (rpl.Length > 7)
                     {
@@ -170,7 +170,7 @@ namespace pcsm.Processes
                         TreeNode childnode = new TreeNode();
                         childnode.Name = rootsplit[1];
                         childnode.Tag = output[i];
-                        childnode.Checked = Selection(output[i], settingsfile);
+                        childnode.Checked = Selection(output[i], Global.settingsfile);
                         rpl = rootsplit[1].Replace('_', ' ');
                         childnode.Text = char.ToUpper(rpl[0]) + rpl.Substring(1);
                         ParentNode.Nodes.Add(childnode);
@@ -207,7 +207,7 @@ namespace pcsm.Processes
                 string[] rootsplit = s.Split('.');
                 TreeNode ParentNode = new TreeNode();
                 ParentNode.Name = rootsplit[0];
-                ParentNode.Checked = SecSelection(rootsplit[0], settingsfile);
+                ParentNode.Checked = SecSelection(rootsplit[0], Global.settingsfile);
                 rpl = rootsplit[0].Replace('_', ' ');
                 if (rpl.Length > 7)
                 {
@@ -225,7 +225,7 @@ namespace pcsm.Processes
                     TreeNode childnode = new TreeNode();
                     childnode.Name = rootsplit[1];
                     childnode.Tag = output[i];
-                    childnode.Checked = Selection(output[i], settingsfile);
+                    childnode.Checked = Selection(output[i], Global.settingsfile);
                     rpl = rootsplit[1].Replace('_', ' ');
                     childnode.Text = char.ToUpper(rpl[0]) + rpl.Substring(1);
                     ParentNode.Nodes.Add(childnode);
@@ -246,7 +246,7 @@ namespace pcsm.Processes
 
         public static bool Selection(string cleanername, string settingsfile)
         {
-            string readselection = PCS.IniReadValue(settingsfile, "tree", cleanername);
+            string readselection = PCS.IniReadValue(Global.settingsfile, "tree", cleanername);
 
             if (readselection == "0")
             {
@@ -262,7 +262,7 @@ namespace pcsm.Processes
 
         public static bool SecSelection(string cleanername, string settingsfile)
         {
-            string readselection = PCS.IniReadValue(settingsfile, "tree", cleanername);
+            string readselection = PCS.IniReadValue(Global.settingsfile, "tree", cleanername);
 
             if (readselection == "False")
             {
@@ -302,10 +302,10 @@ namespace pcsm.Processes
         {
             for (int i = 0; i < treeView1.Nodes.Count; i++)
             {
-                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, settingsfile);
+                treeView1.Nodes[i].Checked = DiskCleaner.SecSelection(treeView1.Nodes[i].Name, Global.settingsfile);
                 for (int j = 0; j < treeView1.Nodes[i].Nodes.Count; j++)
                 {
-                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), settingsfile);
+                    treeView1.Nodes[i].Nodes[j].Checked = DiskCleaner.Selection(treeView1.Nodes[i].Nodes[j].Tag.ToString(), Global.settingsfile);
                 }
 
             }
