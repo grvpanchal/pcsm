@@ -343,9 +343,9 @@ Section "Performance Maintainer"
     SetRegView 32
 SectionEnd
 
-Section "Check for Updates"
+/* Section "Check for Updates"
 	WriteINIStr "$INSTDIR\settings\downloadsettings.ini" "main" "checkforupdates" "true"
-SectionEnd
+SectionEnd */
 
 
 Section "" 
@@ -375,18 +375,14 @@ Section ""
 	Sleep 5000
 ${If} $schedule == "hourly"
 ExecShell "open" "$INSTDIR\scht.exe" " /hourly" "SW_HIDE"
-WriteINIStr "$INSTDIR\settings\downloadsettings.ini" "main" "schedule" "hourly"
 ${ElseIf} $schedule == "daily"
 ExecShell "open" "$INSTDIR\scht.exe" " /daily" "SW_HIDE"
-WriteINIStr "$INSTDIR\settings\downloadsettings.ini" "main" "schedule" "daily"
 ${ElseIf} $schedule == "weekly"
 ExecShell "open" "$INSTDIR\scht.exe" " /weekly" "SW_HIDE"
-WriteINIStr "$INSTDIR\settings\downloadsettings.ini" "main" "schedule" "weely"
 ${ElseIf} $schedule == "monthly"
 ExecShell "open" "$INSTDIR\scht.exe" " /monthly" "SW_HIDE"
-WriteINIStr "$INSTDIR\settings\downloadsettings.ini" "main" "schedule" "monthly"
-${ElseIf} $schedule == "none"
-WriteINIStr "$INSTDIR\settings\downloadsettings.ini" "main" "schedule" "none"
+/* ${ElseIf} $schedule == "none"
+WriteINIStr "$INSTDIR\settings\downloadsettings.ini" "main" "schedule" "none" */
 ${Else}
 ${EndIf}
 ExecShell "open" "$INSTDIR\pcsm\blb\bleachbit_console.exe" " --update-winapp2" "SW_HIDE"

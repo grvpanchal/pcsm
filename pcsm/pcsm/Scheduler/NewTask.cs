@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -35,7 +34,6 @@ namespace pcsm.Scheduler
                     Directory.Delete(Global.system + "settings\\tasks\\" + id.ToString(), true);
             }
             Directory.CreateDirectory(Global.system + "settings\\tasks\\" + id);
-
         }
 
         public static string id;
@@ -215,7 +213,6 @@ namespace pcsm.Scheduler
 
         public void ReadDiskClean()
         {
-
             if (editmode == true)
             {
                 treeView1.Dispose();
@@ -235,7 +232,9 @@ namespace pcsm.Scheduler
                 {
                     DiskCleaner._fieldsTreeCache.Nodes.Add((TreeNode)node.Clone());
                 }
+
                 _fieldsTreeCache1.Nodes.Clear();
+
                 foreach (TreeNode node in treeView1.Nodes)
                 {
                     _fieldsTreeCache1.Nodes.Add((TreeNode)node.Clone());
@@ -245,14 +244,12 @@ namespace pcsm.Scheduler
 
         public void ReadRegSections()
         {
-
             string[] sectionnames = { "Active X / COM", "Startup", "ScanFonts", "Application Info", "Drivers", "Help Files", "Sounds", "Application Paths", "Application Settings", "Shared DLL", "Recent Files" };
 
             if (File.Exists(Global.system + "settings\\tasks\\" + id + "\\regsections.ini"))
             {
                 string[] strArray = PCS.GetAllKeysInIniFileSection("sections", Global.system + "settings\\tasks\\" + id + "\\regsections.ini");
-
-
+                
                 for (int i = 0; i < strArray.Length; i++)
                 {
                     string boolean = strArray[i].Substring(strArray[i].Length - 1);
@@ -269,10 +266,8 @@ namespace pcsm.Scheduler
                         ParentNode.Checked = false;
                     }
                     treeView2.Nodes.Add(ParentNode);
-
                 }
             }
-
             else
             {
                 string[] sectionnames1 = { "Activex", "Startup", "ScanFonts", "AppInfo", "Drivers", "HelpFiles", "Sounds", "AppPaths", "AppSettings", "SharedDLL", "HistoryList" };
@@ -285,7 +280,6 @@ namespace pcsm.Scheduler
                     ParentNode.Checked = true;
                     treeView2.Nodes.Add(ParentNode);
                 }
-
             }
         }
 
@@ -468,7 +462,6 @@ namespace pcsm.Scheduler
                 label10.Enabled = true;
                 textBox4.Enabled = true;
                 button4.Enabled = true;
-
             }
         }
 
@@ -491,7 +484,6 @@ namespace pcsm.Scheduler
                 label4.Visible = true;
                 dateTimePicker2.Visible = true;
             }
-
             else
             {
                 label4.Visible = false;
@@ -517,7 +509,6 @@ namespace pcsm.Scheduler
                 checkBox6.Visible = true;
                 checkBox7.Visible = true;
             }
-
             else
             {
                 checkBox1.Visible = false;
@@ -538,7 +529,6 @@ namespace pcsm.Scheduler
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             if (textBox1.Text == "")
             {
                 MessageBox.Show("Please enter name of the task.");
@@ -558,7 +548,6 @@ namespace pcsm.Scheduler
             else if (triStateTreeView1.Nodes.Count == 0 && (comboBox2.Text == "Registry cleanup, Disk cleanup and Disk Defrag" || comboBox2.Text == "Disk Cleanup" || comboBox2.Text == "Disk Cleanup & Disk Defragmenation" || comboBox2.Text == "Disk Cleanup & Clean Registry"))
             {
                 MessageBox.Show("Please select a Disk Cleaning option");
-
             }
             else
             {
@@ -599,6 +588,7 @@ namespace pcsm.Scheduler
                     PCS.IniWriteValue(taskfile, id, "typeid", "7");
                     PCS.IniWriteValue(taskfile, id, "typename", comboBox2.Text);
                 }
+
                 DiskCleaner.SaveCleaners(triStateTreeView1, Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini");
                 PCS.IniWriteValue(Global.system + "settings\\tasks\\" + id + "\\Bleachbit.ini", "bleachbit", "check_online_updates", "False");
                 SaveDefragSettings();
@@ -608,6 +598,7 @@ namespace pcsm.Scheduler
                 string computername = System.Environment.MachineName;
                 TaskService ts = new TaskService();
                 TaskFolder tf = ts.RootFolder;
+
                 foreach (Microsoft.Win32.TaskScheduler.Task t in tf.Tasks)
                 {
                     try
@@ -690,9 +681,7 @@ namespace pcsm.Scheduler
 
                         foreach (TreeNode node in treeView1.Nodes[x].Nodes)
                         {
-
                             triStateTreeView1.Nodes[n].Nodes.Add((TreeNode)node.Clone());
-
                         }
                         n++;
                         triStateTreeView1.ExpandAll();
@@ -700,7 +689,6 @@ namespace pcsm.Scheduler
                     }
                 }
             }
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -32,8 +32,6 @@ namespace pcsm
             this.button2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.cfu_cb = new System.Windows.Forms.CheckBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -71,8 +69,6 @@ namespace pcsm
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.checkBox7);
-            this.tabPage1.Controls.Add(this.checkBox3);
-            this.tabPage1.Controls.Add(this.cfu_cb);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -81,30 +77,10 @@ namespace pcsm
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(26, 51);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(93, 17);
-            this.checkBox3.TabIndex = 7;
-            this.checkBox3.Text = "Save Log files";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // cfu_cb
-            // 
-            this.cfu_cb.AutoSize = true;
-            this.cfu_cb.Location = new System.Drawing.Point(26, 24);
-            this.cfu_cb.Name = "cfu_cb";
-            this.cfu_cb.Size = new System.Drawing.Size(168, 17);
-            this.cfu_cb.TabIndex = 6;
-            this.cfu_cb.Text = "Check For Updates on launch";
-            this.cfu_cb.UseVisualStyleBackColor = true;
-            // 
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(26, 75);
+            this.checkBox7.Location = new System.Drawing.Point(18, 20);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(109, 17);
             this.checkBox7.TabIndex = 8;
@@ -140,8 +116,6 @@ namespace pcsm
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.CheckBox cfu_cb;
-        private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox7;
     }
 }

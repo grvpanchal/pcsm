@@ -18,16 +18,13 @@ using Microsoft.Win32.TaskScheduler;
 
 namespace pcsw
 {
-
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
         }
-
         
-
         #region GlobalVariables
         public class Global
         {
@@ -37,8 +34,6 @@ namespace pcsw
 
         }
         #endregion
-
-        
         
         #region ReadWriteINI
         [DllImport("kernel32")]
@@ -76,7 +71,6 @@ namespace pcsw
                 Shell32.ShellLinkObject link = (Shell32.ShellLinkObject)folderItem.GetLink;
                 return link.Path;
             }
-
             return string.Empty;
         }
 
@@ -91,13 +85,11 @@ namespace pcsw
             {
                 IniWriteValue("c:\\val.ini", section, key, "false");
             }
-         
         }
 
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern bool Wow64DisableWow64FsRedirection(ref IntPtr ptr);
-
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             bool is64bit = !string.IsNullOrEmpty(
@@ -422,11 +414,5 @@ namespace pcsw
                 catch { }
             }
         }
-           
-
-        
     }
-
-    
-
 }

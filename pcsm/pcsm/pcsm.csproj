@@ -62,9 +62,9 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\..\..\..\..\Desktop\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.9.4.17032, Culture=neutral, PublicKeyToken=0d013ddd5178a2ae, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.0.3.27276, Culture=neutral, PublicKeyToken=0d013ddd5178a2ae, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\c# lib\TaskScheduler\Microsoft.Win32.TaskScheduler.dll</HintPath>
+      <HintPath>bin\Debug\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,8 +80,12 @@
     <Reference Include="System" />
     <Reference Include="System.Management" />
     <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Windows.Forms.DataVisualization">
-      <HintPath>C:\Program Files (x86)\PC Starters\Performance Maintainer\lib\System.Windows.Forms.DataVisualization.dll</HintPath>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>..\..\..\..\..\..\..\lro\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Windows.Forms.DataVisualization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -90,6 +94,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WPFToolkit">
+      <HintPath>..\..\..\..\..\..\..\lro\WPFToolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutBox.cs">

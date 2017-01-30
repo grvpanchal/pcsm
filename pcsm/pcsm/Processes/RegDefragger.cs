@@ -7,7 +7,7 @@ namespace pcsm.Processes
         public static void Analyse(System.Windows.Forms.DataVisualization.Charting.Chart chart1)
         {            
             chart1.Series.Clear();
-            PCS.Process("lro\\lro.exe", " /analyse", false);
+            PCS.Process(Global.regDefragExec, " /analyse", false);
             string oldregistrysize = PCS.IniReadValue("settings\\regdefragresult.ini", "main", "oldregistrysize");
             string newregistrysize = PCS.IniReadValue("settings\\regdefragresult.ini", "main", "newregistrysize");
             string diffregistrysize = PCS.IniReadValue("settings\\regdefragresult.ini", "main", "diffregistrysize");

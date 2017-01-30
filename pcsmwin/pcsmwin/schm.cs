@@ -21,13 +21,46 @@ namespace pcsmwin
         DiskClean dc = new DiskClean();
         RegDefrag rd = new RegDefrag();
         DiskDefrag dd = new DiskDefrag();
-        public void check_skipped_pending(CheckBox c, Label l)
+
+        Dictionary<string, string> data = new Dictionary<string, string>();
+
+        public bool value(Dictionary<string, string> a, string b)
+        {
+            if (a.ContainsKey(b))
+            {
+                if (a[b] == "true")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public string valuetext(Dictionary<string, string> a, string b)
+        {
+            if (a.ContainsKey(b))
+            {
+                return a[b];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void CheckSkippedPending(CheckBox c, Label l)
         {
             if (c.Checked)
             {
                 l.Visible = true;
                 l.Text = "pending";
- 
             }
             else
             {
@@ -35,12 +68,9 @@ namespace pcsmwin
                 l.Text = "skipped";
             }
         }
-
         
-
-        public void start_analysis()
-        {
-            log.WriteLog("Maintainer Analysis Start");
+        public void StartAnalysis()
+        {   
             Global.currentprocess = "analysis";
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("button1.enabled", "false");
@@ -61,15 +91,14 @@ namespace pcsmwin
             backgroundWorker1.ReportProgress(5, data);
 
             if (checkBox1.Checked)
-            {
-                
+            {   
                 data["label4.visible"] = "false";
                 backgroundWorker1.ReportProgress(10, data);
                 data.Add("linklabel5.visible", "false");
                 data.Add("picturebox11.visible", "true");
                 backgroundWorker1.ReportProgress(10, data);
                 Application.DoEvents();                
-                rc.analyse();
+                rc.Analyse();
                 data.Add("linklabel5.text", Global.registryerrors.ToString() + " Registry Errors\nwere found");
                 data["picturebox11.visible"] = "false";
                 data["linklabel5.visible"] = "true";
@@ -85,25 +114,23 @@ namespace pcsmwin
                 data.Add("picturebox12.visible", "true");
                 backgroundWorker1.ReportProgress(30, data);
                 Application.DoEvents();
-                dc.analyse();
+                dc.Analyse();
                 data.Add("linklabel6.text", Global.cleanupsize + " space can\nbe freed");
                 data["picturebox12.visible"] = "false";
                 data["linklabel6.visible"] = "true";
                 data["linklabel6.enabled"] = "true";
                 backgroundWorker1.ReportProgress(40, data);
                 Thread.Sleep(500);
-
             }
 
             if (checkBox3.Checked)
             {
                 data["label7.visible"] = "false";
-
                 data.Add("linklabel8.visible", "false");
                 data.Add("picturebox5.visible", "true");
                 backgroundWorker1.ReportProgress(50, data);
                 Application.DoEvents();
-                dd.analyse();
+                dd.Analyse();
                 data.Add("linklabel8.text", "");
                 for (int k = 0; k < Global.fragmentedp.Count(); k++)
                 {
@@ -129,14 +156,10 @@ namespace pcsmwin
 
             data["button2.enabled"] = "true";
             backgroundWorker1.ReportProgress(100, data);
-            log.WriteLog("Maintainer Analysis end");
-            
         }
-
-        Dictionary<string, string> data = new Dictionary<string, string>();
-        public void start_repair()
-        {
-            log.WriteLog("Maintainer Repair start");
+        
+        public void StartRepair()
+        {   
             Global.currentprocess = "repair";
             
             data.Add("button1.enabled", "false");
@@ -170,7 +193,7 @@ namespace pcsmwin
                 data.Add("picturebox11.visible", "true");
                 backgroundWorker1.ReportProgress(10, data);
                 Application.DoEvents();
-                rc.repair();
+                rc.Repair();
                 data.Add("linklabel5.text", Global.registry + " Registry\nProblems Cleared");                
                 data["picturebox11.visible"] = "false";
                 data["linklabel5.visible"] = "true";
@@ -191,15 +214,13 @@ namespace pcsmwin
                 data.Add("picturebox12.visible", "true");
                 backgroundWorker1.ReportProgress(30, data);
                 Application.DoEvents();               
-                dc.clean();
+                dc.Clean();
                 data.Add("linklabel6.text", Global.cleanupsize + " space is\nRecovered");
                 data["picturebox12.visible"] = "false";
                 data["linklabel6.visible"] = "true";
                 data["linklabel6.enabled"] = "false";
                 backgroundWorker1.ReportProgress(40, data);
                 Thread.Sleep(500);
-                
-
             }
 
             if (checkBox3.Checked)
@@ -233,7 +254,7 @@ namespace pcsmwin
                 Application.DoEvents();
                 this.timer1.Interval = 300;
                 timer1.Start();
-                dd.defrag();
+                dd.Defrag();
                 timer1.Stop();
                 this.timer1.Interval = 3000;
                 data.Add("linklabel8.text", "");
@@ -246,9 +267,7 @@ namespace pcsmwin
                 Thread.Sleep(500);
             }
 
-            
             backgroundWorker1.ReportProgress(100, data);
-            log.WriteLog("Maintainer Analysis end");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -273,8 +292,7 @@ namespace pcsmwin
         {
             rc.Show();
         }
-
-
+        
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             dc.Show();
@@ -310,46 +328,13 @@ namespace pcsmwin
             Process.Start("http://sourceforge.net/projects/lilregdefrag/");
         }
 
-        public bool value(Dictionary<string, string> a, string b)
-        {
-            if (a.ContainsKey(b))
-            {
-                if (a[b] == "true")
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-
-        public string valuetext(Dictionary<string, string> a, string b)
-        {
-            if (a.ContainsKey(b))
-            {
-                return a[b];
-            }
-            else
-            {
-                return null;
-            }
-
-        }
-        
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             int type = (int)e.Argument;
             if(type == 0)
-                start_analysis();
+                StartAnalysis();
             if (type == 1)
-                start_repair();
+                StartRepair();
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -378,7 +363,6 @@ namespace pcsmwin
             pictureBox5.Visible = value(results, "picturebox5.visible");
             linkLabel8.Text = valuetext(results, "linklabel8.text");
             linkLabel8.Enabled = value(results, "linklabel8.enabled");
-            
 
             progressBar1.Value = e.ProgressPercentage;
             decimal toint = Math.Round(Convert.ToDecimal(valuetext(results, "progressbar2.value")), 0);
@@ -393,7 +377,6 @@ namespace pcsmwin
             }
             label9.Text = valuetext(results, "label9.text");
             label10.Text = valuetext(results, "label10.text");
-            
         }
 
         private void Maintainer_MouseMove(object sender, MouseEventArgs e)
@@ -403,7 +386,6 @@ namespace pcsmwin
                 progressBar2.Style = ProgressBarStyle.Marquee;
                 label10.Text = Global.compactprocess;
                 label10.Visible = true;
-                
             }
             else
             {
@@ -442,7 +424,6 @@ namespace pcsmwin
                     data.Add("progressbar2.style", "marquee");
                     data.Add("label10.text", Global.compactprocess);
                     data["label9.visible"] = "false";
-
                 } 
             }
             else
@@ -481,15 +462,11 @@ namespace pcsmwin
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-            PCS.process("cmd", "/c taskkill /im lrc.exe /im bleachbit_console.exe /im udefrag.exe /t /f", true);
-            log.WriteLog("Maintainer Closed");
+            PCS.Process("cmd", "/c taskkill /im lrc.exe /im bleachbit_console.exe /im udefrag.exe /t /f", true);
         }
 
         private void Main_Load(object sender, EventArgs e)
-        {
-            //this.Hide();
-            //this.WindowState = FormWindowState.Minimized;
+        {   
             foreach (string arg in Environment.GetCommandLineArgs())
             {
                 if (arg == "/S")
@@ -497,7 +474,6 @@ namespace pcsmwin
                     this.Hide();
                 }
             }
-            log.WriteLog("Maintainer Started");
 
             PCS pcs = new PCS();
 
@@ -522,9 +498,9 @@ namespace pcsmwin
 
         private void Main_Shown(object sender, EventArgs e)
         {
-            check_skipped_pending(checkBox1, label4);
-            check_skipped_pending(checkBox2, label6);
-            check_skipped_pending(checkBox3, label7);
+            CheckSkippedPending(checkBox1, label4);
+            CheckSkippedPending(checkBox2, label6);
+            CheckSkippedPending(checkBox3, label7);
             backgroundWorker1.RunWorkerAsync(1);
         }
 
@@ -600,13 +576,11 @@ namespace pcsmwin
             {
                 this.Show();
                 this.WindowState = FormWindowState.Normal;
-
             }
             else
             {
                 this.Hide();
                 this.WindowState = FormWindowState.Minimized;
-
             }
         }
 
@@ -622,7 +596,5 @@ namespace pcsmwin
             }
         }
     }
-
-
-    }
+}
 

@@ -20,38 +20,26 @@ namespace pcsm
 
         public void SaveCheckboxCheck()
         {
-            if (cfu_cb.Checked)
+            if (checkBox7.Checked)
             {
-                PCS.IniWriteValue(Global.settingsfile, "main", "checkforupdates", "true");
+                PCS.IniWriteValue(Global.system + Global.settingsfile, "schedule", "notification", "true");
             }
             else
             {
-                PCS.IniWriteValue(Global.settingsfile, "main", "checkforupdates", "false");
-            }
-            if (checkBox3.Checked)
-            {
-                PCS.IniWriteValue(Global.system + Global.settingsfile, "main", "savelog", "true");
-                PCS.IniWriteValue(Global.settingsfile, "main", "savelog", "true");
-            }
-            else
-            {
-                PCS.IniWriteValue(Global.system + Global.settingsfile, "main", "savelog", "false");
-                PCS.IniWriteValue(Global.settingsfile, "main", "savelog", "false");
+                PCS.IniWriteValue(Global.system + Global.settingsfile, "schedule", "notification", "false");
             }
         }
 
         public void ReadCheckboxCheck()
         {
-            string checkforupdates = PCS.IniReadValue("main", "checkforupdates");
-            if (checkforupdates == "true")
-            {
-                cfu_cb.Checked = true;
-            }
-
             string notify = PCS.IniReadValue(Global.system + Global.settingsfile, "schedule", "notification");
             if (notify == "true")
             {
                 checkBox7.Checked = true;
+            }
+            else
+            {
+                checkBox7.Checked = false;
             }
         }
 
