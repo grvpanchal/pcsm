@@ -74,13 +74,13 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Downloads\Json50r6\Bin\Net35\Newtonsoft.Json.dll</HintPath>
+      <HintPath>Resources\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ServiceControllerExtended">
       <HintPath>Resources\lib\ServiceControllerExtended.dll</HintPath>
     </Reference>
     <Reference Include="ServicesOptimizer">
-      <HintPath>C:\Program Files\PC Starters\Performance Maintainer\svcopz\ServicesOptimizer.exe</HintPath>
+      <HintPath>Resources\lib\ServicesOptimizer.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Management" />
